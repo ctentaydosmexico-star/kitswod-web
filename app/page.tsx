@@ -3,6 +3,9 @@
 import { useMemo, useState } from "react";
 import { PARTICIPANTES } from "./data/participantes";
 
+/* =========================
+   Helpers
+========================= */
 function normalize(s: string) {
   return (s || "")
     .toLowerCase()
@@ -15,120 +18,161 @@ function digitsOnly(s: string) {
   return (s || "").replace(/\D/g, "");
 }
 
-function splitNombreBox(nombre_box: string) {
-  // Formato típico: "NOMBRE — BOX"
-  const parts = (nombre_box || "").split("—").map((p) => p.trim());
-  if (parts.length >= 2) {
-    return { nombre: parts[0], box: parts.slice(1).join(" — ") };
-  }
-  return { nombre: nombre_box || "", box: "" };
-}
-
+/* =========================
+   Page
+========================= */
 export default function Home() {
   const [q, setQ] = useState("");
+  const [selected, setSelected] = useState<any | null>(null);
+
+  const total = PARTICIPANTES.length;
 
   const results = useMemo(() => {
     const query = q.trim();
     if (!query) return [];
 
-    const qText = normalize(query);
-    const qDigits = digitsOnly(query);
+    const qt = normalize(query);
+    const qd = digitsOnly(query);
 
-    return (PARTICIPANTES as any[])
-      .filter((p) => {
-        const nombreBox = String(p.nombre_box ?? "");
-        const email = String(p.email ?? "");
-        const tel = String(p.telefono ?? "");
-        const num = String(p.num ?? "");
+    return PARTICIPANTES.filter((p: any) => {
+      const nombre = normalize(String(p.nombre_box ?? ""));
+      const email = normalize(String(p.email ?? ""));
+      const tel = digitsOnly(String(p.telefono ?? ""));
 
-        const hayNombreBox = normalize(nombreBox);
-        const hayEmail = normalize(email);
-        const hayTelDigits = digitsOnly(tel);
-
-        // Búsqueda por texto (nombre/box)
-        if (hayNombreBox.includes(qText)) return true;
-
-        // Búsqueda por email
-        if (qText && hayEmail.includes(qText)) return true;
-
-        // Búsqueda por número de kit
-        if (qDigits.length >= 1 && digitsOnly(num).includes(qDigits)) return true;
-
-        // Búsqueda por teléfono (mínimo 4 dígitos para evitar falsos positivos)
-        if (qDigits.length >= 4 && hayTelDigits.includes(qDigits)) return true;
-
-        return false;
-      })
-      .slice(0, 30);
+      return (
+        nombre.includes(qt) ||
+        email.includes(qt) ||
+        (qd.length >= 4 && tel.includes(qd))
+      );
+    }).slice(0, 30);
   }, [q]);
 
   return (
-    <main style={{ padding: 24, maxWidth: 900, margin: "0 auto", fontFamily: "system-ui" }}>
-      <h1 style={{ fontSize: 28, marginBottom: 6 }}>KITS WOD – Christmas Challenge 🎄</h1>
-      <p style={{ color: "#666", marginBottom: 14 }}>
-        Busca por <strong>nombre</strong>, <strong>box</strong>, <strong>correo</strong> o{" "}
-        <strong>teléfono</strong>. (No mostramos correo ni teléfono)
-      </p>
-
-      <input
-        placeholder="Ej: Regina / THE CROSSBOX / gmail / 0241 / 24"
-        value={q}
-        onChange={(e) => setQ(e.target.value)}
-        style={{
-          width: "100%",
-          padding: 14,
-          fontSize: 18,
-          borderRadius: 14,
-          border: "1px solid #ccc",
-          outline: "none",
-        }}
-      />
-
-      {q.trim() === "" ? (
-        <div style={{ marginTop: 18, color: "#666" }}>Escribe para encontrar tu número de kit.</div>
-      ) : results.length === 0 ? (
-        <div style={{ marginTop: 18, color: "#c00" }}>
-          No encontramos resultados. Prueba con tu apellido, tu box, tu correo o los últimos 4 dígitos de tu teléfono.
+    <main className="max-w-3xl mx-auto p-4 text-black font-sans">
+      {/* ================= HEADER ================= */}
+      <header className="flex items-center justify-between border-b border-black pb-2 mb-4">
+        <div className="flex items-center gap-2">
+          <img
+            src="/wod-logo.png"
+            alt="WOD"
+            style={{ height: 36, width: "auto", display: "block" }}
+          />
+          <div className="leading-tight">
+            <div className="text-sm font-semibold">KITS WOD</div>
+            <div className="text-xs text-gray-600">
+              Christmas Challenge 2025
+            </div>
+          </div>
         </div>
-      ) : (
-        <div style={{ marginTop: 18, display: "grid", gap: 14 }}>
-          {results.map((p: any, idx: number) => {
-            const { nombre, box } = splitNombreBox(String(p.nombre_box ?? ""));
-            return (
-              <div
-                key={`${p.num}-${idx}`}
-                style={{
-                  border: "1px solid #e6e6e6",
-                  borderRadius: 18,
-                  padding: 16,
-                  background: "#fff",
-                }}
-              >
-                <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
-                  <div style={{ fontSize: 14, color: "#666" }}>Tu número de kit</div>
-                  <div style={{ fontSize: 14, color: "#666" }}>
-                    {(p.categoria ?? "—") + " · " + (p.talla ?? "—")}
-                  </div>
-                </div>
 
-                <div style={{ fontSize: 56, fontWeight: 900, marginTop: 6 }}>{p.num}</div>
-
-                <div style={{ marginTop: 10, fontSize: 18, fontWeight: 800 }}>{nombre}</div>
-
-                {box ? (
-                  <div style={{ marginTop: 4, color: "#444" }}>{box}</div>
-                ) : (
-                  <div style={{ marginTop: 4, color: "#444" }}>{p.genero ?? "—"}</div>
-                )}
-
-                {/* Importante: NO mostramos email ni teléfono */}
-              </div>
-            );
-          })}
+        <div className="text-xs text-gray-600">
+          Total atletas: <strong>{total}</strong>
         </div>
+      </header>
+
+      {/* ================= BUSCADOR ================= */}
+      <section className="mb-6">
+        <h1 className="text-lg font-semibold mb-1">
+          Encuentra tu número de kit
+        </h1>
+        <p className="text-sm text-gray-600 mb-2">
+          Busca por <strong>nombre</strong>, <strong>box</strong>,{" "}
+          <strong>correo</strong> o <strong>teléfono</strong> (últimos 4).
+        </p>
+
+        <input
+          value={q}
+          onChange={(e) => {
+            setQ(e.target.value);
+            setSelected(null);
+          }}
+          placeholder="Ej. Karina / UKN / gmail / 2732"
+          className="w-full border border-black px-3 py-2 text-sm"
+        />
+
+        <div className="text-xs text-gray-600 mt-2">
+          Tip: si buscas por teléfono, usa al menos los <strong>últimos 4</strong>.
+        </div>
+      </section>
+
+      {/* ================= RESULTADOS ================= */}
+      {results.length > 0 && (
+        <section className="border border-black mb-6">
+          {results.map((p: any) => (
+            <button
+              key={p.num}
+              onClick={() => setSelected(p)}
+              className="w-full text-left px-3 py-2 border-b border-black hover:bg-gray-100 text-sm"
+            >
+              <strong>{p.num}</strong> — {p.nombre_box}
+            </button>
+          ))}
+        </section>
       )}
 
-      <div style={{ marginTop: 18, fontSize: 12, color: "#777" }}>Mostrando hasta 30 resultados.</div>
+      {/* ================= TARJETA ================= */}
+      <section className="mb-6">
+        <h2 className="text-md font-semibold mb-2">Tu tarjeta</h2>
+        <p className="text-sm text-gray-600 mb-3">
+          Selecciona un resultado para ver tu tarjeta.
+        </p>
+
+        <div className="border border-black p-4">
+          {selected ? (
+            <>
+              <div className="flex justify-between items-start mb-3">
+                <img
+                  src="/wod-logo.png"
+                  alt="WOD"
+                  style={{ height: 36, width: "auto" }}
+                />
+                <div className="text-right text-xs">
+                  <div className="font-semibold">CHRISTMAS CHALLENGE</div>
+                  <div>2025</div>
+                </div>
+              </div>
+
+              <div className="text-5xl font-bold mb-2">
+                {selected.num}
+              </div>
+
+              <div className="text-sm font-semibold mb-1">
+                {selected.nombre_box}
+              </div>
+
+              <div className="text-xs text-gray-600 mb-3">
+                {selected.categoria} · Talla {selected.talla}
+              </div>
+
+              <div className="text-xs text-gray-700">
+                kitswod.mx · @thewod_go
+              </div>
+            </>
+          ) : (
+            <div className="text-sm text-gray-500">
+              Selecciona un atleta
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ================= PRIVACIDAD ================= */}
+      <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
+        Privacidad: no mostramos correo ni teléfono.
+        Solo tu <strong>número de kit</strong>.
+      </section>
+
+      {/* ================= FOOTER ================= */}
+      <footer className="flex justify-between items-center text-xs text-gray-600">
+        <div>© {new Date().getFullYear()} WOD</div>
+        <a
+          href="https://instagram.com/thewod_go"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Instagram @thewod_go
+        </a>
+      </footer>
     </main>
   );
 }
