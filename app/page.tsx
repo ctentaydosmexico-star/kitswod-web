@@ -125,7 +125,7 @@ export default function Home() {
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
-                  style={{ height: 20, width: "auto" }}
+                  style={{ height: 36, width: "auto" }}
                 />
                 <div className="text-right text-xs">
                   <div className="font-semibold">CHRISTMAS CHALLENGE</div>
