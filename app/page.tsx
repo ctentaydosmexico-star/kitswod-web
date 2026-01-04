@@ -30,6 +30,11 @@ function safeFilename(s: string) {
     .slice(0, 60);
 }
 
+function isIOS() {
+  if (typeof navigator === "undefined") return false;
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+}
+
 /* =========================
    Page
 ========================= */
@@ -63,40 +68,81 @@ export default function Home() {
   }, [q]);
 
   async function downloadCardAsImage() {
-    if (!selected) return;
-    if (!cardRef.current) return;
+    if (!selected || !cardRef.current) return;
 
+    setDownloading(true);
     try {
-      setDownloading(true);
-
-      // Tomar captura SOLO del contenedor de la tarjeta
       const canvas = await html2canvas(cardRef.current, {
         backgroundColor: "#ffffff",
-        scale: 2, // más nítido
+        scale: 2,
         useCORS: true,
         logging: false,
       });
 
-      const blob: Blob | null = await new Promise((resolve) =>
-        canvas.toBlob((b) => resolve(b), "image/png", 1)
-      );
+      // 1) Generar PNG
+      const dataUrl = canvas.toDataURL("image/png");
 
-      if (!blob) return;
+      // 2) Intento A: Web Share (si existe) -> iPhone/Android suele estar feliz
+      try {
+        const canShare = (navigator as any).canShare?.bind(navigator);
+        if (navigator.share && canShare) {
+          const res = await fetch(dataUrl);
+          const blob = await res.blob();
+          const fileName = `kitswod-${selected.num}-${safeFilename(
+            selected.nombre_box || "atleta"
+          )}.png`;
+          const file = new File([blob], fileName, { type: "image/png" });
 
-      const url = URL.createObjectURL(blob);
+          if (canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: "KITS WOD",
+              text: "Mi tarjeta de kit",
+            });
+            return; // listo
+          }
+        }
+      } catch {
+        // si falla share, seguimos al download normal
+      }
 
+      // 3) Intento B: Download normal (desktop/Android)
       const fileName = `kitswod-${selected.num}-${safeFilename(
         selected.nombre_box || "atleta"
       )}.png`;
 
       const a = document.createElement("a");
-      a.href = url;
+      a.href = dataUrl;
       a.download = fileName;
       document.body.appendChild(a);
       a.click();
       a.remove();
 
-      URL.revokeObjectURL(url);
+      // 4) Fallback iOS: abrir en nueva pestaña para "Guardar imagen"
+      // (porque iOS puede ignorar el download sin avisar)
+      if (isIOS()) {
+        const w = window.open();
+        if (w) {
+          w.document.write(`
+            <html>
+              <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>Guardar imagen</title>
+                <style>
+                  body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#111;}
+                  img{max-width:95vw;height:auto;box-shadow:0 10px 30px rgba(0,0,0,.35);border-radius:10px;}
+                  p{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:#fff;font-family:system-ui;opacity:.9;font-size:14px;margin:0}
+                </style>
+              </head>
+              <body>
+                <img src="${dataUrl}" />
+                <p>Mantén presionada la imagen → “Guardar en Fotos”</p>
+              </body>
+            </html>
+          `);
+          w.document.close();
+        }
+      }
     } finally {
       setDownloading(false);
     }
@@ -104,7 +150,7 @@ export default function Home() {
 
   return (
     <main className="max-w-3xl mx-auto p-4 text-black font-sans">
-      {/* HEADER */}
+      {/* ================= HEADER ================= */}
       <header className="flex items-center justify-between border-b border-black pb-2 mb-4">
         <div className="flex items-center gap-2">
           <img
@@ -123,7 +169,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* BUSCADOR */}
+      {/* ================= BUSCADOR ================= */}
       <section className="mb-6">
         <h1 className="text-lg font-semibold mb-1">Encuentra tu número de kit</h1>
         <p className="text-sm text-gray-600 mb-2">
@@ -142,12 +188,11 @@ export default function Home() {
         />
 
         <div className="text-xs text-gray-600 mt-2">
-          Tip: si buscas por teléfono, usa al menos los{" "}
-          <strong>últimos 4</strong>.
+          Tip: si buscas por teléfono, usa al menos los <strong>últimos 4</strong>.
         </div>
       </section>
 
-      {/* RESULTADOS */}
+      {/* ================= RESULTADOS ================= */}
       {results.length > 0 && (
         <section className="border border-black mb-6">
           {results.map((p: any) => (
@@ -162,27 +207,19 @@ export default function Home() {
         </section>
       )}
 
-      {/* TARJETA */}
+      {/* ================= TARJETA ================= */}
       <section className="mb-6">
         <h2 className="text-md font-semibold mb-2">Tu tarjeta</h2>
         <p className="text-sm text-gray-600 mb-3">
           Selecciona un resultado para ver tu tarjeta.
         </p>
 
-        {/* OJO: ESTE CONTENEDOR ES EL QUE SE DESCARGA COMO IMAGEN */}
-        <div
-          ref={cardRef}
-          className="border border-black p-4 bg-white"
-          style={{ borderRadius: 0 }}
-        >
+        {/* SOLO ESTO SE CAPTURA */}
+        <div ref={cardRef} className="border border-black p-4 bg-white">
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
-                <img
-                  src="/wod-logo.png"
-                  alt="WOD"
-                  style={{ height: 20, width: "auto" }}
-                />
+                <img src="/wod-logo.png" alt="WOD" style={{ height: 36, width: "auto" }} />
                 <div className="text-right text-xs">
                   <div className="font-semibold">CHRISTMAS CHALLENGE</div>
                   <div>2025</div>
@@ -204,7 +241,6 @@ export default function Home() {
           )}
         </div>
 
-        {/* BOTONES */}
         <div className="flex gap-2 mt-3">
           <a
             href={
@@ -235,17 +271,16 @@ export default function Home() {
         </div>
 
         <div className="text-xs text-gray-600 mt-2">
-          Tip: en iPhone/Android, ya con la imagen descargada puedes mandarla por WhatsApp/IG.
+          Tip: en iPhone puede abrirse una pestaña con la imagen para guardarla en Fotos.
         </div>
       </section>
 
-      {/* PRIVACIDAD */}
+      {/* ================= PRIVACIDAD ================= */}
       <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
-        Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
-        <strong>número de kit</strong>.
+        Privacidad: no mostramos correo ni teléfono. Solo tu <strong>número de kit</strong>.
       </section>
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
       <footer className="flex justify-between items-center text-xs text-gray-600">
         <div>© {new Date().getFullYear()} WOD</div>
         <a href="https://instagram.com/thewod_go" target="_blank" rel="noreferrer">
