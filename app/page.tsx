@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { PARTICIPANTES } from "./data/participantes";
+import * as htmlToImage from "html-to-image";
 
 /* =========================
    Helpers
@@ -47,6 +48,22 @@ export default function Home() {
     }).slice(0, 30);
   }, [q]);
 
+  const downloadCard = async () => {
+    if (!selected) return;
+
+    const node = document.getElementById("kit-card");
+    if (!node) return;
+
+    const dataUrl = await htmlToImage.toPng(node, {
+      backgroundColor: "#ffffff",
+    });
+
+    const link = document.createElement("a");
+    link.download = `kit-${selected.num}.png`;
+    link.href = dataUrl;
+    link.click();
+  };
+
   return (
     <main className="max-w-3xl mx-auto p-4 text-black font-sans">
       {/* ================= HEADER ================= */}
@@ -91,7 +108,8 @@ export default function Home() {
         />
 
         <div className="text-xs text-gray-600 mt-2">
-          Tip: si buscas por teléfono, usa al menos los <strong>últimos 4</strong>.
+          Tip: si buscas por teléfono, usa al menos los{" "}
+          <strong>últimos 4</strong>.
         </div>
       </section>
 
@@ -117,14 +135,17 @@ export default function Home() {
           Selecciona un resultado para ver tu tarjeta.
         </p>
 
-        <div className="border border-black p-4">
+        <div
+          id="kit-card"
+          className="border border-black p-4 bg-white"
+        >
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
-                  style={{ height: 36, width: "auto" }}
+                  style={{ height: 24, width: "auto" }}
                 />
                 <div className="text-right text-xs">
                   <div className="font-semibold">CHRISTMAS CHALLENGE</div>
@@ -144,8 +165,28 @@ export default function Home() {
                 {selected.categoria} · Talla {selected.talla}
               </div>
 
-              <div className="text-xs text-gray-700">
+              <div className="text-xs text-gray-700 mb-4">
                 kitswod.mx · @thewod_go
+              </div>
+
+              <div className="flex gap-2">
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(
+                    `🎄 Christmas Challenge 2025\nMi número de kit es ${selected.num}\n\nConsulta aquí:\nhttps://kitswod.mx`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 text-center border border-black py-2 text-sm hover:bg-black hover:text-white transition"
+                >
+                  Compartir por WhatsApp
+                </a>
+
+                <button
+                  onClick={downloadCard}
+                  className="flex-1 border border-black py-2 text-sm hover:bg-black hover:text-white transition"
+                >
+                  Descargar tarjeta
+                </button>
               </div>
             </>
           ) : (
@@ -158,8 +199,8 @@ export default function Home() {
 
       {/* ================= PRIVACIDAD ================= */}
       <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
-        Privacidad: no mostramos correo ni teléfono.
-        Solo tu <strong>número de kit</strong>.
+        Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
+        <strong>número de kit</strong>.
       </section>
 
       {/* ================= FOOTER ================= */}
@@ -175,4 +216,5 @@ export default function Home() {
       </footer>
     </main>
   );
+}
 }
