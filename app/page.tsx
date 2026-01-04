@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { PARTICIPANTES } from "./data/participantes";
-import * as htmlToImage from "html-to-image";
 
 /* =========================
    Helpers
@@ -48,25 +47,9 @@ export default function Home() {
     }).slice(0, 30);
   }, [q]);
 
-  const downloadCard = async () => {
-    if (!selected) return;
-
-    const node = document.getElementById("kit-card");
-    if (!node) return;
-
-    const dataUrl = await htmlToImage.toPng(node, {
-      backgroundColor: "#ffffff",
-    });
-
-    const link = document.createElement("a");
-    link.download = `kit-${selected.num}.png`;
-    link.href = dataUrl;
-    link.click();
-  };
-
   return (
     <main className="max-w-3xl mx-auto p-4 text-black font-sans">
-      {/* ================= HEADER ================= */}
+      {/* HEADER */}
       <header className="flex items-center justify-between border-b border-black pb-2 mb-4">
         <div className="flex items-center gap-2">
           <img
@@ -87,7 +70,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ================= BUSCADOR ================= */}
+      {/* BUSCADOR */}
       <section className="mb-6">
         <h1 className="text-lg font-semibold mb-1">
           Encuentra tu número de kit
@@ -113,7 +96,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= RESULTADOS ================= */}
+      {/* RESULTADOS */}
       {results.length > 0 && (
         <section className="border border-black mb-6">
           {results.map((p: any) => (
@@ -128,24 +111,21 @@ export default function Home() {
         </section>
       )}
 
-      {/* ================= TARJETA ================= */}
+      {/* TARJETA */}
       <section className="mb-6">
         <h2 className="text-md font-semibold mb-2">Tu tarjeta</h2>
         <p className="text-sm text-gray-600 mb-3">
           Selecciona un resultado para ver tu tarjeta.
         </p>
 
-        <div
-          id="kit-card"
-          className="border border-black p-4 bg-white"
-        >
+        <div className="border border-black p-4">
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
-                  style={{ height: 24, width: "auto" }}
+                  style={{ height: 20, width: "auto" }}
                 />
                 <div className="text-right text-xs">
                   <div className="font-semibold">CHRISTMAS CHALLENGE</div>
@@ -165,27 +145,27 @@ export default function Home() {
                 {selected.categoria} · Talla {selected.talla}
               </div>
 
-              <div className="text-xs text-gray-700 mb-4">
+              <div className="text-xs text-gray-700 mb-3">
                 kitswod.mx · @thewod_go
               </div>
 
               <div className="flex gap-2">
                 <a
                   href={`https://wa.me/?text=${encodeURIComponent(
-                    `🎄 Christmas Challenge 2025\nMi número de kit es ${selected.num}\n\nConsulta aquí:\nhttps://kitswod.mx`
+                    `Mi número de kit para el Christmas Challenge 2025 es ${selected.num} 💪🎄\n\nkitswod.mx`
                   )}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 text-center border border-black py-2 text-sm hover:bg-black hover:text-white transition"
+                  className="border border-black px-3 py-1 text-xs hover:bg-black hover:text-white"
                 >
-                  Compartir por WhatsApp
+                  Compartir WhatsApp
                 </a>
 
                 <button
-                  onClick={downloadCard}
-                  className="flex-1 border border-black py-2 text-sm hover:bg-black hover:text-white transition"
+                  onClick={() => window.print()}
+                  className="border border-black px-3 py-1 text-xs hover:bg-black hover:text-white"
                 >
-                  Descargar tarjeta
+                  Descargar
                 </button>
               </div>
             </>
@@ -197,13 +177,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PRIVACIDAD ================= */}
+      {/* PRIVACIDAD */}
       <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
         Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
         <strong>número de kit</strong>.
       </section>
 
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
       <footer className="flex justify-between items-center text-xs text-gray-600">
         <div>© {new Date().getFullYear()} WOD</div>
         <a
