@@ -182,7 +182,7 @@ kitswod.mx · @thewod_go`;
                       src="/lgnds-logo.png"
                       alt="LGNDS"
                       style={{
-                        height: 36,
+                        height: 42,
                         width: "auto",
                         display: "block",
                       }}
