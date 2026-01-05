@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Script from "next/script";
 import { PARTICIPANTES } from "./data/participantes";
 
 /* =========================
@@ -45,7 +46,7 @@ export default function Home() {
   }, [q]);
 
   /* =========================
-     Share (WhatsApp + Nativo)
+     Share
   ========================= */
   function buildShareText() {
     if (!selected) return "";
@@ -58,9 +59,10 @@ kitswod.mx · @thewod_go`;
   function shareWhatsApp() {
     if (!selected) return;
     const text = buildShareText();
-    const url = "https://kitswod.mx";
     window.open(
-      `https://wa.me/?text=${encodeURIComponent(text + "\n\n" + url)}`,
+      `https://wa.me/?text=${encodeURIComponent(
+        text + "\n\nhttps://kitswod.mx"
+      )}`,
       "_blank"
     );
   }
@@ -71,7 +73,6 @@ kitswod.mx · @thewod_go`;
     const text = buildShareText();
     const url = "https://kitswod.mx";
 
-    // Share nativo (iPhone/Android)
     if (navigator.share) {
       try {
         await navigator.share({
@@ -80,17 +81,15 @@ kitswod.mx · @thewod_go`;
           url,
         });
       } catch {
-        // si cancelan, no hacemos nada
+        return;
       }
-      return;
-    }
-
-    // Fallback: copia al portapapeles
-    try {
-      await navigator.clipboard.writeText(text + "\n\n" + url);
-      alert("Copiado ✅ Ahora pégalo en Instagram/WhatsApp.");
-    } catch {
-      alert("No se pudo copiar. Usa WhatsApp.");
+    } else {
+      try {
+        await navigator.clipboard.writeText(text + "\n\n" + url);
+        alert("Copiado ✅ Pégalo en Instagram o WhatsApp.");
+      } catch {
+        alert("No se pudo copiar.");
+      }
     }
   }
 
@@ -99,13 +98,11 @@ kitswod.mx · @thewod_go`;
       {/* ================= HEADER ================= */}
       <header className="flex items-center justify-between border-b border-black pb-2 mb-4">
         <div className="flex items-center gap-2">
-          {/* Logo WOD */}
           <img
             src="/wod-logo.png"
             alt="WOD"
-            style={{ height: 36, width: "auto", display: "block" }}
+            style={{ height: 42, width: "auto", display: "block" }}
           />
-
           <div className="leading-tight">
             <div className="text-sm font-semibold">KITS WOD</div>
             <div className="text-xs text-gray-600">LGNDS LATAM 2025</div>
@@ -119,7 +116,9 @@ kitswod.mx · @thewod_go`;
 
       {/* ================= BUSCADOR ================= */}
       <section className="mb-6">
-        <h1 className="text-lg font-semibold mb-1">Encuentra tu número de kit</h1>
+        <h1 className="text-lg font-semibold mb-1">
+          Encuentra tu número de kit
+        </h1>
 
         <p className="text-sm text-gray-600 mb-2">
           Busca por <strong>nombre</strong>, <strong>box</strong>,{" "}
@@ -135,10 +134,6 @@ kitswod.mx · @thewod_go`;
           placeholder="Ej. Karina / UKN / gmail / 2732"
           className="w-full border border-black px-3 py-2 text-sm"
         />
-
-        <div className="text-xs text-gray-600 mt-2">
-          Tip: si buscas por teléfono, usa al menos los <strong>últimos 4</strong>.
-        </div>
       </section>
 
       {/* ================= RESULTADOS ================= */}
@@ -157,43 +152,31 @@ kitswod.mx · @thewod_go`;
       )}
 
       {/* ================= TARJETA ================= */}
-      <section className="mb-4">
+      <section className="mb-6">
         <h2 className="text-md font-semibold mb-2">Tu tarjeta</h2>
-        <p className="text-sm text-gray-600 mb-3">
-          Selecciona un resultado para ver tu tarjeta lista para compartir.
-        </p>
 
         <div className="border border-black p-4">
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
-                {/* Logo WOD - 36px (NO CAMBIAR) */}
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
-                  style={{ height: 36, width: "auto" }}
+                  style={{ height: 42, width: "auto" }}
                 />
 
-                {/* Logo competencia + título */}
                 <div className="text-right text-xs">
-                  {/* Logo competencia (pon el archivo en /public) */}
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
                     <img
                       src="/lgnds-logo.png"
                       alt="LGNDS"
-                      style={{
-                        height: 42,
-                        width: "auto",
-                        display: "block",
-                      }}
+                      style={{ height: 42, width: "auto" }}
                       onError={(e) => {
-                        // si no existe el logo, lo ocultamos para que no se vea feo
                         (e.currentTarget as HTMLImageElement).style.display =
                           "none";
                       }}
                     />
                   </div>
-
                   <div className="font-semibold mt-1">LGNDS LATAM</div>
                   <div>2025</div>
                 </div>
@@ -209,16 +192,20 @@ kitswod.mx · @thewod_go`;
                 {selected.categoria} · Talla {selected.talla}
               </div>
 
-              <div className="text-xs text-gray-700">kitswod.mx · @thewod_go</div>
+              <div className="text-xs text-gray-700">
+                kitswod.mx · @thewod_go
+              </div>
             </>
           ) : (
-            <div className="text-sm text-gray-500">Selecciona un atleta</div>
+            <div className="text-sm text-gray-500">
+              Selecciona un atleta
+            </div>
           )}
         </div>
       </section>
 
-      {/* ================= BOTONES (SOLO SHARE) ================= */}
-      <section className="flex gap-2 mb-6">
+      {/* ================= BOTONES ================= */}
+      <section className="flex gap-2 mb-8">
         <button
           onClick={shareNative}
           disabled={!selected}
@@ -236,16 +223,57 @@ kitswod.mx · @thewod_go`;
         </button>
       </section>
 
+      {/* ================= INSTAGRAM ================= */}
+      <section className="border-t border-black pt-4 mt-8">
+        <div className="flex items-center justify-between mb-3">
+          <div className="text-sm font-semibold">Última publicación</div>
+          <a
+            href="https://instagram.com/thewod_go"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs underline"
+          >
+            @thewod_go
+          </a>
+        </div>
+
+        <Script
+          src="https://cdn.lightwidget.com/widgets/lightwidget.js"
+          strategy="afterInteractive"
+        />
+
+        <div className="border border-black">
+          <iframe
+            src="https://lightwidget.com/widgets/129ef531e45a51f1a7680c851f1a92e6.html"
+            scrolling="no"
+            allowTransparency
+            className="lightwidget-widget"
+            style={{
+              width: "100%",
+              height: 520,
+              border: 0,
+              overflow: "hidden",
+              display: "block",
+            }}
+            title="Instagram @thewod_go"
+          />
+        </div>
+      </section>
+
       {/* ================= PRIVACIDAD ================= */}
-      <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
+      <section className="border-t border-black pt-2 mt-8 text-xs text-gray-600">
         Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
         <strong>número de kit</strong>.
       </section>
 
       {/* ================= FOOTER ================= */}
-      <footer className="flex justify-between items-center text-xs text-gray-600">
+      <footer className="flex justify-between items-center text-xs text-gray-600 mt-6">
         <div>© {new Date().getFullYear()} WOD</div>
-        <a href="https://instagram.com/thewod_go" target="_blank" rel="noreferrer">
+        <a
+          href="https://instagram.com/thewod_go"
+          target="_blank"
+          rel="noreferrer"
+        >
           Instagram @thewod_go
         </a>
       </footer>
