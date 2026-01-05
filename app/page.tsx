@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
-import html2canvas from "html2canvas";
+import { useMemo, useState } from "react";
 import { PARTICIPANTES } from "./data/participantes";
 
 /* =========================
@@ -19,26 +18,9 @@ function digitsOnly(s: string) {
   return (s || "").replace(/\D/g, "");
 }
 
-function safeFilename(s: string) {
-  return (s || "kit")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9-_]+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 60);
-}
-
-/* =========================
-   Page
-========================= */
 export default function Home() {
   const [q, setQ] = useState("");
   const [selected, setSelected] = useState<any | null>(null);
-  const [downloading, setDownloading] = useState(false);
-
-  const cardRef = useRef<HTMLDivElement | null>(null);
 
   const total = PARTICIPANTES.length;
 
@@ -62,75 +44,46 @@ export default function Home() {
     }).slice(0, 30);
   }, [q]);
 
-  async function downloadCardAsImage() {
-    if (!selected || !cardRef.current) return;
+  function cardUrlAbsolute(download = false) {
+    if (!selected) return "";
+    const rel = `/api/card?num=${encodeURIComponent(String(selected.num))}${
+      download ? "&download=1" : ""
+    }`;
+    return `${location.origin}${rel}`;
+  }
 
-    setDownloading(true);
+  function openImage() {
+    if (!selected) return;
+    window.open(cardUrlAbsolute(false), "_blank", "noopener,noreferrer");
+  }
+
+  async function share() {
+    if (!selected) return;
+    const url = cardUrlAbsolute(false);
     try {
-      const canvas = await html2canvas(cardRef.current, {
-        backgroundColor: "#ffffff",
-        scale: 2,
-        useCORS: true,
-        logging: false,
-      });
-
-      const blob: Blob = await new Promise((resolve) =>
-        canvas.toBlob((b) => resolve(b as Blob), "image/png", 1)
-      );
-
-      const fileName = `kitswod-${selected.num}-${safeFilename(
-        selected.nombre_box || "atleta"
-      )}.png`;
-
-      const file = new File([blob], fileName, { type: "image/png" });
-
-      // 1) iOS / Android moderno → Share Sheet (GUARDAR IMAGEN)
-      const canShare = (navigator as any).canShare?.({ files: [file] });
-      if (navigator.share && canShare) {
+      if (navigator.share) {
         await navigator.share({
-          files: [file],
           title: "KITS WOD",
-          text: "Mi tarjeta de kit",
+          text: `Mi número de kit es ${selected.num} 💪🎄`,
+          url,
         });
         return;
       }
-
-      // 2) Desktop / Android → descarga directa
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = fileName;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-
-      // 3) Fallback iPhone → abrir imagen para guardarla manual
-      const dataUrl = canvas.toDataURL("image/png");
-      const w = window.open();
-      if (w) {
-        w.document.write(`
-          <html>
-            <head>
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>Guardar imagen</title>
-              <style>
-                body{margin:0;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#111;}
-                img{max-width:95vw;height:auto;box-shadow:0 10px 30px rgba(0,0,0,.35);border-radius:10px;}
-                p{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:#fff;font-family:system-ui;opacity:.9;font-size:14px;margin:0}
-              </style>
-            </head>
-            <body>
-              <img src="${dataUrl}" />
-              <p>Mantén presionada la imagen → “Guardar en Fotos”</p>
-            </body>
-          </html>
-        `);
-        w.document.close();
-      }
-    } finally {
-      setDownloading(false);
+    } catch {
+      // si cancela, no pasa nada
     }
+    // fallback
+    openImage();
+  }
+
+  function whatsapp() {
+    if (!selected) return;
+    const text = `Mi número de kit para el Christmas Challenge 2025 es ${selected.num} 💪🎄\n\n${location.origin}`;
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
   }
 
   return (
@@ -145,9 +98,7 @@ export default function Home() {
           />
           <div className="leading-tight">
             <div className="text-sm font-semibold">KITS WOD</div>
-            <div className="text-xs text-gray-600">
-              Christmas Challenge 2025
-            </div>
+            <div className="text-xs text-gray-600">Christmas Challenge 2025</div>
           </div>
         </div>
 
@@ -158,9 +109,7 @@ export default function Home() {
 
       {/* BUSCADOR */}
       <section className="mb-6">
-        <h1 className="text-lg font-semibold mb-1">
-          Encuentra tu número de kit
-        </h1>
+        <h1 className="text-lg font-semibold mb-1">Encuentra tu número de kit</h1>
         <p className="text-sm text-gray-600 mb-2">
           Busca por <strong>nombre</strong>, <strong>box</strong>,{" "}
           <strong>correo</strong> o <strong>teléfono</strong> (últimos 4).
@@ -177,8 +126,7 @@ export default function Home() {
         />
 
         <div className="text-xs text-gray-600 mt-2">
-          Tip: si buscas por teléfono, usa al menos los{" "}
-          <strong>últimos 4</strong>.
+          Tip: si buscas por teléfono, usa al menos los <strong>últimos 4</strong>.
         </div>
       </section>
 
@@ -204,94 +152,90 @@ export default function Home() {
           Selecciona un resultado para ver tu tarjeta.
         </p>
 
-        {/* SOLO ESTA CAJA SE GUARDA COMO IMAGEN */}
-        <div ref={cardRef} className="border border-black p-4 bg-white">
+        <div className="border border-black p-4 bg-white">
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
-                <img
-                  src="/wod-logo.png"
-                  alt="WOD"
-                  style={{ height: 20, width: "auto" }}
-                />
+                <img src="/wod-logo.png" alt="WOD" style={{ height: 20, width: "auto" }} />
                 <div className="text-right text-xs">
                   <div className="font-semibold">CHRISTMAS CHALLENGE</div>
                   <div>2025</div>
                 </div>
               </div>
 
-              <div className="text-5xl font-bold mb-2">
-                {selected.num}
-              </div>
+              <div className="text-5xl font-bold mb-2">{selected.num}</div>
 
-              <div className="text-sm font-semibold mb-1">
-                {selected.nombre_box}
-              </div>
+              <div className="text-sm font-semibold mb-1">{selected.nombre_box}</div>
 
               <div className="text-xs text-gray-600 mb-3">
                 {selected.categoria} · Talla {selected.talla}
               </div>
 
-              <div className="text-xs text-gray-700">
-                kitswod.mx · @thewod_go
-              </div>
+              <div className="text-xs text-gray-700">kitswod.mx · @thewod_go</div>
             </>
           ) : (
-            <div className="text-sm text-gray-500">
-              Selecciona un atleta
-            </div>
+            <div className="text-sm text-gray-500">Selecciona un atleta</div>
           )}
         </div>
 
-        {/* BOTONES */}
-        <div className="flex gap-2 mt-3">
-          <a
-            href={
-              selected
-                ? `https://wa.me/?text=${encodeURIComponent(
-                    `Mi número de kit para el Christmas Challenge 2025 es ${selected.num} 💪🎄\n\nkitswod.mx`
-                  )}`
-                : undefined
-            }
-            target="_blank"
-            rel="noreferrer"
+        {/* BOTONES (sin “download” porque iPhone lo ignora) */}
+        <div className="flex flex-wrap gap-2 mt-3">
+          <button
+            onClick={openImage}
+            disabled={!selected}
             className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
-              selected ? "" : "opacity-40 pointer-events-none"
+              selected ? "" : "opacity-40 cursor-not-allowed"
             }`}
           >
-            Compartir WhatsApp
-          </a>
+            Abrir imagen
+          </button>
 
           <button
-            onClick={downloadCardAsImage}
-            disabled={!selected || downloading}
+            onClick={share}
+            disabled={!selected}
             className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
-              !selected || downloading ? "opacity-40 cursor-not-allowed" : ""
+              selected ? "" : "opacity-40 cursor-not-allowed"
             }`}
           >
-            {downloading ? "Generando..." : "Descargar imagen"}
+            Compartir
           </button>
+
+          <button
+            onClick={whatsapp}
+            disabled={!selected}
+            className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
+              selected ? "" : "opacity-40 cursor-not-allowed"
+            }`}
+          >
+            WhatsApp
+          </button>
+
+          {/* opcional: link que intenta “descarga” en desktop */}
+          {selected && (
+            <a
+              href={`/api/card?num=${encodeURIComponent(String(selected.num))}&download=1`}
+              className="border border-black px-3 py-2 text-xs hover:bg-black hover:text-white"
+            >
+              Descargar (solo compu)
+            </a>
+          )}
         </div>
 
         <div className="text-xs text-gray-600 mt-2">
-          En iPhone puede abrirse la imagen para guardarla en Fotos.
+          iPhone: toca <strong>Abrir imagen</strong> → mantén presionada la imagen →
+          <strong> “Guardar en Fotos”</strong>. (Así sí funciona siempre.)
         </div>
       </section>
 
       {/* PRIVACIDAD */}
       <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
-        Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
-        <strong>número de kit</strong>.
+        Privacidad: no mostramos correo ni teléfono. Solo tu <strong>número de kit</strong>.
       </section>
 
       {/* FOOTER */}
       <footer className="flex justify-between items-center text-xs text-gray-600">
         <div>© {new Date().getFullYear()} WOD</div>
-        <a
-          href="https://instagram.com/thewod_go"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href="https://instagram.com/thewod_go" target="_blank" rel="noreferrer">
           Instagram @thewod_go
         </a>
       </footer>
