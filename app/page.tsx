@@ -44,61 +44,71 @@ export default function Home() {
     }).slice(0, 30);
   }, [q]);
 
-  function cardUrlAbsolute(download = false) {
+  /* =========================
+     Share (WhatsApp + Nativo)
+  ========================= */
+  function buildShareText() {
     if (!selected) return "";
-    const rel = `/api/card?num=${encodeURIComponent(String(selected.num))}${
-      download ? "&download=1" : ""
-    }`;
-    return `${location.origin}${rel}`;
+    return `LGNDS LATAM 2025
+Mi número de kit: ${selected.num}
+
+kitswod.mx · @thewod_go`;
   }
 
-  function openImage() {
+  function shareWhatsApp() {
     if (!selected) return;
-    window.open(cardUrlAbsolute(false), "_blank", "noopener,noreferrer");
+    const text = buildShareText();
+    const url = "https://kitswod.mx";
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(text + "\n\n" + url)}`,
+      "_blank"
+    );
   }
 
-  async function share() {
+  async function shareNative() {
     if (!selected) return;
-    const url = cardUrlAbsolute(false);
-    try {
-      if (navigator.share) {
+
+    const text = buildShareText();
+    const url = "https://kitswod.mx";
+
+    // Share nativo (iPhone/Android)
+    if (navigator.share) {
+      try {
         await navigator.share({
           title: "KITS WOD",
-          text: `Mi número de kit es ${selected.num} 💪🎄`,
+          text,
           url,
         });
-        return;
+      } catch {
+        // si cancelan, no hacemos nada
       }
-    } catch {
-      // si cancela, no pasa nada
+      return;
     }
-    // fallback
-    openImage();
-  }
 
-  function whatsapp() {
-    if (!selected) return;
-    const text = `Mi número de kit para el Christmas Challenge 2025 es ${selected.num} 💪🎄\n\n${location.origin}`;
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(text)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    // Fallback: copia al portapapeles
+    try {
+      await navigator.clipboard.writeText(text + "\n\n" + url);
+      alert("Copiado ✅ Ahora pégalo en Instagram/WhatsApp.");
+    } catch {
+      alert("No se pudo copiar. Usa WhatsApp.");
+    }
   }
 
   return (
     <main className="max-w-3xl mx-auto p-4 text-black font-sans">
-      {/* HEADER */}
+      {/* ================= HEADER ================= */}
       <header className="flex items-center justify-between border-b border-black pb-2 mb-4">
         <div className="flex items-center gap-2">
+          {/* Logo WOD */}
           <img
             src="/wod-logo.png"
             alt="WOD"
             style={{ height: 36, width: "auto", display: "block" }}
           />
+
           <div className="leading-tight">
             <div className="text-sm font-semibold">KITS WOD</div>
-            <div className="text-xs text-gray-600">Christmas Challenge 2025</div>
+            <div className="text-xs text-gray-600">LGNDS LATAM 2025</div>
           </div>
         </div>
 
@@ -107,9 +117,10 @@ export default function Home() {
         </div>
       </header>
 
-      {/* BUSCADOR */}
+      {/* ================= BUSCADOR ================= */}
       <section className="mb-6">
         <h1 className="text-lg font-semibold mb-1">Encuentra tu número de kit</h1>
+
         <p className="text-sm text-gray-600 mb-2">
           Busca por <strong>nombre</strong>, <strong>box</strong>,{" "}
           <strong>correo</strong> o <strong>teléfono</strong> (últimos 4).
@@ -130,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RESULTADOS */}
+      {/* ================= RESULTADOS ================= */}
       {results.length > 0 && (
         <section className="border border-black mb-6">
           {results.map((p: any) => (
@@ -145,27 +156,54 @@ export default function Home() {
         </section>
       )}
 
-      {/* TARJETA */}
-      <section className="mb-6">
+      {/* ================= TARJETA ================= */}
+      <section className="mb-4">
         <h2 className="text-md font-semibold mb-2">Tu tarjeta</h2>
         <p className="text-sm text-gray-600 mb-3">
-          Selecciona un resultado para ver tu tarjeta.
+          Selecciona un resultado para ver tu tarjeta lista para compartir.
         </p>
 
-        <div className="border border-black p-4 bg-white">
+        <div className="border border-black p-4">
           {selected ? (
             <>
               <div className="flex justify-between items-start mb-3">
-                <img src="/wod-logo.png" alt="WOD" style={{ height: 20, width: "auto" }} />
+                {/* Logo WOD - 36px (NO CAMBIAR) */}
+                <img
+                  src="/wod-logo.png"
+                  alt="WOD"
+                  style={{ height: 36, width: "auto" }}
+                />
+
+                {/* Logo competencia + título */}
                 <div className="text-right text-xs">
-                  <div className="font-semibold">CHRISTMAS CHALLENGE</div>
+                  {/* Logo competencia (pon el archivo en /public) */}
+                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <img
+                      src="/lgnds-logo.png"
+                      alt="LGNDS"
+                      style={{
+                        height: 36,
+                        width: "auto",
+                        display: "block",
+                      }}
+                      onError={(e) => {
+                        // si no existe el logo, lo ocultamos para que no se vea feo
+                        (e.currentTarget as HTMLImageElement).style.display =
+                          "none";
+                      }}
+                    />
+                  </div>
+
+                  <div className="font-semibold mt-1">LGNDS LATAM</div>
                   <div>2025</div>
                 </div>
               </div>
 
               <div className="text-5xl font-bold mb-2">{selected.num}</div>
 
-              <div className="text-sm font-semibold mb-1">{selected.nombre_box}</div>
+              <div className="text-sm font-semibold mb-1">
+                {selected.nombre_box}
+              </div>
 
               <div className="text-xs text-gray-600 mb-3">
                 {selected.categoria} · Talla {selected.talla}
@@ -177,62 +215,34 @@ export default function Home() {
             <div className="text-sm text-gray-500">Selecciona un atleta</div>
           )}
         </div>
-
-        {/* BOTONES (sin “download” porque iPhone lo ignora) */}
-        <div className="flex flex-wrap gap-2 mt-3">
-          <button
-            onClick={openImage}
-            disabled={!selected}
-            className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
-              selected ? "" : "opacity-40 cursor-not-allowed"
-            }`}
-          >
-            Abrir imagen
-          </button>
-
-          <button
-            onClick={share}
-            disabled={!selected}
-            className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
-              selected ? "" : "opacity-40 cursor-not-allowed"
-            }`}
-          >
-            Compartir
-          </button>
-
-          <button
-            onClick={whatsapp}
-            disabled={!selected}
-            className={`border border-black px-3 py-2 text-xs hover:bg-black hover:text-white ${
-              selected ? "" : "opacity-40 cursor-not-allowed"
-            }`}
-          >
-            WhatsApp
-          </button>
-
-          {/* opcional: link que intenta “descarga” en desktop */}
-          {selected && (
-            <a
-              href={`/api/card?num=${encodeURIComponent(String(selected.num))}&download=1`}
-              className="border border-black px-3 py-2 text-xs hover:bg-black hover:text-white"
-            >
-              Descargar (solo compu)
-            </a>
-          )}
-        </div>
-
-        <div className="text-xs text-gray-600 mt-2">
-          iPhone: toca <strong>Abrir imagen</strong> → mantén presionada la imagen →
-          <strong> “Guardar en Fotos”</strong>. (Así sí funciona siempre.)
-        </div>
       </section>
 
-      {/* PRIVACIDAD */}
+      {/* ================= BOTONES (SOLO SHARE) ================= */}
+      <section className="flex gap-2 mb-6">
+        <button
+          onClick={shareNative}
+          disabled={!selected}
+          className="border border-black px-3 py-2 text-sm disabled:opacity-40"
+        >
+          Compartir
+        </button>
+
+        <button
+          onClick={shareWhatsApp}
+          disabled={!selected}
+          className="border border-black px-3 py-2 text-sm disabled:opacity-40"
+        >
+          WhatsApp
+        </button>
+      </section>
+
+      {/* ================= PRIVACIDAD ================= */}
       <section className="border-t border-black pt-2 mb-6 text-xs text-gray-600">
-        Privacidad: no mostramos correo ni teléfono. Solo tu <strong>número de kit</strong>.
+        Privacidad: no mostramos correo ni teléfono. Solo tu{" "}
+        <strong>número de kit</strong>.
       </section>
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
       <footer className="flex justify-between items-center text-xs text-gray-600">
         <div>© {new Date().getFullYear()} WOD</div>
         <a href="https://instagram.com/thewod_go" target="_blank" rel="noreferrer">
