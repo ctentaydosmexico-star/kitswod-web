@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
-import Script from "next/script";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { PARTICIPANTES } from "./data/participantes";
 
 type P = {
@@ -18,6 +17,7 @@ type P = {
 export default function Home() {
   const [query, setQuery] = useState("");
   const [selectedKey, setSelectedKey] = useState<string>("");
+  const selectRef = useRef<HTMLSelectElement>(null);
 
   const total = PARTICIPANTES.length;
 
@@ -44,6 +44,25 @@ export default function Home() {
     });
   }, [query]);
 
+  // 🔥 AUTO-SELECCIONAR SI SOLO HAY 1 RESULTADO
+  useEffect(() => {
+    if (filtered.length === 1) {
+      const p = filtered[0];
+      const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
+      setSelectedKey(key);
+    }
+  }, [filtered]);
+
+  // 🔥 AUTO-ABRIR SELECT
+  useEffect(() => {
+    if (query && filtered.length > 1 && selectRef.current) {
+      selectRef.current.size = Math.min(filtered.length + 1, 6);
+      selectRef.current.focus();
+    } else if (selectRef.current) {
+      selectRef.current.size = 1;
+    }
+  }, [query, filtered]);
+
   const selected: P | undefined = useMemo(() => {
     if (!selectedKey) return undefined;
     return (PARTICIPANTES as P[]).find((p) => {
@@ -52,11 +71,21 @@ export default function Home() {
     });
   }, [selectedKey]);
 
+  // 🔥 ENTER = seleccionar primer resultado
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && filtered.length > 0) {
+      const p = filtered[0];
+      const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
+      setSelectedKey(key);
+    }
+  };
+
   const shareText = useMemo(() => {
     if (!selected) return "";
-    const kit = selected.kit ?? "—";
-    const talla = selected.talla ?? "—";
-    return `KITS WOD — Zero to Hero 2026\n${selected.nombre}\nKit: ${kit}\nTalla: ${talla}`;
+    return `KITS WOD — Zero to Hero 2026
+${selected.nombre}
+Kit: ${selected.kit ?? "—"}
+Talla: ${selected.talla ?? "—"}`;
   }, [selected]);
 
   const onShare = async () => {
@@ -85,22 +114,14 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white px-6 py-6">
       {/* HEADER */}
       <header className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-        {/* IZQUIERDA: LOGO WOD */}
         <div className="flex items-center gap-4">
-          <Image
-            src="/wod-logo.png"
-            alt="WOD"
-            width={95}
-            height={45}
-            priority
-          />
+          <Image src="/wod-logo.png" alt="WOD" width={95} height={45} priority />
           <div>
             <p className="text-sm font-semibold">KITS WOD</p>
             <p className="text-xs opacity-60">Zero to Hero 2026</p>
           </div>
         </div>
 
-        {/* DERECHA: TOTAL + LOGO EVENTO */}
         <div className="flex items-center gap-4">
           <p className="text-sm opacity-70">Total atletas: {total}</p>
           <Image
@@ -118,9 +139,6 @@ export default function Home() {
         <h1 className="text-2xl font-semibold mb-2">
           Encuentra tu número de kit
         </h1>
-        <p className="opacity-70 mb-4">
-          Busca por nombre, box, correo o teléfono (últimos 4).
-        </p>
 
         <input
           value={query}
@@ -128,17 +146,13 @@ export default function Home() {
             setQuery(e.target.value);
             setSelectedKey("");
           }}
-          placeholder="Ej. KB / BOX / gmail / 2732"
-          className="w-full mb-2 px-4 py-3 rounded bg-black border border-white/20 outline-none"
+          onKeyDown={onKeyDown}
+          placeholder="Ej. Carlos / gmail / 2732"
+          className="w-full mb-3 px-4 py-3 rounded bg-black border border-white/20 outline-none"
         />
 
-        <p className="text-xs opacity-60 mb-6">
-          Tip: para teléfono usa mínimo los <b>últimos 4</b>.
-        </p>
-
-        <h2 className="text-lg font-semibold mb-3">Tu tarjeta</h2>
-
         <select
+          ref={selectRef}
           className="w-full px-4 py-3 rounded bg-black border border-white/20"
           value={selectedKey}
           onChange={(e) => setSelectedKey(e.target.value)}
@@ -160,42 +174,24 @@ export default function Home() {
             <p className="opacity-50">Selecciona un atleta</p>
           ) : (
             <>
-              {/* KIT GRANDE (ESQUINA SUPERIOR IZQUIERDA) */}
+              {/* KIT GRANDE */}
               <div className="absolute top-4 left-4">
-                <div className="leading-none">
-                  <p className="text-[56px] font-extrabold tracking-tight">
-                    {selected.kit ?? "—"}
-                  </p>
-                  <p className="text-xs opacity-60 -mt-1">KIT</p>
-                </div>
+                <p className="text-[56px] font-extrabold leading-none">
+                  {selected.kit ?? "—"}
+                </p>
+                <p className="text-xs opacity-60 -mt-1">KIT</p>
               </div>
 
-              {/* CONTENIDO */}
               <div className="pl-24">
-                <p className="text-xs opacity-60 mb-2">Tu tarjeta</p>
-
                 <p className="text-xl font-semibold">{selected.nombre}</p>
-
-                <div className="mt-2 flex flex-wrap gap-3">
-                  <p className="text-sm opacity-80">
-                    Talla: <b>{selected.talla ?? "—"}</b>
-                  </p>
-                  {selected.box ? (
-                    <p className="text-sm opacity-60">
-                      Box: <b>{selected.box}</b>
-                    </p>
-                  ) : null}
-                </div>
-
-                <p className="text-xs opacity-50 mt-3">
-                  Privacidad: no mostramos correo ni teléfono. Solo tu número de kit.
+                <p className="mt-2">
+                  Talla: <b>{selected.talla ?? "—"}</b>
                 </p>
               </div>
             </>
           )}
         </div>
 
-        {/* BOTONES */}
         <div className="mt-4 flex gap-3">
           <button
             onClick={onShare}
@@ -213,36 +209,6 @@ export default function Home() {
           </button>
         </div>
       </section>
-
-      {/* ÚLTIMA PUBLICACIÓN */}
-      <section className="max-w-5xl mx-auto mt-12">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="opacity-70">Última publicación</h2>
-          <p className="opacity-60">@thewod_go</p>
-        </div>
-
-        <Script
-          src="https://cdn.lightwidget.com/widgets/lightwidget.js"
-          strategy="lazyOnload"
-        />
-
-        <iframe
-          src="https://lightwidget.com/widgets/XXXXXXXX.html"
-          scrolling="no"
-          allowTransparency={true}
-          className="w-full border border-white/20 rounded"
-          style={{ height: 420 }}
-        ></iframe>
-
-        <p className="text-xs opacity-50 mt-2">
-          Si acabas de publicar, puede tardar un poco en reflejarse.
-        </p>
-      </section>
-
-      <footer className="mt-16 text-xs opacity-50 flex justify-between">
-        <p>© 2026 WOD</p>
-        <p>@thewod_go</p>
-      </footer>
     </main>
   );
 }
