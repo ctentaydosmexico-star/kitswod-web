@@ -12,6 +12,7 @@ type P = {
   telefono?: string;
   box?: string;
   kit?: string | number;
+  talla?: string;
 };
 
 export default function Home() {
@@ -53,9 +54,9 @@ export default function Home() {
 
   const shareText = useMemo(() => {
     if (!selected) return "";
-    return `KITS WOD — Zero to Hero 2026\n${selected.nombre}\nKit: ${
-      selected.kit ?? "—"
-    }`;
+    const kit = selected.kit ?? "—";
+    const talla = selected.talla ?? "—";
+    return `KITS WOD — Zero to Hero 2026\n${selected.nombre}\nKit: ${kit}\nTalla: ${talla}`;
   }, [selected]);
 
   const onShare = async () => {
@@ -153,20 +154,48 @@ export default function Home() {
           })}
         </select>
 
-        <div className="mt-6 border border-white/20 rounded p-5 min-h-[110px]">
+        {/* TARJETA */}
+        <div className="mt-6 border border-white/20 rounded p-5 min-h-[150px] relative">
           {!selected ? (
             <p className="opacity-50">Selecciona un atleta</p>
           ) : (
             <>
-              <p className="text-xs opacity-60 mb-1">Tu tarjeta</p>
-              <p className="text-lg font-semibold">{selected.nombre}</p>
-              <p className="text-sm opacity-70">
-                Kit: <b>{selected.kit ?? "—"}</b>
-              </p>
+              {/* KIT GRANDE (ESQUINA SUPERIOR IZQUIERDA) */}
+              <div className="absolute top-4 left-4">
+                <div className="leading-none">
+                  <p className="text-[56px] font-extrabold tracking-tight">
+                    {selected.kit ?? "—"}
+                  </p>
+                  <p className="text-xs opacity-60 -mt-1">KIT</p>
+                </div>
+              </div>
+
+              {/* CONTENIDO */}
+              <div className="pl-24">
+                <p className="text-xs opacity-60 mb-2">Tu tarjeta</p>
+
+                <p className="text-xl font-semibold">{selected.nombre}</p>
+
+                <div className="mt-2 flex flex-wrap gap-3">
+                  <p className="text-sm opacity-80">
+                    Talla: <b>{selected.talla ?? "—"}</b>
+                  </p>
+                  {selected.box ? (
+                    <p className="text-sm opacity-60">
+                      Box: <b>{selected.box}</b>
+                    </p>
+                  ) : null}
+                </div>
+
+                <p className="text-xs opacity-50 mt-3">
+                  Privacidad: no mostramos correo ni teléfono. Solo tu número de kit.
+                </p>
+              </div>
             </>
           )}
         </div>
 
+        {/* BOTONES */}
         <div className="mt-4 flex gap-3">
           <button
             onClick={onShare}
