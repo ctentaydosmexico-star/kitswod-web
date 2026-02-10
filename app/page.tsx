@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { participantes } from "./data/participantes";
 
 type Participante = {
@@ -13,8 +12,6 @@ type Participante = {
   categoria?: string;
   talla?: string;
   genero?: string;
-  email?: string;
-  telefono?: string;
   athPos?: number;
 };
 
@@ -40,7 +37,7 @@ export default function Page() {
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
 
-    participantes.forEach((p: Participante) => {
+    participantes.forEach((p) => {
       const kit = String(p.num ?? "").trim();
       if (!kit) return;
 
@@ -68,9 +65,13 @@ export default function Page() {
   const results = useMemo(() => {
     const q = normalizeText(query);
     if (!q || q.length < 3) return [];
-    return teams.filter((team) =>
-      normalizeText(team.equipo).includes(q) ||
-      team.miembros.some((m) => normalizeText(m.nombre || "").includes(q))
+
+    return teams.filter(
+      (team) =>
+        normalizeText(team.equipo).includes(q) ||
+        team.miembros.some((m) =>
+          normalizeText(m.nombre || "").includes(q)
+        )
     );
   }, [query, teams]);
 
@@ -79,27 +80,19 @@ export default function Page() {
       {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
-          <div style={styles.logoEvento}>
-            <Image
-              src="/logo-evento.png?v=1"
-              alt="Evento"
-              fill
-              priority
-              style={{ objectFit: "contain" }}
-            />
-          </div>
+          <img
+            src="/logo-evento.png"
+            alt="Evento"
+            style={styles.logoEvento}
+          />
           <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
 
-        <div style={styles.logoWodHeader}>
-          <Image
-            src="/wod-logo.png"
-            alt="WOD"
-            fill
-            priority
-            style={{ objectFit: "contain" }}
-          />
-        </div>
+        <img
+          src="/wod-logo.png"
+          alt="WOD"
+          style={styles.logoWodHeader}
+        />
       </header>
 
       {/* SEARCH */}
@@ -124,22 +117,16 @@ export default function Page() {
               <div style={styles.kit}>{team.kit}</div>
 
               <div style={styles.cardTopRight}>
-                <div style={styles.cardLogoEvento}>
-                  <Image
-                    src="/logo-evento.png?v=1"
-                    alt="Evento"
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <div style={styles.cardLogoWod}>
-                  <Image
-                    src="/wod-logo.png"
-                    alt="WOD"
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
+                <img
+                  src="/logo-evento.png"
+                  alt="Evento"
+                  style={styles.cardLogoEvento}
+                />
+                <img
+                  src="/wod-logo.png"
+                  alt="WOD"
+                  style={styles.cardLogoWod}
+                />
               </div>
             </div>
 
@@ -162,7 +149,9 @@ export default function Page() {
                         Género: {p.genero || "—"}
                       </div>
                     </div>
-                    <span style={styles.badge}>Talla: {p.talla}</span>
+                    <span style={styles.badge}>
+                      Talla: {p.talla || "—"}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -204,16 +193,17 @@ const styles: Record<string, React.CSSProperties> = {
   title: {
     fontSize: 16,
     fontWeight: 800,
+    margin: 0,
   },
   logoEvento: {
-    position: "relative",
     width: 64,
     height: 64,
+    objectFit: "contain",
   },
   logoWodHeader: {
-    position: "relative",
     width: 96,
     height: 36,
+    objectFit: "contain",
   },
   searchWrap: {
     marginBottom: 16,
@@ -259,14 +249,14 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 900,
   },
   cardLogoEvento: {
-    position: "relative",
     width: 54,
     height: 54,
+    objectFit: "contain",
   },
   cardLogoWod: {
-    position: "relative",
     width: 86,
     height: 32,
+    objectFit: "contain",
   },
   teamName: {
     fontSize: 18,
