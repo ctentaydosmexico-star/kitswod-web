@@ -1,21 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { participantes } from "./data/participantes";
-
-type Participante = {
-  num: string | number;
-  nombre?: string;
-  EQUIPO?: string;
-  equipo?: string;
-  box?: string;
-  categoria?: string;
-  talla?: string;
-  genero?: string;
-  email?: string;
-  telefono?: string;
-  athPos?: number;
-};
+import { participantes as participantesRaw } from "./data/participantes";
 
 type Team = {
   key: string;
@@ -23,11 +9,11 @@ type Team = {
   equipo: string;
   box?: string;
   categoria?: string;
-  miembros: Participante[];
+  miembros: any[]; // data real
 };
 
 const normalizeText = (v: string) =>
-  v
+  (v || "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -36,20 +22,26 @@ const normalizeText = (v: string) =>
 export default function Page() {
   const [query, setQuery] = useState("");
 
+  // ✅ Blindaje total: el dataset manda, no el tipo
+  const participantes = participantesRaw as any[];
+
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
 
     participantes.forEach((p) => {
-      const kit = String(p.num ?? "").trim();
+      const kit = String(p?.num ?? "").trim();
       if (!kit) return;
+
+      // 👇 aquí está el fix: leer "EQUIPO" sin que TS se queje
+      const equipoNombre = String(p?.["EQUIPO"] ?? p?.equipo ?? "").trim();
 
       if (!map.has(kit)) {
         map.set(kit, {
           key: kit,
           kit,
-          equipo: (p.EQUIPO || p.equipo || "").trim(),
-          box: p.box,
-          categoria: p.categoria,
+          equipo: equipoNombre,
+          box: p?.box,
+          categoria: p?.categoria,
           miembros: [],
         });
       }
@@ -58,23 +50,24 @@ export default function Page() {
     });
 
     map.forEach((team) => {
-      team.miembros.sort((a, b) => (a.athPos || 0) - (b.athPos || 0));
+      team.miembros.sort((a, b) => (Number(a?.athPos) || 0) - (Number(b?.athPos) || 0));
     });
 
     return Array.from(map.values());
-  }, []);
+  }, [participantes]);
 
   const results = useMemo(() => {
     const q = normalizeText(query);
     if (!q || q.length < 3) return [];
 
-    return teams.filter(
-      (team) =>
-        normalizeText(team.equipo).includes(q) ||
-        team.miembros.some((m) =>
-          normalizeText(m.nombre || "").includes(q)
-        )
-    );
+    return teams.filter((team) => {
+      const teamName = normalizeText(team.equipo);
+
+      return (
+        teamName.includes(q) ||
+        team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
+      );
+    });
   }, [query, teams]);
 
   return (
@@ -82,19 +75,11 @@ export default function Page() {
       {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
-          <img
-            src="/logo-evento.png"
-            alt="Evento"
-            style={styles.logoEvento}
-          />
+          <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
           <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
 
-        <img
-          src="/wod-logo.png"
-          alt="WOD"
-          style={styles.logoWodHeader}
-        />
+        <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
       </header>
 
       {/* SEARCH */}
@@ -105,9 +90,7 @@ export default function Page() {
           placeholder="Nombre o equipo (mín. 3 letras)"
           style={styles.input}
         />
-        <div style={styles.hint}>
-          Puedes buscar por integrante o por nombre del equipo.
-        </div>
+        <div style={styles.hint}>Puedes buscar por integrante o por nombre del equipo.</div>
       </section>
 
       {/* RESULTS */}
@@ -134,8 +117,8 @@ export default function Page() {
             <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
               <div style={styles.meta}>
-                {team.categoria}
-                {team.box && ` · ${team.box}`}
+                {team.categoria || ""}
+                {team.box ? ` · ${team.box}` : ""}
               </div>
 
               <div style={styles.members}>
@@ -143,19 +126,13 @@ export default function Page() {
                   <div key={i} style={styles.memberRow}>
                     <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {p.athPos
-                          ? `Integrante ${p.athPos}: `
-                          : "Integrante: "}
-                        {p.nombre || "—"}
+                        {p?.athPos ? `Integrante ${p.athPos}: ` : "Integrante: "}
+                        {p?.nombre || "—"}
                       </div>
-                      <div style={styles.memberSub}>
-                        Género: {p.genero || "—"}
-                      </div>
+                      <div style={styles.memberSub}>Género: {p?.genero || "—"}</div>
                     </div>
 
-                    <span style={styles.badge}>
-                      Talla: {p.talla || "—"}
-                    </span>
+                    <span style={styles.badge}>Talla: {p?.talla || "—"}</span>
                   </div>
                 ))}
               </div>
@@ -262,10 +239,10 @@ const styles: Record<string, React.CSSProperties> = {
     flex: "0 0 auto",
   },
 
-  /* 🔥 AQUÍ ESTÁ EL CAMBIO QUE PEDISTE 🔥 */
+  // ✅ MÁS GRANDE (lo que pediste)
   cardLogoEvento: {
-    width: 80,   // MÁS GRANDE
-    height: 80,  // MÁS GRANDE
+    width: 80,
+    height: 80,
     objectFit: "contain",
     flex: "0 0 auto",
   },
