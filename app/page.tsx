@@ -39,7 +39,7 @@ export default function Page() {
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
 
-    participantes.forEach((p: Participante) => {
+    participantes.forEach((p) => {
       const kit = String(p.num ?? "").trim();
       if (!kit) return;
 
@@ -71,7 +71,9 @@ export default function Page() {
     return teams.filter(
       (team) =>
         normalizeText(team.equipo).includes(q) ||
-        team.miembros.some((m) => normalizeText(m.nombre || "").includes(q))
+        team.miembros.some((m) =>
+          normalizeText(m.nombre || "").includes(q)
+        )
     );
   }, [query, teams]);
 
@@ -80,11 +82,19 @@ export default function Page() {
       {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
-          <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
+          <img
+            src="/logo-evento.png"
+            alt="Evento"
+            style={styles.logoEvento}
+          />
           <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
 
-        <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
+        <img
+          src="/wod-logo.png"
+          alt="WOD"
+          style={styles.logoWodHeader}
+        />
       </header>
 
       {/* SEARCH */}
@@ -133,7 +143,9 @@ export default function Page() {
                   <div key={i} style={styles.memberRow}>
                     <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {p.athPos ? `Integrante ${p.athPos}: ` : "Integrante: "}
+                        {p.athPos
+                          ? `Integrante ${p.athPos}: `
+                          : "Integrante: "}
                         {p.nombre || "—"}
                       </div>
                       <div style={styles.memberSub}>
@@ -141,7 +153,9 @@ export default function Page() {
                       </div>
                     </div>
 
-                    <span style={styles.badge}>Talla: {p.talla || "—"}</span>
+                    <span style={styles.badge}>
+                      Talla: {p.talla || "—"}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -247,12 +261,15 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1,
     flex: "0 0 auto",
   },
+
+  /* 🔥 AQUÍ ESTÁ EL CAMBIO QUE PEDISTE 🔥 */
   cardLogoEvento: {
-    width: 54,
-    height: 54,
+    width: 80,   // MÁS GRANDE
+    height: 80,  // MÁS GRANDE
     objectFit: "contain",
     flex: "0 0 auto",
   },
+
   cardLogoWod: {
     width: 86,
     height: 32,
