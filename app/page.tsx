@@ -1,214 +1,314 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Image from "next/image";
-import { useMemo, useState, useEffect, useRef } from "react";
-import { PARTICIPANTES } from "./data/participantes";
+import { participantes } from "./data/participantes";
 
-type P = {
-  id?: number;
-  nombre: string;
-  correo?: string;
-  telefono?: string;
+type Participante = {
+  num: string | number;
+  nombre?: string;
+  EQUIPO?: string;
+  equipo?: string;
   box?: string;
-  kit?: string | number;
+  categoria?: string;
   talla?: string;
+  genero?: string;
+  email?: string;     // SOLO PARA BÚSQUEDA
+  telefono?: string;  // SOLO PARA BÚSQUEDA
+  athPos?: number;
 };
 
-export default function Home() {
+type Team = {
+  key: string;
+  kit: string;
+  equipo: string;
+  box?: string;
+  categoria?: string;
+  miembros: Participante[];
+};
+
+const normalizeText = (v: string) =>
+  v
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+
+const normalizePhone = (v: string) => v.replace(/\D/g, "");
+const normalizeEmail = (v: string) => v.toLowerCase().trim();
+
+export default function Page() {
   const [query, setQuery] = useState("");
-  const [selectedKey, setSelectedKey] = useState<string>("");
-  const selectRef = useRef<HTMLSelectElement>(null);
 
-  const total = PARTICIPANTES.length;
+  /* =========================
+     AGRUPAR POR KIT / EQUIPO
+     ========================= */
+  const teams = useMemo(() => {
+    const map = new Map<string, Team>();
 
-  const filtered: P[] = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    participantes.forEach((p: Participante) => {
+      const kit = String(p.num ?? "").trim();
+      if (!kit) return;
+
+      if (!map.has(kit)) {
+        map.set(kit, {
+          key: kit,
+          kit,
+          equipo: (p.EQUIPO || p.equipo || "").trim(),
+          box: p.box,
+          categoria: p.categoria,
+          miembros: [],
+        });
+      }
+
+      map.get(kit)!.miembros.push(p);
+    });
+
+    map.forEach((team) => {
+      team.miembros.sort((a, b) => (a.athPos || 0) - (b.athPos || 0));
+    });
+
+    return Array.from(map.values());
+  }, []);
+
+  /* =========================
+     BUSCADOR
+     ========================= */
+  const results = useMemo(() => {
+    const q = query.trim();
     if (!q) return [];
 
-    const digits = q.replace(/\D/g, "");
-    const last4 = digits.slice(-4);
+    const qText = normalizeText(q);
+    const qPhone = normalizePhone(q);
+    const qEmail = normalizeEmail(q);
+    const textReady = qText.length >= 3;
 
-    return (PARTICIPANTES as P[]).filter((p) => {
-      const nombre = (p.nombre || "").toLowerCase();
-      const correo = (p.correo || "").toLowerCase();
-      const box = (p.box || "").toLowerCase();
-      const tel = (p.telefono || "").replace(/\D/g, "");
-      const telLast4 = tel.slice(-4);
+    return teams.filter((team) => {
+      const teamName = normalizeText(team.equipo || "");
 
-      if (nombre.includes(q)) return true;
-      if (correo.includes(q)) return true;
-      if (box.includes(q)) return true;
-      if (last4.length === 4 && telLast4 === last4) return true;
+      return team.miembros.some((p) => {
+        const name = normalizeText(p.nombre || "");
+        const phone = normalizePhone(p.telefono || "");
+        const email = normalizeEmail(p.email || "");
 
-      return false;
+        return (
+          email === qEmail ||
+          phone === qPhone ||
+          (textReady && name.includes(qText)) ||
+          (textReady && teamName.includes(qText))
+        );
+      });
     });
-  }, [query]);
-
-  // 🔥 AUTO-SELECCIONAR SI SOLO HAY 1 RESULTADO
-  useEffect(() => {
-    if (filtered.length === 1) {
-      const p = filtered[0];
-      const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
-      setSelectedKey(key);
-    }
-  }, [filtered]);
-
-  // 🔥 AUTO-ABRIR SELECT
-  useEffect(() => {
-    if (query && filtered.length > 1 && selectRef.current) {
-      selectRef.current.size = Math.min(filtered.length + 1, 6);
-      selectRef.current.focus();
-    } else if (selectRef.current) {
-      selectRef.current.size = 1;
-    }
-  }, [query, filtered]);
-
-  const selected: P | undefined = useMemo(() => {
-    if (!selectedKey) return undefined;
-    return (PARTICIPANTES as P[]).find((p) => {
-      const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
-      return key === selectedKey;
-    });
-  }, [selectedKey]);
-
-  // 🔥 ENTER = seleccionar primer resultado
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && filtered.length > 0) {
-      const p = filtered[0];
-      const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
-      setSelectedKey(key);
-    }
-  };
-
-  const shareText = useMemo(() => {
-    if (!selected) return "";
-    return `KITS WOD — Zero to Hero 2026
-${selected.nombre}
-Kit: ${selected.kit ?? "—"}
-Talla: ${selected.talla ?? "—"}`;
-  }, [selected]);
-
-  const onShare = async () => {
-    if (!selected) return;
-    try {
-      // @ts-ignore
-      if (navigator.share) {
-        // @ts-ignore
-        await navigator.share({ text: shareText });
-      } else {
-        await navigator.clipboard.writeText(shareText);
-        alert("Copiado ✅");
-      }
-    } catch {}
-  };
-
-  const onWhatsApp = () => {
-    if (!selected) return;
-    window.open(
-      `https://wa.me/?text=${encodeURIComponent(shareText)}`,
-      "_blank"
-    );
-  };
+  }, [query, teams]);
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-6">
+    <main style={styles.page}>
       {/* HEADER */}
-      <header className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-        <div className="flex items-center gap-4">
-          <Image src="/wod-logo.png" alt="WOD" width={95} height={45} priority />
-          <div>
-            <p className="text-sm font-semibold">KITS WOD</p>
-            <p className="text-xs opacity-60">Zero to Hero 2026</p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <p className="text-sm opacity-70">Total atletas: {total}</p>
+      <header style={styles.header}>
+        <div style={styles.headerLeft}>
           <Image
             src="/logo-evento.png"
-            alt="Zero to Hero"
-            width={70}
-            height={70}
+            alt="Evento"
+            width={72}
+            height={72}
             priority
           />
+          <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
+
+        <Image
+          src="/wod-logo.png"
+          alt="WOD"
+          width={80}
+          height={36}
+          priority
+        />
       </header>
 
-      {/* BUSCADOR */}
-      <section className="max-w-3xl mx-auto">
-        <h1 className="text-2xl font-semibold mb-2">
-          Encuentra tu número de kit
-        </h1>
-
+      {/* SEARCH */}
+      <section style={styles.searchWrap}>
         <input
           value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setSelectedKey("");
-          }}
-          onKeyDown={onKeyDown}
-          placeholder="Ej. Carlos / gmail / 2732"
-          className="w-full mb-3 px-4 py-3 rounded bg-black border border-white/20 outline-none"
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Nombre, EQUIPO, email o teléfono"
+          style={styles.input}
         />
+        <div style={styles.hint}>
+          Puedes buscar por integrante o por nombre del equipo.
+        </div>
+      </section>
 
-        <select
-          ref={selectRef}
-          className="w-full px-4 py-3 rounded bg-black border border-white/20"
-          value={selectedKey}
-          onChange={(e) => setSelectedKey(e.target.value)}
-        >
-          <option value="">Selecciona un atleta</option>
-          {filtered.map((p) => {
-            const key = p.correo || `${p.nombre}-${p.id ?? ""}`;
-            return (
-              <option key={key} value={key}>
-                {p.nombre}
-              </option>
-            );
-          })}
-        </select>
+      {/* RESULTS */}
+      <section style={styles.results}>
+        {results.map((team) => (
+          <article key={team.key} style={styles.card}>
+            {/* Logos en tarjeta */}
+            <div style={styles.cardLogos}>
+              <Image
+                src="/logo-evento.png"
+                alt="Evento"
+                width={72}
+                height={72}
+              />
+              <Image
+                src="/wod-logo.png"
+                alt="WOD"
+                width={64}
+                height={28}
+              />
+            </div>
 
-        {/* TARJETA */}
-        <div className="mt-6 border border-white/20 rounded p-5 min-h-[150px] relative">
-          {!selected ? (
-            <p className="opacity-50">Selecciona un atleta</p>
-          ) : (
-            <>
-              {/* KIT GRANDE */}
-              <div className="absolute top-4 left-4">
-                <p className="text-[56px] font-extrabold leading-none">
-                  {selected.kit ?? "—"}
-                </p>
-                <p className="text-xs opacity-60 -mt-1">KIT</p>
+            {/* KIT */}
+            <div style={styles.kit}>{team.kit}</div>
+
+            <div style={styles.cardBody}>
+              <h2 style={styles.teamName}>{team.equipo}</h2>
+              <div style={styles.meta}>
+                {team.categoria && <span>{team.categoria}</span>}
+                {team.box && <span> · {team.box}</span>}
               </div>
 
-              <div className="pl-24">
-                <p className="text-xl font-semibold">{selected.nombre}</p>
-                <p className="mt-2">
-                  Talla: <b>{selected.talla ?? "—"}</b>
-                </p>
-              </div>
-            </>
-          )}
-        </div>
+              {/* INTEGRANTES */}
+              <div style={styles.members}>
+                {team.miembros.map((p, i) => (
+                  <div key={i} style={styles.memberRow}>
+                    <div>
+                      <div style={styles.memberName}>
+                        {p.athPos ? `Integrante ${p.athPos}: ` : ""}
+                        {p.nombre}
+                      </div>
+                      <div style={styles.memberSub}>
+                        Género: {p.genero || "—"}
+                      </div>
+                    </div>
 
-        <div className="mt-4 flex gap-3">
-          <button
-            onClick={onShare}
-            disabled={!selected}
-            className="px-5 py-3 rounded border border-white/20 disabled:opacity-40"
-          >
-            Compartir
-          </button>
-          <button
-            onClick={onWhatsApp}
-            disabled={!selected}
-            className="px-5 py-3 rounded border border-white/20 disabled:opacity-40"
-          >
-            WhatsApp
-          </button>
-        </div>
+                    <span style={styles.badge}>
+                      Talla: {p.talla || "—"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))}
       </section>
     </main>
   );
 }
+
+/* =========================
+   STYLES
+   ========================= */
+const styles: Record<string, React.CSSProperties> = {
+  page: {
+    background: "#000",
+    color: "#fff",
+    minHeight: "100vh",
+    padding: 24,
+    maxWidth: 1100,
+    margin: "0 auto",
+    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+  },
+  header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: 18,
+    padding: 14,
+    marginBottom: 18,
+  },
+  headerLeft: {
+    display: "flex",
+    alignItems: "center",
+    gap: 12,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 800,
+    margin: 0,
+  },
+  searchWrap: {
+    marginBottom: 18,
+  },
+  input: {
+    width: "100%",
+    padding: 14,
+    borderRadius: 14,
+    background: "rgba(255,255,255,0.08)",
+    border: "1px solid rgba(255,255,255,0.2)",
+    color: "#fff",
+    fontSize: 16,
+    outline: "none",
+  },
+  hint: {
+    marginTop: 6,
+    fontSize: 12,
+    opacity: 0.7,
+  },
+  results: {
+    display: "grid",
+    gap: 16,
+  },
+  card: {
+    position: "relative",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: 18,
+    padding: 18,
+    background: "rgba(255,255,255,0.04)",
+  },
+  cardLogos: {
+    position: "absolute",
+    top: 14,
+    right: 14,
+    display: "flex",
+    gap: 10,
+  },
+  kit: {
+    position: "absolute",
+    top: 14,
+    left: 14,
+    fontSize: 56,
+    fontWeight: 900,
+  },
+  cardBody: {
+    paddingLeft: 140,
+  },
+  teamName: {
+    fontSize: 18,
+    fontWeight: 800,
+    margin: 0,
+  },
+  meta: {
+    fontSize: 13,
+    opacity: 0.8,
+    marginBottom: 12,
+  },
+  members: {
+    display: "grid",
+    gap: 10,
+  },
+  memberRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    border: "1px solid rgba(255,255,255,0.15)",
+    borderRadius: 14,
+    padding: "10px 12px",
+    background: "rgba(0,0,0,0.4)",
+  },
+  memberName: {
+    fontWeight: 800,
+    fontSize: 15,
+  },
+  memberSub: {
+    fontSize: 12,
+    opacity: 0.75,
+  },
+  badge: {
+    border: "1px solid rgba(255,255,255,0.25)",
+    borderRadius: 999,
+    padding: "6px 12px",
+    fontWeight: 800,
+    fontSize: 13,
+  },
+};
