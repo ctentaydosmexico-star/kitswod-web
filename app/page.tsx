@@ -13,8 +13,8 @@ type Participante = {
   categoria?: string;
   talla?: string;
   genero?: string;
-  email?: string;     // SOLO PARA BÚSQUEDA
-  telefono?: string;  // SOLO PARA BÚSQUEDA
+  email?: string;
+  telefono?: string;
   athPos?: number;
 };
 
@@ -34,15 +34,9 @@ const normalizeText = (v: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
-const normalizePhone = (v: string) => v.replace(/\D/g, "");
-const normalizeEmail = (v: string) => v.toLowerCase().trim();
-
 export default function Page() {
   const [query, setQuery] = useState("");
 
-  /* =========================
-     AGRUPAR POR KIT / EQUIPO
-     ========================= */
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
 
@@ -71,34 +65,13 @@ export default function Page() {
     return Array.from(map.values());
   }, []);
 
-  /* =========================
-     BUSCADOR
-     ========================= */
   const results = useMemo(() => {
-    const q = query.trim();
-    if (!q) return [];
-
-    const qText = normalizeText(q);
-    const qPhone = normalizePhone(q);
-    const qEmail = normalizeEmail(q);
-    const textReady = qText.length >= 3;
-
-    return teams.filter((team) => {
-      const teamName = normalizeText(team.equipo || "");
-
-      return team.miembros.some((p) => {
-        const name = normalizeText(p.nombre || "");
-        const phone = normalizePhone(p.telefono || "");
-        const email = normalizeEmail(p.email || "");
-
-        return (
-          email === qEmail ||
-          phone === qPhone ||
-          (textReady && name.includes(qText)) ||
-          (textReady && teamName.includes(qText))
-        );
-      });
-    });
+    const q = normalizeText(query);
+    if (!q || q.length < 3) return [];
+    return teams.filter((team) =>
+      normalizeText(team.equipo).includes(q) ||
+      team.miembros.some((m) => normalizeText(m.nombre || "").includes(q))
+    );
   }, [query, teams]);
 
   return (
@@ -106,23 +79,27 @@ export default function Page() {
       {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
-          <Image
-            src="/logo-evento.png"
-            alt="Evento"
-            width={72}
-            height={72}
-            priority
-          />
+          <div style={styles.logoEvento}>
+            <Image
+              src="/logo-evento.png?v=1"
+              alt="Evento"
+              fill
+              priority
+              style={{ objectFit: "contain" }}
+            />
+          </div>
           <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
 
-        <Image
-          src="/wod-logo.png"
-          alt="WOD"
-          width={80}
-          height={36}
-          priority
-        />
+        <div style={styles.logoWodHeader}>
+          <Image
+            src="/wod-logo.png"
+            alt="WOD"
+            fill
+            priority
+            style={{ objectFit: "contain" }}
+          />
+        </div>
       </header>
 
       {/* SEARCH */}
@@ -130,7 +107,7 @@ export default function Page() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nombre, EQUIPO, email o teléfono"
+          placeholder="Nombre o equipo (mín. 3 letras)"
           style={styles.input}
         />
         <div style={styles.hint}>
@@ -142,49 +119,50 @@ export default function Page() {
       <section style={styles.results}>
         {results.map((team) => (
           <article key={team.key} style={styles.card}>
-            {/* Logos en tarjeta */}
-            <div style={styles.cardLogos}>
-              <Image
-                src="/logo-evento.png"
-                alt="Evento"
-                width={72}
-                height={72}
-              />
-              <Image
-                src="/wod-logo.png"
-                alt="WOD"
-                width={64}
-                height={28}
-              />
+            {/* TOP */}
+            <div style={styles.cardTop}>
+              <div style={styles.kit}>{team.kit}</div>
+
+              <div style={styles.cardTopRight}>
+                <div style={styles.cardLogoEvento}>
+                  <Image
+                    src="/logo-evento.png?v=1"
+                    alt="Evento"
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+                <div style={styles.cardLogoWod}>
+                  <Image
+                    src="/wod-logo.png"
+                    alt="WOD"
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* KIT */}
-            <div style={styles.kit}>{team.kit}</div>
-
-            <div style={styles.cardBody}>
+            {/* BODY */}
+            <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
               <div style={styles.meta}>
-                {team.categoria && <span>{team.categoria}</span>}
-                {team.box && <span> · {team.box}</span>}
+                {team.categoria}
+                {team.box && ` · ${team.box}`}
               </div>
 
-              {/* INTEGRANTES */}
               <div style={styles.members}>
                 {team.miembros.map((p, i) => (
                   <div key={i} style={styles.memberRow}>
                     <div>
                       <div style={styles.memberName}>
-                        {p.athPos ? `Integrante ${p.athPos}: ` : ""}
-                        {p.nombre}
+                        {`Integrante ${p.athPos}: ${p.nombre}`}
                       </div>
                       <div style={styles.memberSub}>
                         Género: {p.genero || "—"}
                       </div>
                     </div>
-
-                    <span style={styles.badge}>
-                      Talla: {p.talla || "—"}
-                    </span>
+                    <span style={styles.badge}>Talla: {p.talla}</span>
                   </div>
                 ))}
               </div>
@@ -204,19 +182,19 @@ const styles: Record<string, React.CSSProperties> = {
     background: "#000",
     color: "#fff",
     minHeight: "100vh",
-    padding: 24,
+    padding: 16,
     maxWidth: 1100,
     margin: "0 auto",
-    fontFamily: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+    fontFamily: "system-ui",
   },
   header: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     border: "1px solid rgba(255,255,255,0.15)",
-    borderRadius: 18,
-    padding: 14,
-    marginBottom: 18,
+    borderRadius: 16,
+    padding: 12,
+    marginBottom: 16,
   },
   headerLeft: {
     display: "flex",
@@ -224,12 +202,21 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 12,
   },
   title: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 800,
-    margin: 0,
+  },
+  logoEvento: {
+    position: "relative",
+    width: 64,
+    height: 64,
+  },
+  logoWodHeader: {
+    position: "relative",
+    width: 96,
+    height: 36,
   },
   searchWrap: {
-    marginBottom: 18,
+    marginBottom: 16,
   },
   input: {
     width: "100%",
@@ -239,7 +226,6 @@ const styles: Record<string, React.CSSProperties> = {
     border: "1px solid rgba(255,255,255,0.2)",
     color: "#fff",
     fontSize: 16,
-    outline: "none",
   },
   hint: {
     marginTop: 6,
@@ -251,38 +237,46 @@ const styles: Record<string, React.CSSProperties> = {
     gap: 16,
   },
   card: {
-    position: "relative",
     border: "1px solid rgba(255,255,255,0.15)",
     borderRadius: 18,
-    padding: 18,
+    padding: 16,
     background: "rgba(255,255,255,0.04)",
   },
-  cardLogos: {
-    position: "absolute",
-    top: 14,
-    right: 14,
+  cardTop: {
     display: "flex",
-    gap: 10,
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 10,
+  },
+  cardTopRight: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: 6,
   },
   kit: {
-    position: "absolute",
-    top: 14,
-    left: 14,
-    fontSize: 56,
+    fontSize: 44,
     fontWeight: 900,
   },
-  cardBody: {
-    paddingLeft: 140,
+  cardLogoEvento: {
+    position: "relative",
+    width: 54,
+    height: 54,
+  },
+  cardLogoWod: {
+    position: "relative",
+    width: 86,
+    height: 32,
   },
   teamName: {
     fontSize: 18,
     fontWeight: 800,
-    margin: 0,
+    marginBottom: 4,
   },
   meta: {
     fontSize: 13,
     opacity: 0.8,
-    marginBottom: 12,
+    marginBottom: 10,
   },
   members: {
     display: "grid",
@@ -291,9 +285,10 @@ const styles: Record<string, React.CSSProperties> = {
   memberRow: {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
     border: "1px solid rgba(255,255,255,0.15)",
     borderRadius: 14,
-    padding: "10px 12px",
+    padding: 10,
     background: "rgba(0,0,0,0.4)",
   },
   memberName: {
