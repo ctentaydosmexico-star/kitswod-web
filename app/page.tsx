@@ -6,20 +6,14 @@ import { participantes } from "./data/participantes";
 type Participante = {
   num: string | number;
   nombre?: string;
-
-  // 👇 IMPORTANTES: en tu dataset viene como "EQUIPO" (mayúsculas) a veces
   EQUIPO?: string;
   equipo?: string;
-
   box?: string;
   categoria?: string;
   talla?: string;
   genero?: string;
-
-  // solo por compatibilidad si existen en la data (NO se muestran)
   email?: string;
   telefono?: string;
-
   athPos?: number;
 };
 
@@ -110,7 +104,6 @@ export default function Page() {
       <section style={styles.results}>
         {results.map((team) => (
           <article key={team.key} style={styles.card}>
-            {/* TOP */}
             <div style={styles.cardTop}>
               <div style={styles.kit}>{team.kit}</div>
 
@@ -128,7 +121,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* BODY */}
             <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
               <div style={styles.meta}>
@@ -148,6 +140,7 @@ export default function Page() {
                         Género: {p.genero || "—"}
                       </div>
                     </div>
+
                     <span style={styles.badge}>Talla: {p.talla || "—"}</span>
                   </div>
                 ))}
@@ -160,9 +153,6 @@ export default function Page() {
   );
 }
 
-/* =========================
-   STYLES
-   ========================= */
 const styles: Record<string, React.CSSProperties> = {
   page: {
     background: "#000",
@@ -197,8 +187,6 @@ const styles: Record<string, React.CSSProperties> = {
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
-
-  // ✅ Logos sin deformar
   logoEvento: {
     width: 64,
     height: 64,
@@ -211,7 +199,6 @@ const styles: Record<string, React.CSSProperties> = {
     objectFit: "contain",
     flex: "0 0 auto",
   },
-
   searchWrap: {
     marginBottom: 16,
   },
@@ -240,8 +227,6 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 16,
     background: "rgba(255,255,255,0.04)",
   },
-
-  // ✅ Evita encimados en móvil
   cardTop: {
     display: "flex",
     justifyContent: "space-between",
@@ -274,7 +259,6 @@ const styles: Record<string, React.CSSProperties> = {
     objectFit: "contain",
     flex: "0 0 auto",
   },
-
   teamName: {
     fontSize: 18,
     fontWeight: 800,
@@ -317,5 +301,4 @@ const styles: Record<string, React.CSSProperties> = {
     whiteSpace: "nowrap",
     flex: "0 0 auto",
   },
-};
 };
