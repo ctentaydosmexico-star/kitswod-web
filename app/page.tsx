@@ -6,12 +6,20 @@ import { participantes } from "./data/participantes";
 type Participante = {
   num: string | number;
   nombre?: string;
+
+  // 👇 IMPORTANTES: en tu dataset viene como "EQUIPO" (mayúsculas) a veces
   EQUIPO?: string;
   equipo?: string;
+
   box?: string;
   categoria?: string;
   talla?: string;
   genero?: string;
+
+  // solo por compatibilidad si existen en la data (NO se muestran)
+  email?: string;
+  telefono?: string;
+
   athPos?: number;
 };
 
@@ -37,7 +45,7 @@ export default function Page() {
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
 
-    participantes.forEach((p) => {
+    participantes.forEach((p: Participante) => {
       const kit = String(p.num ?? "").trim();
       if (!kit) return;
 
@@ -69,9 +77,7 @@ export default function Page() {
     return teams.filter(
       (team) =>
         normalizeText(team.equipo).includes(q) ||
-        team.miembros.some((m) =>
-          normalizeText(m.nombre || "").includes(q)
-        )
+        team.miembros.some((m) => normalizeText(m.nombre || "").includes(q))
     );
   }, [query, teams]);
 
@@ -80,19 +86,11 @@ export default function Page() {
       {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
-          <img
-            src="/logo-evento.png"
-            alt="Evento"
-            style={styles.logoEvento}
-          />
+          <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
           <h1 style={styles.title}>Búsqueda de Kits</h1>
         </div>
 
-        <img
-          src="/wod-logo.png"
-          alt="WOD"
-          style={styles.logoWodHeader}
-        />
+        <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
       </header>
 
       {/* SEARCH */}
@@ -141,17 +139,16 @@ export default function Page() {
               <div style={styles.members}>
                 {team.miembros.map((p, i) => (
                   <div key={i} style={styles.memberRow}>
-                    <div>
+                    <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {`Integrante ${p.athPos}: ${p.nombre}`}
+                        {p.athPos ? `Integrante ${p.athPos}: ` : "Integrante: "}
+                        {p.nombre || "—"}
                       </div>
                       <div style={styles.memberSub}>
                         Género: {p.genero || "—"}
                       </div>
                     </div>
-                    <span style={styles.badge}>
-                      Talla: {p.talla || "—"}
-                    </span>
+                    <span style={styles.badge}>Talla: {p.talla || "—"}</span>
                   </div>
                 ))}
               </div>
@@ -184,27 +181,37 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 16,
     padding: 12,
     marginBottom: 16,
+    gap: 12,
   },
   headerLeft: {
     display: "flex",
     alignItems: "center",
     gap: 12,
+    minWidth: 0,
   },
   title: {
     fontSize: 16,
     fontWeight: 800,
     margin: 0,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
+
+  // ✅ Logos sin deformar
   logoEvento: {
     width: 64,
     height: 64,
     objectFit: "contain",
+    flex: "0 0 auto",
   },
   logoWodHeader: {
     width: 96,
     height: 36,
     objectFit: "contain",
+    flex: "0 0 auto",
   },
+
   searchWrap: {
     marginBottom: 16,
   },
@@ -216,6 +223,7 @@ const styles: Record<string, React.CSSProperties> = {
     border: "1px solid rgba(255,255,255,0.2)",
     color: "#fff",
     fontSize: 16,
+    outline: "none",
   },
   hint: {
     marginTop: 6,
@@ -232,36 +240,46 @@ const styles: Record<string, React.CSSProperties> = {
     padding: 16,
     background: "rgba(255,255,255,0.04)",
   },
+
+  // ✅ Evita encimados en móvil
   cardTop: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-start",
     marginBottom: 10,
+    gap: 12,
   },
   cardTopRight: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
     gap: 6,
+    flex: "0 0 auto",
   },
   kit: {
     fontSize: 44,
     fontWeight: 900,
+    lineHeight: 1,
+    flex: "0 0 auto",
   },
   cardLogoEvento: {
     width: 54,
     height: 54,
     objectFit: "contain",
+    flex: "0 0 auto",
   },
   cardLogoWod: {
     width: 86,
     height: 32,
     objectFit: "contain",
+    flex: "0 0 auto",
   },
+
   teamName: {
     fontSize: 18,
     fontWeight: 800,
     marginBottom: 4,
+    wordBreak: "break-word",
   },
   meta: {
     fontSize: 13,
@@ -276,6 +294,7 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    gap: 10,
     border: "1px solid rgba(255,255,255,0.15)",
     borderRadius: 14,
     padding: 10,
@@ -295,5 +314,8 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "6px 12px",
     fontWeight: 800,
     fontSize: 13,
+    whiteSpace: "nowrap",
+    flex: "0 0 auto",
   },
+};
 };
