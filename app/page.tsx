@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { participantes as participantesRaw } from "./data/participantes";
+import { PARTICIPANTES as participantesRaw } from "./data/participantes";
 
 type Team = {
   key: string;
@@ -50,7 +50,9 @@ export default function Page() {
     });
 
     map.forEach((team) => {
-      team.miembros.sort((a, b) => (Number(a?.athPos) || 0) - (Number(b?.athPos) || 0));
+      team.miembros.sort(
+        (a, b) => (Number(a?.athPos) || 0) - (Number(b?.athPos) || 0)
+      );
     });
 
     return Array.from(map.values());
@@ -90,7 +92,9 @@ export default function Page() {
           placeholder="Nombre o equipo (mín. 3 letras)"
           style={styles.input}
         />
-        <div style={styles.hint}>Puedes buscar por integrante o por nombre del equipo.</div>
+        <div style={styles.hint}>
+          Puedes buscar por integrante o por nombre del equipo.
+        </div>
       </section>
 
       {/* RESULTS */}
@@ -129,7 +133,9 @@ export default function Page() {
                         {p?.athPos ? `Integrante ${p.athPos}: ` : "Integrante: "}
                         {p?.nombre || "—"}
                       </div>
-                      <div style={styles.memberSub}>Género: {p?.genero || "—"}</div>
+                      <div style={styles.memberSub}>
+                        Género: {p?.genero || "—"}
+                      </div>
                     </div>
 
                     <span style={styles.badge}>Talla: {p?.talla || "—"}</span>
