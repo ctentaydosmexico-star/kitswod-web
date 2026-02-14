@@ -301,4 +301,49 @@ const styles: Record<string, React.CSSProperties> = {
     whiteSpace: "nowrap",
     flex: "0 0 auto",
   },
-};
+import Script from "next/script";
+
+// ...tu código arriba
+
+export default function Page() {
+  // ...tu lógica
+
+  return (
+    <main>
+      {/* ...TODO lo que ya tienes */}
+
+      {/* ===================== INSTAGRAM FEED ===================== */}
+      <section
+        style={{
+          marginTop: 60,
+          paddingTop: 40,
+          borderTop: "1px solid rgba(255,255,255,0.12)",
+        }}
+      >
+        <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 16 }}>
+          Instagram
+        </h2>
+
+        <Script
+          src="https://cdn.lightwidget.com/widgets/lightwidget.js"
+          strategy="afterInteractive"
+        />
+
+        <iframe
+          src="https://lightwidget.com/widgets/effaf26c71685062831b7868d49a2eaa.html"
+          scrolling="no"
+          allowTransparency={true}
+          className="lightwidget-widget"
+          style={{
+            width: "100%",
+            border: 0,
+            overflow: "hidden",
+            minHeight: 420,
+          }}
+          title="Instagram Feed"
+        />
+      </section>
+      {/* ========================================================== */}
+    </main>
+  );
+}
