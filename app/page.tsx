@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { CSSProperties } from "react";
 import { PARTICIPANTES as participantesRaw } from "./data/participantes";
 
 type Team = {
@@ -9,7 +10,7 @@ type Team = {
   equipo: string;
   box?: string;
   categoria?: string;
-  miembros: any[]; // data real
+  miembros: any[];
 };
 
 const normalizeText = (v: string) =>
@@ -21,8 +22,6 @@ const normalizeText = (v: string) =>
 
 export default function Page() {
   const [query, setQuery] = useState("");
-
-  // ✅ Blindaje total: el dataset manda, no el tipo
   const participantes = participantesRaw as any[];
 
   const teams = useMemo(() => {
@@ -32,7 +31,6 @@ export default function Page() {
       const kit = String(p?.num ?? "").trim();
       if (!kit) return;
 
-      // 👇 aquí está el fix: leer "EQUIPO" sin que TS se queje
       const equipoNombre = String(p?.["EQUIPO"] ?? p?.equipo ?? "").trim();
 
       if (!map.has(kit)) {
@@ -64,7 +62,6 @@ export default function Page() {
 
     return teams.filter((team) => {
       const teamName = normalizeText(team.equipo);
-
       return (
         teamName.includes(q) ||
         team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
@@ -74,7 +71,6 @@ export default function Page() {
 
   return (
     <main style={styles.page}>
-      {/* HEADER */}
       <header style={styles.header}>
         <div style={styles.headerLeft}>
           <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
@@ -84,7 +80,6 @@ export default function Page() {
         <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
       </header>
 
-      {/* SEARCH */}
       <section style={styles.searchWrap}>
         <input
           value={query}
@@ -97,7 +92,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* RESULTS */}
       <section style={styles.results}>
         {results.map((team) => (
           <article key={team.key} style={styles.card}>
@@ -138,7 +132,9 @@ export default function Page() {
                       </div>
                     </div>
 
-                    <span style={styles.badge}>Talla: {p?.talla || "—"}</span>
+                    <span style={styles.badge}>
+                      Talla: {p?.talla || "—"}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -150,80 +146,87 @@ export default function Page() {
   );
 }
 
-const styles: Record<string, React.CSSProperties> = {
+const styles: Record<string, CSSProperties> = {
   page: {
-    background: "#000",
-    color: "#fff",
+    background: "#FCFAE1",
+    color: "#665249",
     minHeight: "100vh",
     padding: 16,
     maxWidth: 1100,
     margin: "0 auto",
     fontFamily: "system-ui",
   },
+
   header: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    border: "1px solid rgba(255,255,255,0.15)",
+    border: "1px solid #665249",
     borderRadius: 16,
     padding: 12,
     marginBottom: 16,
     gap: 12,
+    background: "#FFFFFF",
   },
+
   headerLeft: {
     display: "flex",
     alignItems: "center",
     gap: 12,
     minWidth: 0,
   },
+
   title: {
     fontSize: 16,
     fontWeight: 800,
     margin: 0,
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
   },
+
   logoEvento: {
     width: 64,
     height: 64,
     objectFit: "contain",
-    flex: "0 0 auto",
   },
+
   logoWodHeader: {
     width: 96,
     height: 36,
     objectFit: "contain",
-    flex: "0 0 auto",
   },
+
   searchWrap: {
     marginBottom: 16,
   },
+
   input: {
     width: "100%",
     padding: 14,
     borderRadius: 14,
-    background: "rgba(255,255,255,0.08)",
-    border: "1px solid rgba(255,255,255,0.2)",
-    color: "#fff",
+    background: "#FFFFFF",
+    border: "1px solid #665249",
+    color: "#665249",
     fontSize: 16,
     outline: "none",
   },
+
   hint: {
     marginTop: 6,
     fontSize: 12,
-    opacity: 0.7,
+    opacity: 0.8,
   },
+
   results: {
     display: "grid",
     gap: 16,
   },
+
   card: {
-    border: "1px solid rgba(255,255,255,0.15)",
+    border: "1px solid #665249",
     borderRadius: 18,
     padding: 16,
-    background: "rgba(255,255,255,0.04)",
+    background: "#FFFFFF",
   },
+
   cardTop: {
     display: "flex",
     justifyContent: "space-between",
@@ -231,119 +234,79 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: 10,
     gap: 12,
   },
+
   cardTopRight: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
     gap: 6,
-    flex: "0 0 auto",
   },
+
   kit: {
     fontSize: 44,
     fontWeight: 900,
     lineHeight: 1,
-    flex: "0 0 auto",
+    color: "#665249",
   },
 
-  // ✅ MÁS GRANDE (lo que pediste)
   cardLogoEvento: {
     width: 80,
     height: 80,
     objectFit: "contain",
-    flex: "0 0 auto",
   },
 
   cardLogoWod: {
     width: 86,
     height: 32,
     objectFit: "contain",
-    flex: "0 0 auto",
   },
+
   teamName: {
     fontSize: 18,
     fontWeight: 800,
     marginBottom: 4,
-    wordBreak: "break-word",
   },
+
   meta: {
     fontSize: 13,
-    opacity: 0.8,
     marginBottom: 10,
+    opacity: 0.9,
   },
+
   members: {
     display: "grid",
     gap: 10,
   },
+
   memberRow: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     gap: 10,
-    border: "1px solid rgba(255,255,255,0.15)",
+    border: "1px solid #E8E3D1",
     borderRadius: 14,
     padding: 10,
-    background: "rgba(0,0,0,0.4)",
+    background: "#FAF8E8",
   },
+
   memberName: {
     fontWeight: 800,
     fontSize: 15,
   },
+
   memberSub: {
     fontSize: 12,
-    opacity: 0.75,
+    opacity: 0.8,
   },
+
   badge: {
-    border: "1px solid rgba(255,255,255,0.25)",
+    border: "1px solid #665249",
     borderRadius: 999,
     padding: "6px 12px",
     fontWeight: 800,
     fontSize: 13,
     whiteSpace: "nowrap",
-    flex: "0 0 auto",
+    color: "#665249",
+    background: "#FFFFFF",
   },
-import Script from "next/script";
-
-// ...tu código arriba
-
-export default function Page() {
-  // ...tu lógica
-
-  return (
-    <main>
-      {/* ...TODO lo que ya tienes */}
-
-      {/* ===================== INSTAGRAM FEED ===================== */}
-      <section
-        style={{
-          marginTop: 60,
-          paddingTop: 40,
-          borderTop: "1px solid rgba(255,255,255,0.12)",
-        }}
-      >
-        <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 16 }}>
-          Instagram
-        </h2>
-
-        <Script
-          src="https://cdn.lightwidget.com/widgets/lightwidget.js"
-          strategy="afterInteractive"
-        />
-
-        <iframe
-          src="https://lightwidget.com/widgets/effaf26c71685062831b7868d49a2eaa.html"
-          scrolling="no"
-          allowTransparency={true}
-          className="lightwidget-widget"
-          style={{
-            width: "100%",
-            border: 0,
-            overflow: "hidden",
-            minHeight: 420,
-          }}
-          title="Instagram Feed"
-        />
-      </section>
-      {/* ========================================================== */}
-    </main>
-  );
-}
+};
