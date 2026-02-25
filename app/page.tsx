@@ -58,7 +58,9 @@ export default function Page() {
 
   const results = useMemo(() => {
     const q = normalizeText(query);
-    if (!q || q.length < 3) return [];
+
+    // 🔥 mínimo 4 letras
+    if (!q || q.length < 4) return [];
 
     return teams.filter((team) => {
       const teamName = normalizeText(team.equipo);
@@ -84,12 +86,18 @@ export default function Page() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nombre o equipo (mín. 3 letras)"
+          placeholder="Nombre o equipo (mín. 4 letras)"
           style={styles.input}
         />
         <div style={styles.hint}>
           Puedes buscar por integrante o por nombre del equipo.
         </div>
+
+        {query.length > 0 && query.length < 4 && (
+          <div style={styles.warning}>
+            Escribe al menos 4 letras para buscar.
+          </div>
+        )}
       </section>
 
       <section style={styles.results}>
@@ -163,7 +171,7 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     border: "1px solid #665249",
     borderRadius: 16,
-    padding: 12,
+    padding: 16,
     marginBottom: 16,
     gap: 12,
     background: "#FFFFFF",
@@ -173,18 +181,18 @@ const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: 12,
-    minWidth: 0,
   },
 
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 800,
     margin: 0,
   },
 
+  // 🔥 50% más grande (64 → 96)
   logoEvento: {
-    width: 64,
-    height: 64,
+    width: 96,
+    height: 96,
     objectFit: "contain",
   },
 
@@ -213,6 +221,13 @@ const styles: Record<string, CSSProperties> = {
     marginTop: 6,
     fontSize: 12,
     opacity: 0.8,
+  },
+
+  warning: {
+    marginTop: 6,
+    fontSize: 12,
+    color: "#665249",
+    fontWeight: 600,
   },
 
   results: {
