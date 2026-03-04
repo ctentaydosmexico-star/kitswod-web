@@ -59,14 +59,16 @@ export default function Page() {
   const results = useMemo(() => {
     const q = normalizeText(query);
 
-    // 🔥 mínimo 4 letras
     if (!q || q.length < 4) return [];
 
     return teams.filter((team) => {
       const teamName = normalizeText(team.equipo);
+
       return (
         teamName.includes(q) ||
-        team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
+        team.miembros.some((m) =>
+          normalizeText(m?.nombre || "").includes(q)
+        )
       );
     });
   }, [query, teams]);
@@ -89,6 +91,7 @@ export default function Page() {
           placeholder="Nombre o equipo (mín. 4 letras)"
           style={styles.input}
         />
+
         <div style={styles.hint}>
           Puedes buscar por integrante o por nombre del equipo.
         </div>
@@ -112,6 +115,7 @@ export default function Page() {
                   alt="Evento"
                   style={styles.cardLogoEvento}
                 />
+
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
@@ -122,6 +126,7 @@ export default function Page() {
 
             <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
+
               <div style={styles.meta}>
                 {team.categoria || ""}
                 {team.box ? ` · ${team.box}` : ""}
@@ -132,9 +137,12 @@ export default function Page() {
                   <div key={i} style={styles.memberRow}>
                     <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {p?.athPos ? `Integrante ${p.athPos}: ` : "Integrante: "}
+                        {p?.athPos
+                          ? `Integrante ${p.athPos}: `
+                          : "Integrante: "}
                         {p?.nombre || "—"}
                       </div>
+
                       <div style={styles.memberSub}>
                         Género: {p?.genero || "—"}
                       </div>
@@ -149,6 +157,28 @@ export default function Page() {
             </div>
           </article>
         ))}
+      </section>
+
+      {/* INSTAGRAM */}
+      <section style={styles.instagramSection}>
+        <div style={styles.instagramCard}>
+          <div style={styles.instagramTitle}>
+            Síguenos en Instagram
+          </div>
+
+          <a
+            href="https://www.instagram.com/thewod_go"
+            target="_blank"
+            rel="noreferrer"
+            style={styles.instagramButton}
+          >
+            Seguir @thewod_go
+          </a>
+
+          <div style={styles.instagramHint}>
+            Always Ready to Lift®
+          </div>
+        </div>
       </section>
     </main>
   );
@@ -186,10 +216,8 @@ const styles: Record<string, CSSProperties> = {
   title: {
     fontSize: 18,
     fontWeight: 800,
-    margin: 0,
   },
 
-  // 🔥 50% más grande (64 → 96)
   logoEvento: {
     width: 96,
     height: 96,
@@ -214,7 +242,6 @@ const styles: Record<string, CSSProperties> = {
     border: "1px solid #665249",
     color: "#665249",
     fontSize: 16,
-    outline: "none",
   },
 
   hint: {
@@ -226,7 +253,6 @@ const styles: Record<string, CSSProperties> = {
   warning: {
     marginTop: 6,
     fontSize: 12,
-    color: "#665249",
     fontWeight: 600,
   },
 
@@ -245,47 +271,36 @@ const styles: Record<string, CSSProperties> = {
   cardTop: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "flex-start",
     marginBottom: 10,
-    gap: 12,
   },
 
   cardTopRight: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-end",
     gap: 6,
   },
 
   kit: {
     fontSize: 44,
     fontWeight: 900,
-    lineHeight: 1,
-    color: "#665249",
   },
 
   cardLogoEvento: {
     width: 80,
-    height: 80,
-    objectFit: "contain",
   },
 
   cardLogoWod: {
     width: 86,
-    height: 32,
-    objectFit: "contain",
   },
 
   teamName: {
     fontSize: 18,
     fontWeight: 800,
-    marginBottom: 4,
   },
 
   meta: {
     fontSize: 13,
     marginBottom: 10,
-    opacity: 0.9,
   },
 
   members: {
@@ -296,8 +311,6 @@ const styles: Record<string, CSSProperties> = {
   memberRow: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    gap: 10,
     border: "1px solid #E8E3D1",
     borderRadius: 14,
     padding: 10,
@@ -306,12 +319,10 @@ const styles: Record<string, CSSProperties> = {
 
   memberName: {
     fontWeight: 800,
-    fontSize: 15,
   },
 
   memberSub: {
     fontSize: 12,
-    opacity: 0.8,
   },
 
   badge: {
@@ -320,8 +331,41 @@ const styles: Record<string, CSSProperties> = {
     padding: "6px 12px",
     fontWeight: 800,
     fontSize: 13,
-    whiteSpace: "nowrap",
-    color: "#665249",
+  },
+
+  instagramSection: {
+    marginTop: 24,
+  },
+
+  instagramCard: {
+    border: "1px solid #665249",
+    borderRadius: 18,
+    padding: 20,
     background: "#FFFFFF",
+    textAlign: "center",
+  },
+
+  instagramTitle: {
+    fontSize: 16,
+    fontWeight: 900,
+    marginBottom: 12,
+  },
+
+  instagramButton: {
+    display: "inline-block",
+    padding: "12px 20px",
+    borderRadius: 999,
+    border: "1px solid #665249",
+    background: "#FCFAE1",
+    color: "#665249",
+    fontWeight: 900,
+    textDecoration: "none",
+    fontSize: 16,
+  },
+
+  instagramHint: {
+    marginTop: 10,
+    fontSize: 13,
+    opacity: 0.8,
   },
 };
