@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
 import { PARTICIPANTES as participantesRaw } from "./data/participantes";
 
@@ -13,6 +14,15 @@ type Team = {
   miembros: any[];
 };
 
+const theme = {
+  bg: "#E4E2DD",
+  primary: "#DF0423",
+  secondary: "#096788",
+  surface: "#FFFFFF",
+  surfaceAlt: "#F4F4F4",
+  borderSoft: "#CFCBC5",
+};
+
 const normalizeText = (v: string) =>
   (v || "")
     .toLowerCase()
@@ -20,9 +30,12 @@ const normalizeText = (v: string) =>
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 
-export default function Page() {
+function InnerPage() {
   const [query, setQuery] = useState("");
   const participantes = participantesRaw as any[];
+
+  const searchParams = useSearchParams();
+  const kitFromUrl = searchParams.get("kit");
 
   const teams = useMemo(() => {
     const map = new Map<string, Team>();
@@ -57,21 +70,22 @@ export default function Page() {
   }, [participantes]);
 
   const results = useMemo(() => {
+    if (kitFromUrl) {
+      return teams.filter((t) => t.kit === kitFromUrl);
+    }
+
     const q = normalizeText(query);
 
     if (!q || q.length < 4) return [];
 
     return teams.filter((team) => {
       const teamName = normalizeText(team.equipo);
-
       return (
         teamName.includes(q) ||
-        team.miembros.some((m) =>
-          normalizeText(m?.nombre || "").includes(q)
-        )
+        team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
       );
     });
-  }, [query, teams]);
+  }, [query, teams, kitFromUrl]);
 
   return (
     <main style={styles.page}>
@@ -91,9 +105,8 @@ export default function Page() {
           placeholder="Nombre o equipo (mín. 4 letras)"
           style={styles.input}
         />
-
         <div style={styles.hint}>
-          Puedes buscar por integrante o por nombre del equipo.
+          Puedes buscar por atleta o por nombre del equipo.
         </div>
 
         {query.length > 0 && query.length < 4 && (
@@ -115,7 +128,6 @@ export default function Page() {
                   alt="Evento"
                   style={styles.cardLogoEvento}
                 />
-
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
@@ -126,7 +138,6 @@ export default function Page() {
 
             <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
-
               <div style={styles.meta}>
                 {team.categoria || ""}
                 {team.box ? ` · ${team.box}` : ""}
@@ -137,12 +148,9 @@ export default function Page() {
                   <div key={i} style={styles.memberRow}>
                     <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {p?.athPos
-                          ? `Integrante ${p.athPos}: `
-                          : "Integrante: "}
+                        {p?.athPos ? `Atleta ${p.athPos}: ` : "Atleta: "}
                         {p?.nombre || "—"}
                       </div>
-
                       <div style={styles.memberSub}>
                         Género: {p?.genero || "—"}
                       </div>
@@ -154,17 +162,25 @@ export default function Page() {
                   </div>
                 ))}
               </div>
+
+              <div style={styles.notice}>
+                <div style={styles.noticeTitle}>⚠ IMPORTANTE</div>
+                <div style={styles.noticeText}>
+                  Para recoger el kit es obligatorio llevar la carta responsiva
+                  llena y firmada por todos los integrantes del equipo.
+                </div>
+                <div style={styles.noticeTextStrong}>
+                  Sin este documento no se podrá entregar el kit.
+                </div>
+              </div>
             </div>
           </article>
         ))}
       </section>
 
-      {/* INSTAGRAM */}
       <section style={styles.instagramSection}>
         <div style={styles.instagramCard}>
-          <div style={styles.instagramTitle}>
-            Síguenos en Instagram
-          </div>
+          <div style={styles.instagramTitle}>Síguenos en Instagram</div>
 
           <a
             href="https://www.instagram.com/thewod_go"
@@ -175,19 +191,25 @@ export default function Page() {
             Seguir @thewod_go
           </a>
 
-          <div style={styles.instagramHint}>
-            Always Ready to Lift®
-          </div>
+          <div style={styles.instagramHint}>Always Ready to Lift®</div>
         </div>
       </section>
     </main>
   );
 }
 
+export default function Page() {
+  return (
+    <Suspense fallback={<div style={{ padding: 16 }}>Cargando…</div>}>
+      <InnerPage />
+    </Suspense>
+  );
+}
+
 const styles: Record<string, CSSProperties> = {
   page: {
-    background: "#FCFAE1",
-    color: "#665249",
+    background: theme.bg,
+    color: theme.secondary,
     minHeight: "100vh",
     padding: 16,
     maxWidth: 1100,
@@ -199,12 +221,11 @@ const styles: Record<string, CSSProperties> = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    border: "1px solid #665249",
+    border: `2px solid ${theme.primary}`,
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
-    gap: 12,
-    background: "#FFFFFF",
+    background: theme.surface,
   },
 
   headerLeft: {
@@ -216,6 +237,8 @@ const styles: Record<string, CSSProperties> = {
   title: {
     fontSize: 18,
     fontWeight: 800,
+    margin: 0,
+    color: theme.primary,
   },
 
   logoEvento: {
@@ -238,9 +261,9 @@ const styles: Record<string, CSSProperties> = {
     width: "100%",
     padding: 14,
     borderRadius: 14,
-    background: "#FFFFFF",
-    border: "1px solid #665249",
-    color: "#665249",
+    background: theme.surface,
+    border: `2px solid ${theme.secondary}`,
+    color: theme.secondary,
     fontSize: 16,
   },
 
@@ -253,7 +276,8 @@ const styles: Record<string, CSSProperties> = {
   warning: {
     marginTop: 6,
     fontSize: 12,
-    fontWeight: 600,
+    color: theme.primary,
+    fontWeight: 700,
   },
 
   results: {
@@ -262,40 +286,50 @@ const styles: Record<string, CSSProperties> = {
   },
 
   card: {
-    border: "1px solid #665249",
+    border: `2px solid ${theme.secondary}`,
     borderRadius: 18,
     padding: 16,
-    background: "#FFFFFF",
+    background: theme.surface,
   },
 
   cardTop: {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "flex-start",
     marginBottom: 10,
   },
 
   cardTopRight: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "flex-end",
     gap: 6,
   },
 
   kit: {
-    fontSize: 44,
+    fontSize: 52,
     fontWeight: 900,
+    color: theme.primary,
+    letterSpacing: 1,
   },
 
   cardLogoEvento: {
     width: 80,
+    height: 80,
+    objectFit: "contain",
   },
 
   cardLogoWod: {
     width: 86,
+    height: 32,
+    objectFit: "contain",
   },
 
   teamName: {
     fontSize: 18,
     fontWeight: 800,
+    marginBottom: 4,
+    color: theme.secondary,
   },
 
   meta: {
@@ -311,26 +345,59 @@ const styles: Record<string, CSSProperties> = {
   memberRow: {
     display: "flex",
     justifyContent: "space-between",
-    border: "1px solid #E8E3D1",
+    alignItems: "center",
+    gap: 10,
+    border: `1px solid ${theme.secondary}`,
     borderRadius: 14,
     padding: 10,
-    background: "#FAF8E8",
+    background: theme.surfaceAlt,
   },
 
   memberName: {
     fontWeight: 800,
+    fontSize: 15,
   },
 
   memberSub: {
     fontSize: 12,
+    opacity: 0.8,
   },
 
   badge: {
-    border: "1px solid #665249",
+    border: `2px solid ${theme.secondary}`,
     borderRadius: 999,
     padding: "6px 12px",
     fontWeight: 800,
     fontSize: 13,
+    color: theme.secondary,
+    background: "#FFFFFF",
+  },
+
+  notice: {
+    marginTop: 12,
+    borderRadius: 14,
+    padding: 12,
+    border: `2px solid ${theme.primary}`,
+    background: "#FFF3F4",
+  },
+
+  noticeTitle: {
+    fontWeight: 900,
+    fontSize: 13,
+    marginBottom: 6,
+    color: theme.primary,
+  },
+
+  noticeText: {
+    fontSize: 13,
+    lineHeight: 1.35,
+  },
+
+  noticeTextStrong: {
+    fontSize: 13,
+    fontWeight: 900,
+    marginTop: 6,
+    color: theme.primary,
   },
 
   instagramSection: {
@@ -338,10 +405,10 @@ const styles: Record<string, CSSProperties> = {
   },
 
   instagramCard: {
-    border: "1px solid #665249",
+    border: `2px solid ${theme.secondary}`,
     borderRadius: 18,
     padding: 20,
-    background: "#FFFFFF",
+    background: theme.surface,
     textAlign: "center",
   },
 
@@ -349,15 +416,16 @@ const styles: Record<string, CSSProperties> = {
     fontSize: 16,
     fontWeight: 900,
     marginBottom: 12,
+    color: theme.secondary,
   },
 
   instagramButton: {
     display: "inline-block",
     padding: "12px 20px",
     borderRadius: 999,
-    border: "1px solid #665249",
-    background: "#FCFAE1",
-    color: "#665249",
+    border: `2px solid ${theme.primary}`,
+    background: theme.primary,
+    color: "#FFFFFF",
     fontWeight: 900,
     textDecoration: "none",
     fontSize: 16,
