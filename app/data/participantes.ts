@@ -90,3 +90,4 @@ export const participantes = [
   { num: 89, nombre: "Shared Bernal", equipo: "", box: "", categoria: "AVANZADO VARONIL", talla: "L", genero: "Hombre" },
   { num: 90, nombre: "Samuel Mujica", equipo: "", box: "Damitos de hierro by Vanina", categoria: "AVANZADO VARONIL", talla: "M", genero: "Hombre" },
   { num: 91, nombre: "Evroy JR", equipo: "", box: "", categoria: "Libre Varonil", talla: "G", genero: "Hombre" },
+  ];
