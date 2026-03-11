@@ -3,7 +3,7 @@
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
-import { PARTICIPANTES as participantesRaw } from "./data/participantes";
+import { participantes as participantesRaw } from "./data/participantes";
 
 type Team = {
   key: string;
@@ -57,383 +57,124 @@ function InnerPage() {
         });
       }
 
-      map.get(kit)!.miembros.push(p);
-    });
-
-    map.forEach((team) => {
-      team.miembros.sort(
-        (a, b) => (Number(a?.athPos) || 0) - (Number(b?.athPos) || 0)
-      );
+      map.get(kit)?.miembros.push(p);
     });
 
     return Array.from(map.values());
   }, [participantes]);
 
-  const results = useMemo(() => {
-    if (kitFromUrl) {
-      return teams.filter((t) => t.kit === kitFromUrl);
-    }
-
-    const q = normalizeText(query);
-
-    if (!q || q.length < 4) return [];
+  const filteredTeams = useMemo(() => {
+    const q = normalizeText(query || kitFromUrl || "");
+    if (!q) return teams;
 
     return teams.filter((team) => {
-      const teamName = normalizeText(team.equipo);
-      return (
-        teamName.includes(q) ||
-        team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
+      if (normalizeText(team.kit).includes(q)) return true;
+      if (normalizeText(team.equipo).includes(q)) return true;
+
+      return team.miembros.some((m) =>
+        normalizeText(m.nombre).includes(q)
       );
     });
-  }, [query, teams, kitFromUrl]);
+  }, [teams, query, kitFromUrl]);
 
   return (
-    <main style={styles.page}>
-      <header style={styles.header}>
-        <div style={styles.headerLeft}>
-          <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
-          <h1 style={styles.title}>Búsqueda de Kits</h1>
-        </div>
+    <main
+      style={{
+        background: theme.bg,
+        minHeight: "100vh",
+        padding: "40px 20px",
+      }}
+    >
+      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+        <h1
+          style={{
+            fontSize: 28,
+            fontWeight: 700,
+            marginBottom: 20,
+            color: theme.primary,
+          }}
+        >
+          Búsqueda de Kits
+        </h1>
 
-        <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
-      </header>
-
-      <section style={styles.searchWrap}>
         <input
+          type="text"
+          placeholder="Buscar por kit, equipo o atleta..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nombre o equipo (mín. 4 letras)"
-          style={styles.input}
+          style={{
+            width: "100%",
+            padding: 12,
+            borderRadius: 8,
+            border: `1px solid ${theme.borderSoft}`,
+            marginBottom: 20,
+          }}
         />
-        <div style={styles.hint}>
-          Puedes buscar por atleta o por nombre del equipo.
-        </div>
 
-        {query.length > 0 && query.length < 4 && (
-          <div style={styles.warning}>
-            Escribe al menos 4 letras para buscar.
-          </div>
-        )}
-      </section>
-
-      <section style={styles.results}>
-        {results.map((team) => (
-          <article key={team.key} style={styles.card}>
-            <div style={styles.cardTop}>
-              <div style={styles.kit}>{team.kit}</div>
-
-              <div style={styles.cardTopRight}>
-                <img
-                  src="/logo-evento.png"
-                  alt="Evento"
-                  style={styles.cardLogoEvento}
-                />
-                <img
-                  src="/wod-logo.png"
-                  alt="WOD"
-                  style={styles.cardLogoWod}
-                />
-              </div>
-            </div>
-
-            <div>
-              <h2 style={styles.teamName}>{team.equipo}</h2>
-              <div style={styles.meta}>
-                {team.categoria || ""}
-                {team.box ? ` · ${team.box}` : ""}
-              </div>
-
-              <div style={styles.members}>
-                {team.miembros.map((p, i) => (
-                  <div key={i} style={styles.memberRow}>
-                    <div style={{ minWidth: 0 }}>
-                      <div style={styles.memberName}>
-                        {p?.athPos ? `Atleta ${p.athPos}: ` : "Atleta: "}
-                        {p?.nombre || "—"}
-                      </div>
-                      <div style={styles.memberSub}>
-                        Género: {p?.genero || "—"}
-                      </div>
-                    </div>
-
-                    <span style={styles.badge}>
-                      Talla: {p?.talla || "—"}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div style={styles.notice}>
-                <div style={styles.noticeTitle}>⚠ IMPORTANTE</div>
-                <div style={styles.noticeText}>
-                  Para recoger el kit es obligatorio llevar la carta responsiva
-                  llena y firmada por todos los integrantes del equipo.
-                </div>
-                <div style={styles.noticeTextStrong}>
-                  Sin este documento no se podrá entregar el kit.
-                </div>
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
-
-      <section style={styles.instagramSection}>
-        <div style={styles.instagramCard}>
-          <div style={styles.instagramTitle}>Síguenos en Instagram</div>
-
-          <a
-            href="https://www.instagram.com/thewod_go"
-            target="_blank"
-            rel="noreferrer"
-            style={styles.instagramButton}
+        {filteredTeams.map((team) => (
+          <div
+            key={team.key}
+            style={{
+              background: theme.surface,
+              borderRadius: 10,
+              padding: 20,
+              marginBottom: 16,
+              border: `1px solid ${theme.borderSoft}`,
+            }}
           >
-            Seguir @thewod_go
-          </a>
+            <h2
+              style={{
+                margin: 0,
+                color: theme.secondary,
+              }}
+            >
+              Kit {team.kit}
+            </h2>
 
-          <div style={styles.instagramHint}>Always Ready to Lift®</div>
-        </div>
-      </section>
+            {team.equipo && (
+              <p style={{ margin: "6px 0" }}>
+                <strong>Equipo:</strong> {team.equipo}
+              </p>
+            )}
+
+            {team.box && (
+              <p style={{ margin: "6px 0" }}>
+                <strong>Box:</strong> {team.box}
+              </p>
+            )}
+
+            {team.categoria && (
+              <p style={{ margin: "6px 0" }}>
+                <strong>Categoría:</strong> {team.categoria}
+              </p>
+            )}
+
+            <div style={{ marginTop: 10 }}>
+              {team.miembros.map((m: any, i: number) => (
+                <div
+                  key={i}
+                  style={{
+                    background: theme.surfaceAlt,
+                    padding: 10,
+                    borderRadius: 6,
+                    marginBottom: 6,
+                  }}
+                >
+                  {m.nombre} — {m.genero} — Talla {m.talla}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }
 
 export default function Page() {
   return (
-    <Suspense fallback={<div style={{ padding: 16 }}>Cargando…</div>}>
+    <Suspense>
       <InnerPage />
     </Suspense>
   );
 }
-
-const styles: Record<string, CSSProperties> = {
-  page: {
-    background: theme.bg,
-    color: theme.secondary,
-    minHeight: "100vh",
-    padding: 16,
-    maxWidth: 1100,
-    margin: "0 auto",
-    fontFamily: "system-ui",
-  },
-
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    border: `2px solid ${theme.primary}`,
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
-    background: theme.surface,
-  },
-
-  headerLeft: {
-    display: "flex",
-    alignItems: "center",
-    gap: 12,
-  },
-
-  title: {
-    fontSize: 18,
-    fontWeight: 800,
-    margin: 0,
-    color: theme.primary,
-  },
-
-  logoEvento: {
-    width: 96,
-    height: 96,
-    objectFit: "contain",
-  },
-
-  logoWodHeader: {
-    width: 96,
-    height: 36,
-    objectFit: "contain",
-  },
-
-  searchWrap: {
-    marginBottom: 16,
-  },
-
-  input: {
-    width: "100%",
-    padding: 14,
-    borderRadius: 14,
-    background: theme.surface,
-    border: `2px solid ${theme.secondary}`,
-    color: theme.secondary,
-    fontSize: 16,
-  },
-
-  hint: {
-    marginTop: 6,
-    fontSize: 12,
-    opacity: 0.8,
-  },
-
-  warning: {
-    marginTop: 6,
-    fontSize: 12,
-    color: theme.primary,
-    fontWeight: 700,
-  },
-
-  results: {
-    display: "grid",
-    gap: 16,
-  },
-
-  card: {
-    border: `2px solid ${theme.secondary}`,
-    borderRadius: 18,
-    padding: 16,
-    background: theme.surface,
-  },
-
-  cardTop: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    marginBottom: 10,
-  },
-
-  cardTopRight: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    gap: 6,
-  },
-
-  kit: {
-    fontSize: 52,
-    fontWeight: 900,
-    color: theme.primary,
-    letterSpacing: 1,
-  },
-
-  cardLogoEvento: {
-    width: 80,
-    height: 80,
-    objectFit: "contain",
-  },
-
-  cardLogoWod: {
-    width: 86,
-    height: 32,
-    objectFit: "contain",
-  },
-
-  teamName: {
-    fontSize: 18,
-    fontWeight: 800,
-    marginBottom: 4,
-    color: theme.secondary,
-  },
-
-  meta: {
-    fontSize: 13,
-    marginBottom: 10,
-  },
-
-  members: {
-    display: "grid",
-    gap: 10,
-  },
-
-  memberRow: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: 10,
-    border: `1px solid ${theme.secondary}`,
-    borderRadius: 14,
-    padding: 10,
-    background: theme.surfaceAlt,
-  },
-
-  memberName: {
-    fontWeight: 800,
-    fontSize: 15,
-  },
-
-  memberSub: {
-    fontSize: 12,
-    opacity: 0.8,
-  },
-
-  badge: {
-    border: `2px solid ${theme.secondary}`,
-    borderRadius: 999,
-    padding: "6px 12px",
-    fontWeight: 800,
-    fontSize: 13,
-    color: theme.secondary,
-    background: "#FFFFFF",
-  },
-
-  notice: {
-    marginTop: 12,
-    borderRadius: 14,
-    padding: 12,
-    border: `2px solid ${theme.primary}`,
-    background: "#FFF3F4",
-  },
-
-  noticeTitle: {
-    fontWeight: 900,
-    fontSize: 13,
-    marginBottom: 6,
-    color: theme.primary,
-  },
-
-  noticeText: {
-    fontSize: 13,
-    lineHeight: 1.35,
-  },
-
-  noticeTextStrong: {
-    fontSize: 13,
-    fontWeight: 900,
-    marginTop: 6,
-    color: theme.primary,
-  },
-
-  instagramSection: {
-    marginTop: 24,
-  },
-
-  instagramCard: {
-    border: `2px solid ${theme.secondary}`,
-    borderRadius: 18,
-    padding: 20,
-    background: theme.surface,
-    textAlign: "center",
-  },
-
-  instagramTitle: {
-    fontSize: 16,
-    fontWeight: 900,
-    marginBottom: 12,
-    color: theme.secondary,
-  },
-
-  instagramButton: {
-    display: "inline-block",
-    padding: "12px 20px",
-    borderRadius: 999,
-    border: `2px solid ${theme.primary}`,
-    background: theme.primary,
-    color: "#FFFFFF",
-    fontWeight: 900,
-    textDecoration: "none",
-    fontSize: 16,
-  },
-
-  instagramHint: {
-    marginTop: 10,
-    fontSize: 13,
-    opacity: 0.8,
-  },
-};
