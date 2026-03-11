@@ -3,7 +3,7 @@
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
-import { PARTICIPANTES as participantesRaw } from "./data/participantes";
+import { participantes as participantesRaw } from "./data/participantes";
 
 type Team = {
   key: string;
@@ -82,7 +82,9 @@ function InnerPage() {
       const teamName = normalizeText(team.equipo);
       return (
         teamName.includes(q) ||
-        team.miembros.some((m) => normalizeText(m?.nombre || "").includes(q))
+        team.miembros.some((m) =>
+          normalizeText(m?.nombre || "").includes(q)
+        )
       );
     });
   }, [query, teams, kitFromUrl]);
@@ -105,6 +107,7 @@ function InnerPage() {
           placeholder="Nombre o equipo (mín. 4 letras)"
           style={styles.input}
         />
+
         <div style={styles.hint}>
           Puedes buscar por atleta o por nombre del equipo.
         </div>
@@ -128,6 +131,7 @@ function InnerPage() {
                   alt="Evento"
                   style={styles.cardLogoEvento}
                 />
+
                 <img
                   src="/wod-logo.png"
                   alt="WOD"
@@ -138,6 +142,7 @@ function InnerPage() {
 
             <div>
               <h2 style={styles.teamName}>{team.equipo}</h2>
+
               <div style={styles.meta}>
                 {team.categoria || ""}
                 {team.box ? ` · ${team.box}` : ""}
@@ -148,9 +153,12 @@ function InnerPage() {
                   <div key={i} style={styles.memberRow}>
                     <div style={{ minWidth: 0 }}>
                       <div style={styles.memberName}>
-                        {p?.athPos ? `Atleta ${p.athPos}: ` : "Atleta: "}
+                        {p?.athPos
+                          ? `Atleta ${p.athPos}: `
+                          : "Atleta: "}
                         {p?.nombre || "—"}
                       </div>
+
                       <div style={styles.memberSub}>
                         Género: {p?.genero || "—"}
                       </div>
@@ -164,11 +172,15 @@ function InnerPage() {
               </div>
 
               <div style={styles.notice}>
-                <div style={styles.noticeTitle}>⚠ IMPORTANTE</div>
+                <div style={styles.noticeTitle}>
+                  ⚠ IMPORTANTE
+                </div>
+
                 <div style={styles.noticeText}>
                   Para recoger el kit es obligatorio llevar la carta responsiva
                   llena y firmada por todos los integrantes del equipo.
                 </div>
+
                 <div style={styles.noticeTextStrong}>
                   Sin este documento no se podrá entregar el kit.
                 </div>
@@ -180,7 +192,9 @@ function InnerPage() {
 
       <section style={styles.instagramSection}>
         <div style={styles.instagramCard}>
-          <div style={styles.instagramTitle}>Síguenos en Instagram</div>
+          <div style={styles.instagramTitle}>
+            Síguenos en Instagram
+          </div>
 
           <a
             href="https://www.instagram.com/thewod_go"
@@ -191,7 +205,9 @@ function InnerPage() {
             Seguir @thewod_go
           </a>
 
-          <div style={styles.instagramHint}>Always Ready to Lift®</div>
+          <div style={styles.instagramHint}>
+            Always Ready to Lift®
+          </div>
         </div>
       </section>
     </main>
@@ -310,7 +326,6 @@ const styles: Record<string, CSSProperties> = {
     fontSize: 52,
     fontWeight: 900,
     color: theme.primary,
-    letterSpacing: 1,
   },
 
   cardLogoEvento: {
@@ -390,7 +405,6 @@ const styles: Record<string, CSSProperties> = {
 
   noticeText: {
     fontSize: 13,
-    lineHeight: 1.35,
   },
 
   noticeTextStrong: {
