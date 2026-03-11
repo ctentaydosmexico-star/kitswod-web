@@ -1,4 +1,4 @@
-export const participantes = [
+export const PARTICIPANTES = [
   { num: 1, nombre: "Paola Jiménez López", equipo: "", box: "CROSS2fit", categoria: "PRINCIPIANTES FEMENIL", talla: "L", genero: "Mujer" },
   { num: 2, nombre: "Hannah Maxim González Diego", equipo: "", box: "", categoria: "PRINCIPIANTES FEMENIL", talla: "M", genero: "Mujer" },
   { num: 3, nombre: "Esmeralda Itzel Gutierrez Montiel", equipo: "", box: "Warriors", categoria: "PRINCIPIANTES FEMENIL", talla: "M", genero: "Mujer" },
