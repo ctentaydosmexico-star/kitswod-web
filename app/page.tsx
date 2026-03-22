@@ -16,8 +16,8 @@ type Team = {
 
 const theme = {
   bg: "#E4E2DD",
-  primary: "#DF0423",
-  secondary: "#096788",
+  primary: "#E39161",
+  secondary: "#7B4441",
   surface: "#FFFFFF",
   surfaceAlt: "#F4F4F4",
   borderSoft: "#CFCBC5",
