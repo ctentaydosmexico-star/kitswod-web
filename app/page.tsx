@@ -98,7 +98,7 @@ function InnerPage() {
         <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
       </header>
 
-      {/* 🔥 BLOQUE RESPONSIVA */}
+      {/* RESPONSIVA */}
       <section style={styles.responsivaSection}>
         <div style={styles.responsivaCard}>
           <div style={styles.responsivaTitle}>Carta responsiva</div>
@@ -381,11 +381,13 @@ const styles: Record<string, CSSProperties> = {
   cardLogoEvento: {
     width: 80,
     height: 80,
+    objectFit: "contain",
   },
 
   cardLogoWod: {
     width: 86,
     height: 32,
+    objectFit: "contain",
   },
 
   teamName: {
