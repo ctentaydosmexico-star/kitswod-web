@@ -98,6 +98,30 @@ function InnerPage() {
         <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
       </header>
 
+      {/* 🔥 BLOQUE RESPONSIVA */}
+      <section style={styles.responsivaSection}>
+        <div style={styles.responsivaCard}>
+          <div style={styles.responsivaTitle}>Carta responsiva</div>
+          <div style={styles.responsivaText}>
+            Para la entrega de kit es obligatorio presentar la responsiva
+            impresa y firmada.
+          </div>
+
+          <a
+            href="/RESPONSIVA2026.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={styles.responsivaButton}
+          >
+            Descargar responsiva
+          </a>
+
+          <div style={styles.responsivaHint}>
+            Descárgala, imprímela, fírmala y llévala el día de la entrega.
+          </div>
+        </div>
+      </section>
+
       <section style={styles.searchWrap}>
         <input
           value={query}
@@ -253,6 +277,48 @@ const styles: Record<string, CSSProperties> = {
     objectFit: "contain",
   },
 
+  responsivaSection: {
+    marginBottom: 16,
+  },
+
+  responsivaCard: {
+    border: `2px solid ${theme.primary}`,
+    borderRadius: 18,
+    padding: 16,
+    background: theme.surface,
+    textAlign: "center",
+  },
+
+  responsivaTitle: {
+    fontSize: 16,
+    fontWeight: 900,
+    marginBottom: 8,
+    color: theme.primary,
+  },
+
+  responsivaText: {
+    fontSize: 14,
+    marginBottom: 12,
+  },
+
+  responsivaButton: {
+    display: "inline-block",
+    padding: "12px 20px",
+    borderRadius: 999,
+    border: `2px solid ${theme.primary}`,
+    background: theme.primary,
+    color: "#FFFFFF",
+    fontWeight: 900,
+    textDecoration: "none",
+    fontSize: 16,
+  },
+
+  responsivaHint: {
+    marginTop: 10,
+    fontSize: 12,
+    opacity: 0.8,
+  },
+
   searchWrap: {
     marginBottom: 16,
   },
@@ -310,26 +376,21 @@ const styles: Record<string, CSSProperties> = {
     fontSize: 52,
     fontWeight: 900,
     color: theme.primary,
-    letterSpacing: 1,
   },
 
   cardLogoEvento: {
     width: 80,
     height: 80,
-    objectFit: "contain",
   },
 
   cardLogoWod: {
     width: 86,
     height: 32,
-    objectFit: "contain",
   },
 
   teamName: {
     fontSize: 18,
     fontWeight: 800,
-    marginBottom: 4,
-    color: theme.secondary,
   },
 
   meta: {
@@ -345,22 +406,18 @@ const styles: Record<string, CSSProperties> = {
   memberRow: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    gap: 10,
+    padding: 10,
     border: `1px solid ${theme.secondary}`,
     borderRadius: 14,
-    padding: 10,
     background: theme.surfaceAlt,
   },
 
   memberName: {
     fontWeight: 800,
-    fontSize: 15,
   },
 
   memberSub: {
     fontSize: 12,
-    opacity: 0.8,
   },
 
   badge: {
@@ -368,36 +425,26 @@ const styles: Record<string, CSSProperties> = {
     borderRadius: 999,
     padding: "6px 12px",
     fontWeight: 800,
-    fontSize: 13,
-    color: theme.secondary,
-    background: "#FFFFFF",
   },
 
   notice: {
     marginTop: 12,
-    borderRadius: 14,
     padding: 12,
     border: `2px solid ${theme.primary}`,
+    borderRadius: 14,
     background: "#FFF3F4",
   },
 
   noticeTitle: {
     fontWeight: 900,
-    fontSize: 13,
-    marginBottom: 6,
-    color: theme.primary,
   },
 
   noticeText: {
     fontSize: 13,
-    lineHeight: 1.35,
   },
 
   noticeTextStrong: {
-    fontSize: 13,
     fontWeight: 900,
-    marginTop: 6,
-    color: theme.primary,
   },
 
   instagramSection: {
@@ -405,35 +452,18 @@ const styles: Record<string, CSSProperties> = {
   },
 
   instagramCard: {
-    border: `2px solid ${theme.secondary}`,
-    borderRadius: 18,
     padding: 20,
+    borderRadius: 18,
     background: theme.surface,
     textAlign: "center",
-  },
-
-  instagramTitle: {
-    fontSize: 16,
-    fontWeight: 900,
-    marginBottom: 12,
-    color: theme.secondary,
   },
 
   instagramButton: {
     display: "inline-block",
     padding: "12px 20px",
     borderRadius: 999,
-    border: `2px solid ${theme.primary}`,
     background: theme.primary,
     color: "#FFFFFF",
     fontWeight: 900,
-    textDecoration: "none",
-    fontSize: 16,
-  },
-
-  instagramHint: {
-    marginTop: 10,
-    fontSize: 13,
-    opacity: 0.8,
   },
 };
