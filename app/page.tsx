@@ -16,15 +16,15 @@ type Participante = {
 };
 
 const theme = {
-  bg: "#0B0F14",
-  primary: "#42D4D6",
-  secondary: "#FF2D95",
-  surface: "#131A24",
-  surfaceAlt: "#0F141D",
-  borderSoft: "#243041",
-  text: "#F5F7FA",
-  muted: "#9FB0C3",
-  noticeBg: "#1C1320",
+  bg: "#000000",
+  primary: "#FF00D8",
+  secondary: "#00D9F5",
+  surface: "#111111",
+  surfaceAlt: "#1A1A1A",
+  borderSoft: "#2B2B2B",
+  text: "#FFFFFF",
+  muted: "#BDBDBD",
+  noticeBg: "#1A1A1A",
 };
 
 const normalizeText = (v: string) =>
@@ -43,11 +43,12 @@ function InnerPage() {
 
   const results = useMemo(() => {
     if (kitFromUrl) {
-      return participantes.filter((p) => String(p?.num ?? "").trim() === kitFromUrl);
+      return participantes.filter(
+        (p) => String(p?.num ?? "").trim() === kitFromUrl
+      );
     }
 
     const q = normalizeText(query);
-
     if (!q) return [];
 
     return participantes.filter((p) => {
@@ -70,13 +71,12 @@ function InnerPage() {
   return (
     <main style={styles.page}>
       <header style={styles.header}>
-        <div style={styles.headerLeft}>
-          <img src="/logo-evento.png" alt="Evento" style={styles.logoEvento} />
-          <div>
-            <h1 style={styles.title}>Búsqueda de Kits</h1>
-            <div style={styles.subtitle}>
-              Busca por número, atleta, equipo o box
-            </div>
+        <img src="/logo-evento.png" alt="Cobras" style={styles.logoEvento} />
+
+        <div style={styles.headerText}>
+          <h1 style={styles.title}>COBRAS ANIVERSARIO 2026</h1>
+          <div style={styles.subtitle}>
+            Busca por número de kit, atleta o box
           </div>
         </div>
 
@@ -86,6 +86,7 @@ function InnerPage() {
       <section style={styles.responsivaSection}>
         <div style={styles.responsivaCard}>
           <div style={styles.responsivaTitle}>Carta responsiva</div>
+
           <div style={styles.responsivaText}>
             Para la entrega de kit es obligatorio presentar la responsiva
             impresa y firmada.
@@ -110,11 +111,12 @@ function InnerPage() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Número, atleta, equipo o box"
+          placeholder="Número de kit, atleta o box"
           style={styles.input}
         />
+
         <div style={styles.hint}>
-          Puedes buscar por número de kit, nombre de atleta, equipo o box.
+          Puedes buscar por número de kit, nombre de atleta o box.
         </div>
       </section>
 
@@ -141,9 +143,10 @@ function InnerPage() {
                 <div style={styles.cardTopRight}>
                   <img
                     src="/logo-evento.png"
-                    alt="Evento"
+                    alt="Cobras"
                     style={styles.cardLogoEvento}
                   />
+
                   <img
                     src="/wod-logo.png"
                     alt="WOD"
@@ -168,9 +171,12 @@ function InnerPage() {
                       <div key={i} style={styles.memberRow}>
                         <div style={{ minWidth: 0, flex: 1 }}>
                           <div style={styles.memberName}>
-                            {atletas.length > 1 ? `Atleta ${i + 1}: ` : "Atleta: "}
+                            {atletas.length > 1
+                              ? `Atleta ${i + 1}: `
+                              : "Atleta: "}
                             {nombreAtleta}
                           </div>
+
                           <div style={styles.memberSub}>
                             {item?.genero || "—"}
                           </div>
@@ -185,7 +191,9 @@ function InnerPage() {
                     <div style={styles.memberRow}>
                       <div style={{ minWidth: 0, flex: 1 }}>
                         <div style={styles.memberName}>Atleta: —</div>
-                        <div style={styles.memberSub}>{item?.genero || "—"}</div>
+                        <div style={styles.memberSub}>
+                          {item?.genero || "—"}
+                        </div>
                       </div>
 
                       <span style={styles.badge}>
@@ -197,10 +205,12 @@ function InnerPage() {
 
                 <div style={styles.notice}>
                   <div style={styles.noticeTitle}>⚠ IMPORTANTE</div>
+
                   <div style={styles.noticeText}>
                     Para recoger el kit es obligatorio llevar la carta responsiva
-                    llena y firmada por todos los integrantes del equipo.
+                    llena y firmada.
                   </div>
+
                   <div style={styles.noticeTextStrong}>
                     Sin este documento no se podrá entregar el kit.
                   </div>
@@ -263,27 +273,23 @@ const styles: Record<string, CSSProperties> = {
 
   header: {
     display: "flex",
-    justifyContent: "space-between",
+    flexDirection: "column",
     alignItems: "center",
     gap: 16,
-    border: `1px solid ${theme.borderSoft}`,
+    border: `1px solid ${theme.primary}`,
     borderRadius: 20,
-    padding: 16,
+    padding: 20,
     marginBottom: 16,
     background: theme.surface,
-    flexWrap: "wrap",
+    textAlign: "center",
   },
 
-  headerLeft: {
-    display: "flex",
-    alignItems: "center",
-    gap: 14,
-    minWidth: 0,
-    flex: 1,
+  headerText: {
+    width: "100%",
   },
 
   title: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: 900,
     margin: 0,
     color: theme.text,
@@ -291,26 +297,24 @@ const styles: Record<string, CSSProperties> = {
   },
 
   subtitle: {
-    fontSize: 13,
-    color: theme.muted,
-    marginTop: 4,
+    fontSize: 15,
+    color: theme.secondary,
+    marginTop: 8,
   },
 
   logoEvento: {
-    width: 180,
-    maxWidth: "42vw",
+    width: 230,
+    maxWidth: "78vw",
     height: "auto",
     objectFit: "contain",
     display: "block",
-    flexShrink: 0,
   },
 
   logoWodHeader: {
-    width: 110,
+    width: 95,
     height: "auto",
     objectFit: "contain",
     display: "block",
-    flexShrink: 0,
   },
 
   responsivaSection: {
@@ -342,8 +346,8 @@ const styles: Record<string, CSSProperties> = {
     display: "inline-block",
     padding: "12px 20px",
     borderRadius: 999,
-    border: `1px solid ${theme.secondary}`,
-    background: theme.secondary,
+    border: `1px solid ${theme.primary}`,
+    background: "linear-gradient(90deg,#FF00D8,#00D9F5)",
     color: "#FFFFFF",
     fontWeight: 900,
     textDecoration: "none",
@@ -365,7 +369,7 @@ const styles: Record<string, CSSProperties> = {
     padding: 14,
     borderRadius: 16,
     background: theme.surface,
-    border: `1px solid ${theme.borderSoft}`,
+    border: `1px solid ${theme.primary}`,
     color: theme.text,
     fontSize: 16,
     outline: "none",
@@ -387,7 +391,7 @@ const styles: Record<string, CSSProperties> = {
     borderRadius: 22,
     padding: 16,
     background: theme.surface,
-    boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+    boxShadow: "0 10px 30px rgba(255,0,216,0.16)",
   },
 
   cardTop: {
@@ -427,15 +431,15 @@ const styles: Record<string, CSSProperties> = {
   },
 
   cardLogoEvento: {
-    width: 140,
-    maxWidth: "34vw",
+    width: 75,
+    maxWidth: "18vw",
     height: "auto",
     objectFit: "contain",
     display: "block",
   },
 
   cardLogoWod: {
-    width: 92,
+    width: 55,
     height: "auto",
     objectFit: "contain",
     display: "block",
@@ -479,7 +483,7 @@ const styles: Record<string, CSSProperties> = {
 
   memberSub: {
     fontSize: 12,
-    color: theme.muted,
+    color: theme.secondary,
     marginTop: 2,
   },
 
@@ -490,20 +494,20 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 800,
     color: theme.primary,
     whiteSpace: "nowrap",
-    background: "rgba(66, 212, 214, 0.08)",
+    background: "rgba(255,0,216,0.10)",
   },
 
   notice: {
     marginTop: 14,
     padding: 14,
-    border: `1px solid ${theme.secondary}`,
+    border: `1px solid ${theme.primary}`,
     borderRadius: 16,
     background: theme.noticeBg,
   },
 
   noticeTitle: {
     fontWeight: 900,
-    color: theme.secondary,
+    color: theme.primary,
     marginBottom: 4,
   },
 
@@ -566,8 +570,8 @@ const styles: Record<string, CSSProperties> = {
     display: "inline-block",
     padding: "12px 20px",
     borderRadius: 999,
-    background: theme.primary,
-    color: "#0B0F14",
+    background: "linear-gradient(90deg,#FF00D8,#00D9F5)",
+    color: "#FFFFFF",
     fontWeight: 900,
     textDecoration: "none",
   },
