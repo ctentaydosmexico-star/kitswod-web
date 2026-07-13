@@ -20,92 +20,50 @@ export const PARTICIPANTES: EquipoParticipante[] = [
   {
     "num": 1,
     "numCategoria": 1,
-    "equipo": "LOS SEÑITOS CREW",
-    "box": "ARMY'S GARAGE",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Emanuel Becerril",
+    "box": "",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Jose Manuel Bautista peña",
-        "talla": "XL",
+        "nombre": "Emanuel Becerril",
+        "talla": "M",
         "genero": "Hombre",
-        "email": "zonazeroestb2007_@hotmail.com",
-        "telefono": "7721654669"
-      },
-      {
-        "nombre": "María de la luz Celis Portilla",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "Marukacepo@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Karina Flores Maya",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "kariflores423@gmail.com",
-        "telefono": ""
+        "email": "3mm4nu3lbsc@gmail.com",
+        "telefono": "5531589177"
       }
     ]
   },
   {
     "num": 2,
     "numCategoria": 2,
-    "equipo": "RAK",
-    "box": "Army’s garage",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Dante mateo Becerril",
+    "box": "",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Karina Herrera Arteaga",
+        "nombre": "Dante mateo Becerril",
         "talla": "M",
-        "genero": "Mujer",
-        "email": "herrera.arteaga.karina@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Angelin Montufar Ravelo",
-        "talla": "S",
         "genero": "Hombre",
-        "email": "angelinmon269@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Regina Zahorí Villeda potrero",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "Villedareginazahori@gmail.com",
-        "telefono": ""
+        "email": "dantemat13@gmail.com",
+        "telefono": "5538413382"
       }
     ]
   },
   {
     "num": 3,
     "numCategoria": 3,
-    "equipo": "Xoconostles",
-    "box": "Maswill zona fitness",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Emiliano Hernandez moreno",
+    "box": "Horus",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "María Fernanda Castañeda Bautista",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "castafer0919@gmail.com",
-        "telefono": "7721628527"
-      },
-      {
-        "nombre": "Fernando Blancas Guerrero",
-        "talla": "M",
+        "nombre": "Emiliano Hernandez moreno",
+        "talla": "S",
         "genero": "Hombre",
-        "email": "fer.rollinsp1@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "José Alfredo Blancas Guerrero",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "blancasjose81@gmail.com",
+        "email": "emiliano.hzdm@gmail.com",
         "telefono": ""
       }
     ]
@@ -113,61 +71,33 @@ export const PARTICIPANTES: EquipoParticipante[] = [
   {
     "num": 4,
     "numCategoria": 4,
-    "equipo": "Chicas super poderosas MASWILL",
-    "box": "Maswill",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Joshua uriel Mendoza",
+    "box": "Horus",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Diana Laura Pérez Lugo",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "dianalugo0309@gmail.com",
-        "telefono": "7721326862"
-      },
-      {
-        "nombre": "Ale Burrola",
+        "nombre": "Joshua uriel Mendoza",
         "talla": "M",
         "genero": "Hombre",
-        "email": "Keila_alejandrit@hotmail.com",
+        "email": "dinara_ra@hotmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Abigaid Zamora",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "abigaidlazaro@gmail.com",
-        "telefono": "7713930873"
       }
     ]
   },
   {
     "num": 5,
     "numCategoria": 5,
-    "equipo": "¿Y SI SÍ?",
-    "box": "ATLAS CROSSFIT",
-    "categoria": "NOVATOS HHM",
+    "equipo": "José Manuel Alvarez",
+    "box": "CLF Crossfit",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Gabriela Trejo",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "gamadariagatr@ucq.edu.mx",
-        "telefono": "7715688924"
-      },
-      {
-        "nombre": "Hareth Jassam Corona Simón",
+        "nombre": "José Manuel Alvarez",
         "talla": "M",
         "genero": "Hombre",
-        "email": "corona32190@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Alessandro Barrera Hernández",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "alexbarrerin777@gmail.com",
+        "email": "josse_mkl@hotmail.com José Manuel Álvarez Castillo Mediana  CLF Crossfit",
         "telefono": ""
       }
     ]
@@ -175,61 +105,33 @@ export const PARTICIPANTES: EquipoParticipante[] = [
   {
     "num": 6,
     "numCategoria": 6,
-    "equipo": "Tres de Acero BR",
-    "box": "Body Rock",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Carlos Andrés Durán Cruz",
+    "box": "",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Marisol aurora Vargas noche",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "marivm_89@hotmail.com",
-        "telefono": "5511227699"
-      },
-      {
-        "nombre": "Jose Jorge Estrada torres",
-        "talla": "M",
+        "nombre": "Carlos Andrés Durán Cruz",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "maisolvargas@teschi.edu.mx",
-        "telefono": ""
-      },
-      {
-        "nombre": "Luis Miguel Cortes ruiz",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "red-luis_bull@hotmail.com",
-        "telefono": ""
+        "email": "carlos.duran.cruz12@gmail.com",
+        "telefono": "5523215250"
       }
     ]
   },
   {
     "num": 7,
     "numCategoria": 7,
-    "equipo": "MINI BODY ROCK",
+    "equipo": "Fernando Junco de la Cruz",
     "box": "",
-    "categoria": "NOVATOS HHM",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Danna Josimar Estrada Vargas",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "dannaestradavargas0@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Joshua yael cortes Vázquez",
-        "talla": "M",
+        "nombre": "Fernando Junco de la Cruz",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "Josh.yael.110916@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Edwin Esteban Domínguez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "Marlenzita22@gmail.com",
+        "email": "facturasdrjnc@gmail.com",
         "telefono": ""
       }
     ]
@@ -237,1604 +139,2465 @@ export const PARTICIPANTES: EquipoParticipante[] = [
   {
     "num": 8,
     "numCategoria": 8,
-    "equipo": "Los Sueñitos",
-    "box": "ATLAS CROSSFIT",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Diego Emiliano Cortes peña",
+    "box": "Elite",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Anaeli Domínguez Secundino",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "eliodora.ds@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Gustavo Pérez Nube",
-        "talla": "M",
+        "nombre": "Diego Emiliano Cortes peña",
+        "talla": "S",
         "genero": "Hombre",
-        "email": "gustavo.ca1602@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Gil Herrera Mendoza",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "Gilehm1208@gmail.com",
-        "telefono": ""
+        "email": "diego.emiliano1205@gmail.com",
+        "telefono": "5645421444"
       }
     ]
   },
   {
     "num": 9,
     "numCategoria": 9,
-    "equipo": "Mercenarios",
-    "box": "ATLAS CROSSFIT",
-    "categoria": "NOVATOS HHM",
+    "equipo": "Salvador Sánchez",
+    "box": "Big panthers",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Daniela Saldivar Guerrero",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "Saldivardaniela205@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Jorge Hazael Vallejos Arumir",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "jorgehvallejos77@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Jovani Martinez",
+        "nombre": "Salvador Sánchez",
         "talla": "M",
         "genero": "Hombre",
-        "email": "mtzjovani0102@gmail.com",
-        "telefono": ""
+        "email": "max176179@gmail.com",
+        "telefono": "7226098031"
       }
     ]
   },
   {
     "num": 10,
     "numCategoria": 10,
-    "equipo": "ImproWOD Crew",
-    "box": "army",
-    "categoria": "NOVATOS HHM",
-    "status": "Pendiente",
+    "equipo": "Rodrigo Ezequiel Huerta Sánchez",
+    "box": "Rebelión CrossTraining",
+    "categoria": "NOVATOS VARONIL",
+    "status": "Activo",
     "atletas": [
       {
-        "nombre": "Fernando Sánchez Gómez",
+        "nombre": "Rodrigo Ezequiel Huerta Sánchez",
         "talla": "M",
         "genero": "Hombre",
-        "email": "sfher8929@gmail.com",
-        "telefono": "7721295444"
-      },
-      {
-        "nombre": "Brenda Patricia Espinoza Vargas",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "ningui2005@gmail.com",
-        "telefono": "7721333418"
-      },
-      {
-        "nombre": "Adolfo Pérez Moctezuma",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "adolfoperezmoctezuma784@gmail.com",
-        "telefono": "7721509150"
+        "email": "ezequielhuerta03@outlook.com",
+        "telefono": "5613200660"
       }
     ]
   },
   {
     "num": 11,
-    "numCategoria": 1,
-    "equipo": "FIT CREW",
-    "box": "LycanCross Fitness",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 11,
+    "equipo": "Hector Ortiz",
+    "box": "Élite Community",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Martha Perez ramirez",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "martixperez@gmail.com",
-        "telefono": "7751294251"
-      },
-      {
-        "nombre": "Oscar Hernandez Meza",
-        "talla": "M",
+        "nombre": "Hector Ortiz",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "karchavez@outlook.com",
-        "telefono": "7712026315"
-      },
-      {
-        "nombre": "Ángel Fernando Leon Castañeda",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "fernandoleon1711@gmail.com",
-        "telefono": ""
+        "email": "phectorortiz@hotmail.com",
+        "telefono": "5536515552"
       }
     ]
   },
   {
     "num": 12,
-    "numCategoria": 2,
-    "equipo": "Los Desconocidos",
-    "box": "Maswill",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 12,
+    "equipo": "Javier Sánchez",
+    "box": "Grizzlycrosstrainig",
+    "categoria": "NOVATOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Valeria Zambrano orozco",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "zambranovaleria565@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Leandro Sanchez Palacios",
-        "talla": "S",
+        "nombre": "Javier Sánchez",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "leansanpal@gmail.com",
-        "telefono": "7721619255"
-      },
-      {
-        "nombre": "Gerson Flores Sánchez",
-        "talla": "S",
-        "genero": "Hombre",
-        "email": "tkdgerson@gmail.com",
-        "telefono": "7721876742"
+        "email": "Yavier.sanchez26@gmail.com",
+        "telefono": "5565401296"
       }
     ]
   },
   {
     "num": 13,
-    "numCategoria": 3,
-    "equipo": "Los compas",
-    "box": "Inside",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 1,
+    "equipo": "Raul Hernandez Hernandez",
+    "box": "HORUS CF",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "victor silva",
+        "nombre": "Raul Hernandez Hernandez",
         "talla": "L",
         "genero": "Hombre",
-        "email": "vicott78@gmail.com",
-        "telefono": "7717042717"
-      },
-      {
-        "nombre": "Víctor Javin Silva Hernández",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "vicjavs9@gmail.com",
-        "telefono": "7713970314"
-      },
-      {
-        "nombre": "Claudia Martínez Hernández",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "clama691@hotmail.com",
-        "telefono": ""
+        "email": "luar.hernan5@gmail.com",
+        "telefono": "5572245381"
       }
     ]
   },
   {
     "num": 14,
-    "numCategoria": 4,
-    "equipo": "Vulnerables M.C.",
-    "box": "Maswill Crossfit",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 2,
+    "equipo": "Emmanuel humberto Alegria",
+    "box": "",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Jesus García Cordova",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "jesuscordova20@icloud.com",
-        "telefono": "7713854988"
-      },
-      {
-        "nombre": "Sabas Macario Jiménez",
+        "nombre": "Emmanuel humberto Alegria",
         "talla": "M",
         "genero": "Hombre",
-        "email": "Mack2106@gmail.com",
-        "telefono": "7721718435"
-      },
-      {
-        "nombre": "Yanira Guadalupe Luego Andrade",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "yanyanis.999@gmail.com",
-        "telefono": "7721295155"
+        "email": "ehap89@icloud.com",
+        "telefono": "5531242194"
       }
     ]
   },
   {
     "num": 15,
-    "numCategoria": 5,
-    "equipo": "En qué WOD nos metimos?",
-    "box": "Xibalba trainig club",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 3,
+    "equipo": "Gérardo Ponce Juarez",
+    "box": "Spartan Crossfit Nr",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Angel Francisco gonzalez",
+        "nombre": "Gérardo Ponce Juarez",
         "talla": "L",
         "genero": "Hombre",
-        "email": "anyel4488@gmail.com",
-        "telefono": "5613977517"
-      },
-      {
-        "nombre": "Martín Celso López gomez",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "martincelsolop@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Leilani Cruz campos",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "Leigp11@gmail.com",
-        "telefono": ""
+        "email": "slederpj@gmail.com",
+        "telefono": "5576061671"
       }
     ]
   },
   {
     "num": 16,
-    "numCategoria": 6,
-    "equipo": "Patrulla Roja",
-    "box": "Maswill Tepa",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 4,
+    "equipo": "Javier Trueba Flores",
+    "box": "Elite Community",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Luis Rodríguez",
+        "nombre": "Javier Trueba Flores",
         "talla": "L",
         "genero": "Hombre",
-        "email": "selfwlir@gmail.com",
-        "telefono": "7721227921"
-      },
-      {
-        "nombre": "Lucero Contreras Gómez",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "lu.contrerasgomez29@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Mike Pérez Hernández",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "mike.pedagogo@gmail.com",
-        "telefono": ""
+        "email": "javiertrueba_8@hotmail.com",
+        "telefono": "5514940364"
       }
     ]
   },
   {
     "num": 17,
-    "numCategoria": 7,
-    "equipo": "NOS VALE BURPEE",
-    "box": "BodyRock",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 5,
+    "equipo": "Jonathan Caleb Verdeja Muñoz",
+    "box": "Fit Mode",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Julio César Vega Hernandez",
-        "talla": "M",
+        "nombre": "Jonathan Caleb Verdeja Muñoz",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "jcvegah@gmail.com",
-        "telefono": "5521497544"
-      },
-      {
-        "nombre": "Teresa Méndez",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "teresamendezsierra@hotmail.com",
-        "telefono": "5510615425"
-      },
-      {
-        "nombre": "Cesar Ricardo Morales Vega",
-        "talla": "S",
-        "genero": "Hombre",
-        "email": "rocky_cmv@yahoo.com.mx",
+        "email": "Jon27verdeja@gmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 18,
-    "numCategoria": 8,
-    "equipo": "Trío Dinamita",
-    "box": "",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 6,
+    "equipo": "Alan Sebastian Hernández Torres",
+    "box": "CrossTraining Exiliados",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Emanuel Luna Cabrera",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "emanuellunac@gmail.com",
-        "telefono": "5584032039"
-      },
-      {
-        "nombre": "Leda Ocampo Gomez",
+        "nombre": "Alan Sebastian Hernández Torres",
         "talla": "M",
-        "genero": "Mujer",
-        "email": "moraldre666@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Leo Santoyo",
-        "talla": "L",
         "genero": "Hombre",
-        "email": "leonardosantoyo04@gmail.com",
-        "telefono": "5635552829"
+        "email": "hdz32k@gmail.com",
+        "telefono": ""
       }
     ]
   },
   {
     "num": 19,
-    "numCategoria": 9,
-    "equipo": "Zenith Force",
-    "box": "X7raining",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 7,
+    "equipo": "David Guerrero",
+    "box": "Black Pearl Crosstraining",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Abel Castillo Olguín",
+        "nombre": "David Guerrero",
         "talla": "M",
         "genero": "Hombre",
-        "email": "abelco1013@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Jerónimo Domínguez Báez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "baezjeronimo08@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Matilde Gil Gómez",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "gil762137@gmail.com",
-        "telefono": "2431311495"
+        "email": "david12crimi95@outlook.com",
+        "telefono": "5611306475"
       }
     ]
   },
   {
     "num": 20,
-    "numCategoria": 10,
-    "equipo": "Burpees and Beer",
-    "box": "MasWill",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 8,
+    "equipo": "Jonathan Zetina Ramirez",
+    "box": "Fit Factory",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Cele Garnica",
-        "talla": "L",
+        "nombre": "Jonathan Zetina Ramirez",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "lg.garnica@hotmail.com",
-        "telefono": "7721315882"
-      },
-      {
-        "nombre": "Karina Vázquez Coronel",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "karinavazquezcoronel@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Jhobany Campos Hernandez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "eldanellyreyes0@gmail.com",
-        "telefono": ""
+        "email": "wzetina83@gmail.com",
+        "telefono": "5611657707"
       }
     ]
   },
   {
     "num": 21,
-    "numCategoria": 11,
-    "equipo": "GVE",
-    "box": "X7RAINING",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 9,
+    "equipo": "Agustin David Sanchez Hernandez",
+    "box": "Fit Factory",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Eugenio Carbajal",
-        "talla": "M",
+        "nombre": "Agustin David Sanchez Hernandez",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "carbajaleugenio5@gmail.com",
-        "telefono": "2431060186"
-      },
-      {
-        "nombre": "Vania Flores Morgan",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "vaniamorgan64@gmail.com",
-        "telefono": "2431068807"
-      },
-      {
-        "nombre": "José Carlos Guillén Coello",
-        "talla": "S",
-        "genero": "Hombre",
-        "email": "gcjcarloos@gmail.com",
-        "telefono": ""
+        "email": "davsan280885@outlook.com",
+        "telefono": "5560667233"
       }
     ]
   },
   {
     "num": 22,
-    "numCategoria": 12,
-    "equipo": "Los Titanes del Twins",
-    "box": "Cross Twins",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 10,
+    "equipo": "Ricardo Fernando Carranza Ortiz",
+    "box": "Spartan México Nr",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Rebeca Plácido Alvarez",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "junprisecc@gmail.com",
-        "telefono": "5562318980"
-      },
-      {
-        "nombre": "David Crespo Jiménez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "davidcressjimenez@hotmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "José Eduardo Durán Palacios",
+        "nombre": "Ricardo Fernando Carranza Ortiz",
         "talla": "L",
         "genero": "Hombre",
-        "email": "j.laaloduraan@gmail.com",
-        "telefono": "5513049614"
+        "email": "fernandocarranzaortiz4@gmail.com",
+        "telefono": "5633010687"
       }
     ]
   },
   {
     "num": 23,
-    "numCategoria": 13,
-    "equipo": "Proyecto Norte",
-    "box": "Tigres crossfit",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 11,
+    "equipo": "Alber Diaz Robledo",
+    "box": "Crossfit CLF",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Roberto Cruz ramirez",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "roberto1727a@gmail.com",
-        "telefono": "7832070223"
-      },
-      {
-        "nombre": "Hanna Jamileth Pablo Cruz",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "hannahpablocruz@gmail.com",
-        "telefono": "7461521775"
-      },
-      {
-        "nombre": "Oscar Uriel Santiago García",
+        "nombre": "Alber Diaz Robledo",
         "talla": "L",
         "genero": "Hombre",
-        "email": "oscar_santiago0110@hotmail.com",
-        "telefono": "7841016167"
+        "email": "alberd.robledo@gmail.com",
+        "telefono": "5580484214"
       }
     ]
   },
   {
     "num": 24,
-    "numCategoria": 14,
-    "equipo": "Alpha Jr",
-    "box": "",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 12,
+    "equipo": "Edgar Resendiz",
+    "box": "Black pear",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "María Guadalupe Cruz Hernández",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "Miguel.angel.resebdiz.marquez@gmail.com",
-        "telefono": "7727368022"
-      },
-      {
-        "nombre": "Brando Meza Contreras",
-        "talla": "L",
+        "nombre": "Edgar Resendiz",
+        "talla": "S",
         "genero": "Hombre",
-        "email": "apacruz000@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Shane Sebastián Ramirez Rivera",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "apacruz000@gmail.com",
-        "telefono": ""
+        "email": "edgarresendiz@hotmail.com",
+        "telefono": "5544479710"
       }
     ]
   },
   {
     "num": 25,
-    "numCategoria": 15,
-    "equipo": "\"Es lo que hay\"",
-    "box": "Army's Garage",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 13,
+    "equipo": "Manuel Falcon",
+    "box": "Rott's",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Ixcatzin Hernandez Mendoza",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "ixcahernan@gmail.com",
-        "telefono": "5277213267"
-      },
-      {
-        "nombre": "Fernando Pérez Lopez",
-        "talla": "XL",
+        "nombre": "Manuel Falcon",
+        "talla": "M",
         "genero": "Hombre",
-        "email": "ferxxo026@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Norberto Carranza Zúñiga",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "bettozzu@gmail.com",
-        "telefono": ""
+        "email": "manuel.falcon193@gmail.com",
+        "telefono": "5539641762"
       }
     ]
   },
   {
     "num": 26,
-    "numCategoria": 16,
-    "equipo": "40 & 20’s",
-    "box": "Lycan Cross",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 14,
+    "equipo": "Alejandro De La Cruz",
+    "box": "Rebelion Cross Training",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Karen Dominguez Balderas",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "karen25b@icloud.com",
-        "telefono": "7751185388"
-      },
-      {
-        "nombre": "Héctor Marlon Olvera Martínez",
+        "nombre": "Alejandro De La Cruz",
         "talla": "L",
         "genero": "Hombre",
-        "email": "olveramartinezmarlonhector@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Julio César Yáñez Muñiz",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "Juliocyam@hotmail.com",
-        "telefono": ""
+        "email": "delacruzhector244@gmail.com",
+        "telefono": "5613322688"
       }
     ]
   },
   {
     "num": 27,
-    "numCategoria": 17,
-    "equipo": "Burpees & chill",
-    "box": "Army’s garage",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 15,
+    "equipo": "Francisco Kevin Garduño Ramirez",
+    "box": "Grizzly CrossTraining",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Rocio Lorein Roldan Balderrama",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "loreinrb02@gmail.com",
-        "telefono": "7721395693"
-      },
-      {
-        "nombre": "Juan Villeda",
-        "talla": "XL",
+        "nombre": "Francisco Kevin Garduño Ramirez",
+        "talla": "S",
         "genero": "Hombre",
-        "email": "alejandrovilleda775@gmail.com",
-        "telefono": "7731432466"
-      },
-      {
-        "nombre": "Juan Carlos Dionisio Lopez",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "dioniciojuancarlos51@gmail.com",
-        "telefono": ""
+        "email": "kevin.u2elevation@gmail.com",
+        "telefono": "5519218599"
       }
     ]
   },
   {
     "num": 28,
-    "numCategoria": 18,
-    "equipo": "Los Guerreros Del Armys",
-    "box": "Army’s garage",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 16,
+    "equipo": "Alejandro Hernández Núñez",
+    "box": "CLF crossfit",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Cristian Hernández",
-        "talla": "XL",
+        "nombre": "Alejandro Hernández Núñez",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "ch423939@gmail.com",
-        "telefono": "7722733564"
-      },
-      {
-        "nombre": "Luis angel Villeda potrero",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "Villedala5@gmail.com",
-        "telefono": "2226808664"
-      },
-      {
-        "nombre": "Abigail Bautista",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "abbybautista02e@gmail.com",
-        "telefono": "7721451382"
+        "email": "alejandrohernandezn2705@gmail.com",
+        "telefono": "5547676021"
       }
     ]
   },
   {
     "num": 29,
-    "numCategoria": 19,
-    "equipo": "Los SparYamis",
-    "box": "",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 17,
+    "equipo": "Cesar Omar Martinez Nolasco",
+    "box": "Rebelion Cross Training",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Federico Islas Olivares",
+        "nombre": "Cesar Omar Martinez Nolasco",
         "talla": "L",
         "genero": "Hombre",
-        "email": "fedeislasolivares@gmail.com",
-        "telefono": "7717952414"
-      },
-      {
-        "nombre": "Yamaira García Villegas",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "mairagarcia741@gmail.com",
-        "telefono": "6847640"
-      },
-      {
-        "nombre": "Gabriel Hernandez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "gahe0014@gmail.com",
-        "telefono": "7716999039"
+        "email": "omarmar1204@gmail.com",
+        "telefono": ""
       }
     ]
   },
   {
     "num": 30,
-    "numCategoria": 20,
-    "equipo": "Triple Threat",
-    "box": "Hánuman",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 18,
+    "equipo": "Edgar Lopez olvera",
+    "box": "Holkan",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Lilian González Núñez",
-        "talla": "L",
-        "genero": "Mujer",
-        "email": "lgn_253@hotmail.com",
-        "telefono": "7711261527"
-      },
-      {
-        "nombre": "Luciano Galindo",
-        "talla": "L",
+        "nombre": "Edgar Lopez olvera",
+        "talla": "M",
         "genero": "Hombre",
-        "email": "Lucianojuan19@gmail.com",
-        "telefono": "7715025293"
-      },
-      {
-        "nombre": "Juan Manuel Ramírez Meneses",
-        "talla": "S",
-        "genero": "Hombre",
-        "email": "jumarm177@gmail.com",
-        "telefono": "7712274206"
+        "email": "lopezrt1@gmail.com",
+        "telefono": "5519421797"
       }
     ]
   },
   {
     "num": 31,
-    "numCategoria": 21,
-    "equipo": "Los 3 cochinitos de HANU",
-    "box": "Hanuman",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 19,
+    "equipo": "Raul Flores",
+    "box": "CrossTraining Exiliados",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Cesar Casillas Santillan",
+        "nombre": "Raul Flores",
         "talla": "M",
         "genero": "Hombre",
-        "email": "cesarcasillas10@hotmail.com",
-        "telefono": "7712026637"
-      },
-      {
-        "nombre": "Stephanie Samanta Santillán Olvera",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "samyfloyd2009@gmail.com",
+        "email": "raulflc8605@gmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Jaime Reyes Camargo",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "jaimereycam@gmail.com",
-        "telefono": "7711503943"
       }
     ]
   },
   {
     "num": 32,
-    "numCategoria": 22,
-    "equipo": "THE BULLIES",
-    "box": "Black Bull Fitness Pachuca",
-    "categoria": "PRINCIPIANTES HHM",
+    "numCategoria": 20,
+    "equipo": "Erick Perez",
+    "box": "Black Pearl",
+    "categoria": "PRINCIPIANTES VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Pablo Alderete",
-        "talla": "L",
+        "nombre": "Erick Perez",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "pauluspersonal@gmail.com",
-        "telefono": "7717618891"
-      },
-      {
-        "nombre": "alejandro Fernandez Cruz",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "Alexfc087@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Estefania Gutierrez Castillo",
-        "talla": "XS",
-        "genero": "Mujer",
-        "email": "fgtz0048@gmail.com",
-        "telefono": ""
+        "email": "ejpbeatz@gmail.com",
+        "telefono": "5532760849"
       }
     ]
   },
   {
     "num": 33,
-    "numCategoria": 23,
-    "equipo": "Los inoxidables",
-    "box": "Army's Garage",
-    "categoria": "PRINCIPIANTES HHM",
-    "status": "Pendiente",
+    "numCategoria": 1,
+    "equipo": "Pedro Portuguéz Portuguéz",
+    "box": "Malibu CrossTrainning",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
+    "status": "Activo",
     "atletas": [
       {
-        "nombre": "Christopher Herrera",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "mi_factura@outlook.com",
-        "telefono": "7721199839"
-      },
-      {
-        "nombre": "Caty Angeles",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "ac2805@gmail.com",
-        "telefono": "7711922630"
-      },
-      {
-        "nombre": "José Antonio Celis",
+        "nombre": "Pedro Portuguéz Portuguéz",
         "talla": "M",
         "genero": "Hombre",
-        "email": "Pepirrino1985@gmail.com",
-        "telefono": ""
+        "email": "pol.milportuguez@gmail.com",
+        "telefono": "5560367529"
       }
     ]
   },
   {
     "num": 34,
-    "numCategoria": 24,
-    "equipo": "Las Armas del Huarache",
-    "box": "Armys Garage",
-    "categoria": "PRINCIPIANTES HHM",
-    "status": "Pendiente",
+    "numCategoria": 2,
+    "equipo": "Armando Gutierrez Contreras",
+    "box": "Panthers",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
+    "status": "Activo",
     "atletas": [
       {
-        "nombre": "Beto Calva Rendon",
-        "talla": "XL",
+        "nombre": "Armando Gutierrez Contreras",
+        "talla": "M",
         "genero": "Hombre",
-        "email": "calvarendonbeto@gmail.com",
-        "telefono": "7721041369"
-      },
-      {
-        "nombre": "Héctor Hugo Sánchez Mejia",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "hhugosanme89@gmail.com",
-        "telefono": "7721229802"
-      },
-      {
-        "nombre": "Kenia Galilea Martinez Sanchez",
-        "talla": "XS",
-        "genero": "Mujer",
-        "email": "martinezken9090@gmail.com",
-        "telefono": "7721433105"
+        "email": "armandogut@gmail.com",
+        "telefono": "7224254527"
       }
     ]
   },
   {
     "num": 35,
-    "numCategoria": 1,
-    "equipo": "Los Prestados",
-    "box": "Inside",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 3,
+    "equipo": "Romel Landeros",
+    "box": "CrossTraining Exiliados",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Alan Sanchez Peña",
-        "talla": "L",
+        "nombre": "Romel Landeros",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "alan21jaz@gmail.com",
-        "telefono": "7717419702"
-      },
-      {
-        "nombre": "Erick Espinosa",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "nucita_shot_10@hotmail.com",
+        "email": "ro_mm_tten@hotmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Karla García",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "karla.garcia.colin@gmail.com",
-        "telefono": "5585698330"
       }
     ]
   },
   {
     "num": 36,
-    "numCategoria": 2,
-    "equipo": "ATLAS CROSSFIT",
-    "box": "ATLAS CROSSFIT",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 4,
+    "equipo": "Emanuel Delgado",
+    "box": "Rebelion Cross Training",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Pedro Rello",
+        "nombre": "Emanuel Delgado",
         "talla": "XL",
         "genero": "Hombre",
-        "email": "relloportillo78@gmail.com",
-        "telefono": "7721404140"
-      },
-      {
-        "nombre": "Alba Badillo",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "albabadillo1411@gmail.com",
+        "email": "emanuel.delgado.echavarria@gmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Ángel Zaid Cruz Olivares",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "tumbaviejas01@gmail.com",
-        "telefono": "7716849719"
       }
     ]
   },
   {
     "num": 37,
-    "numCategoria": 3,
-    "equipo": "Alphas",
-    "box": "Alpha Center",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 5,
+    "equipo": "José Rodrigo Becerril Robledo",
+    "box": "",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Jacob Trejo",
-        "talla": "M",
+        "nombre": "José Rodrigo Becerril Robledo",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "eduar.meduar@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Ruben Jesus Meza Lugo",
-        "talla": "XS",
-        "genero": "Hombre",
-        "email": "meza6261@gmail.com",
-        "telefono": "7721219064"
-      },
-      {
-        "nombre": "Naomi Rubi Zuñiga Meza",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "zu499815@uaeh.edu.mx",
+        "email": "dodibec@gmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 38,
-    "numCategoria": 4,
-    "equipo": "Los Juliantla",
-    "box": "CrossTraining Exiliados",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 6,
+    "equipo": "Gerardo Salazar ramirez",
+    "box": "Rott's",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Jacqueline Ruiz",
+        "nombre": "Gerardo Salazar ramirez",
         "talla": "M",
-        "genero": "Mujer",
-        "email": "jbetsaberh@outlook.com",
-        "telefono": "5528436718"
-      },
-      {
-        "nombre": "Jesús Sinaí Villegas Luna",
-        "talla": "L",
         "genero": "Hombre",
-        "email": "jsinai_060@hotmail.com",
-        "telefono": "5530579673"
-      },
-      {
-        "nombre": "Julio César Gasga Alavez",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "cresa.ala@gmail.com",
+        "email": "gesara710108@gmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 39,
-    "numCategoria": 5,
-    "equipo": "Amantes de la magnesia",
-    "box": "X7RAINING",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 7,
+    "equipo": "Miguel Angel Olivera Rodriguez",
+    "box": "Rott's",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Miguel Ángel Ruiz",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "maruizmoreno87@gmail.com",
-        "telefono": "2434342911"
-      },
-      {
-        "nombre": "Sandy Anahí Aguilar Vega",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "sandyanaagve@hotmail.com",
-        "telefono": "2431043847"
-      },
-      {
-        "nombre": "Fernanda Soto",
+        "nombre": "Miguel Angel Olivera Rodriguez",
         "talla": "L",
-        "genero": "Mujer",
-        "email": "mariafernandasotoreyes97@gmail.com",
+        "genero": "Hombre",
+        "email": "curacuradoente@gmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 40,
-    "numCategoria": 6,
-    "equipo": "Viernes 13 RJX",
-    "box": "X7raining",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 8,
+    "equipo": "Luis Mercado Rodríguez",
+    "box": "",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Rebeca Soto Reyes",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "Rebeladelx7raining@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Jasson Cortes Escamilla",
-        "talla": "M",
+        "nombre": "Luis Mercado Rodríguez",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "tvjasson@gmail.com",
+        "email": "lujo1576@gmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Ximena Meneses",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "xmeneses752@gmail.com",
-        "telefono": "2431001432"
       }
     ]
   },
   {
     "num": 41,
-    "numCategoria": 7,
-    "equipo": "Bella y las Bestias",
-    "box": "X7raining",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 9,
+    "equipo": "Odin alejandro Ramirez",
+    "box": "CrossTraining Exiliados",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Yamil Castillo Olguín",
-        "talla": "L",
+        "nombre": "Odin alejandro Ramirez",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "yamil1027p@gmail.com",
-        "telefono": "2213081708"
-      },
-      {
-        "nombre": "Bianca Ines Antolin Vargas",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "biancaantolin1903@icloud.com",
+        "email": "perrito.rockero.666@gmail.com",
         "telefono": ""
-      },
-      {
-        "nombre": "Dalia Valero Reyes",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "dalia_valero@hotmail.com",
-        "telefono": "2431003335"
       }
     ]
   },
   {
     "num": 42,
-    "numCategoria": 8,
-    "equipo": "Triple Threat",
-    "box": "Xibalba Training Club",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 10,
+    "equipo": "Erik marco Nogueron",
+    "box": "Malibu",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Christian Enríquez Arceño",
+        "nombre": "Erik marco Nogueron",
         "talla": "M",
         "genero": "Hombre",
-        "email": "enar.christian@gmail.com",
-        "telefono": "5547890616"
-      },
-      {
-        "nombre": "Pamela Perea oliva",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "Pereapame14@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Cuauhtemoc García Huerta",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "proyectomotos1.0@gmail.com",
+        "email": "nogue27_ama@hotmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 43,
-    "numCategoria": 9,
-    "equipo": "NAPOLITANOS",
-    "box": "Maswill Zona Fitness",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 11,
+    "equipo": "Oscar Camacho Guerrero",
+    "box": "Mosqueda",
+    "categoria": "MáSTER PRINCIPIANTE +42 VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Victor Andres Hernandez Jimenez",
+        "nombre": "Oscar Camacho Guerrero",
         "talla": "M",
         "genero": "Hombre",
-        "email": "blancaselenes@hotmail.com",
-        "telefono": "7721397295"
-      },
-      {
-        "nombre": "Rotsen Blancas Santander",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "rotsenblancassantander@gmail.com",
-        "telefono": "7712953987"
-      },
-      {
-        "nombre": "Martin Cristian Cosio Angeles",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "martinccossioangeles@gmail.com",
-        "telefono": "7721423656"
+        "email": "Guecaos75@gmail.com",
+        "telefono": "5520856382"
       }
     ]
   },
   {
     "num": 44,
-    "numCategoria": 10,
-    "equipo": "Kettlebelindos",
-    "box": "LycanCross",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 1,
+    "equipo": "Ismael Méndez Bárcenas",
+    "box": "Exiliados Crosstraining",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Carlos Pureco",
+        "nombre": "Ismael Méndez Bárcenas",
         "talla": "M",
         "genero": "Hombre",
-        "email": "carlos.pureco@yahoo.com.mx",
-        "telefono": "5520963725"
-      },
-      {
-        "nombre": "Gabriela Zarate",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "lic.zaratee.gabriela@gmail.com",
-        "telefono": "5537064548"
-      },
-      {
-        "nombre": "Aldo Hashim Jimenez Roldan",
-        "talla": "S",
-        "genero": "Hombre",
-        "email": "hashimcross2007@gmail.com",
-        "telefono": ""
+        "email": "ismael94ipn@gmail.com",
+        "telefono": "5520890531"
       }
     ]
   },
   {
     "num": 45,
-    "numCategoria": 11,
-    "equipo": "LoscasiRX",
-    "box": "Alpha Center",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 2,
+    "equipo": "Jose Soto",
+    "box": "",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Salvador Hernandez Lumbreras",
+        "nombre": "Jose Soto",
         "talla": "M",
         "genero": "Hombre",
-        "email": "lumbreras.hernandez.shl@gmail.com",
-        "telefono": "4922254113"
-      },
-      {
-        "nombre": "Noe Yair Trejo Mesa",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "ntrejomeza@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Samanta Contreras Abarc",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "samanta.contreras98@gmail.com",
+        "email": "josepepe261287@gmail.com",
         "telefono": ""
       }
     ]
   },
   {
     "num": 46,
-    "numCategoria": 12,
-    "equipo": "Gallos sin miedo",
-    "box": "",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 3,
+    "equipo": "Emmanuel Gilberto Hernández Rosas",
+    "box": "Spartan México Nr",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Santos Martinez",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "Santos.abraham.mtz@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Aram Ibrahim Martinez Valladares",
+        "nombre": "Emmanuel Gilberto Hernández Rosas",
         "talla": "M",
         "genero": "Hombre",
-        "email": "arammartinezk99@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Carla Ximena Ortiz Castillo",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "carlitaortiz19935@gmail.com",
-        "telefono": ""
+        "email": "emmanuelhr39@gmail.com",
+        "telefono": "5584205945"
       }
     ]
   },
   {
     "num": 47,
-    "numCategoria": 13,
-    "equipo": "The Warriors",
-    "box": "Alpha Center",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 4,
+    "equipo": "Briyan Jiménez",
+    "box": "Fit mode",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Bryan López Acosta",
-        "talla": "M",
+        "nombre": "Briyan Jiménez",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "dekuhero3142@gmail.com",
-        "telefono": "5526959609"
-      },
-      {
-        "nombre": "Ana Paola Resendiz Cruz",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "anapaolaresendizcruz5@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Gilberto Trejo Zúñiga",
-        "talla": "XL",
-        "genero": "Hombre",
-        "email": "karina_trejo200@hotmail.com",
-        "telefono": "7721451115"
+        "email": "bj.figueroa95@outlook.com",
+        "telefono": "5545328210"
       }
     ]
   },
   {
     "num": 48,
-    "numCategoria": 14,
-    "equipo": "INTREPIDOS",
+    "numCategoria": 5,
+    "equipo": "William Lorenzo Genchi",
     "box": "",
-    "categoria": "INTERMEDIOS HHM",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Elizabeth adriana Lopez Diaz",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "Addyson94@gmail.com",
-        "telefono": "7228307828"
-      },
-      {
-        "nombre": "Miguel Ángel Martín del Campo Delgado",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "blackc_7@hotmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "David Romero",
+        "nombre": "William Lorenzo Genchi",
         "talla": "M",
         "genero": "Hombre",
-        "email": "david.romero.uaemex@gmail.com",
-        "telefono": "7223370882"
+        "email": "williamlorenzogenchi@gmail.com",
+        "telefono": "5611255655"
       }
     ]
   },
   {
     "num": 49,
-    "numCategoria": 15,
-    "equipo": "ONE MORE REP!",
-    "box": "",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 6,
+    "equipo": "César Octavio Barragán Hernández",
+    "box": "Big panthers",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Janely Joselyn Arteaga Martínez",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "mjoselyn4@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "JOSE MANUEL AGUILAR",
-        "talla": "M",
+        "nombre": "César Octavio Barragán Hernández",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "josmanaguilar03@gmail.com",
-        "telefono": "7751250716"
-      },
-      {
-        "nombre": "",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "",
-        "telefono": ""
+        "email": "barragan_octavio@icloud.com",
+        "telefono": "4494380018"
       }
     ]
   },
   {
     "num": 50,
-    "numCategoria": 16,
-    "equipo": "Team Amargados",
-    "box": "FÉNIX CROSSFIT",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 7,
+    "equipo": "Mauricio Samuel Chaboya Gómez",
+    "box": "BIG PANTHERS",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Luis Constantino Córdova Solís",
+        "nombre": "Mauricio Samuel Chaboya Gómez",
         "talla": "M",
         "genero": "Hombre",
-        "email": "luis.ctino@gmail.com",
-        "telefono": "7822320940"
-      },
-      {
-        "nombre": "Camila isabela cruz reyes",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "camilacruzreyes14@gmail.com",
-        "telefono": "7821923203"
-      },
-      {
-        "nombre": "Carlos Eduardo Almora Sánchez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "charlyalmora30@gmail.com",
-        "telefono": "7821007072"
+        "email": "mausam1999@hotmail.com",
+        "telefono": "7224451681"
       }
     ]
   },
   {
     "num": 51,
-    "numCategoria": 17,
-    "equipo": "Stormtoorpers",
-    "box": "Black Fit CF",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 8,
+    "equipo": "Adan Vidal",
+    "box": "Malibú CrossTrainning",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Sergio Pablo Sarabia",
+        "nombre": "Adan Vidal",
         "talla": "L",
         "genero": "Hombre",
-        "email": "spablo.sarabiav@hotmail.com",
-        "telefono": "5534884755"
-      },
-      {
-        "nombre": "Marco Antonio Andrade González",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "marcoandrade298@gmail.com",
-        "telefono": "5535566721"
-      },
-      {
-        "nombre": "Wendy Ochoa Ramírez",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "wendydisenografico@gmail.com",
-        "telefono": "5558261139"
+        "email": "adanvidalgarcia@gmail.com",
+        "telefono": "5580032958"
       }
     ]
   },
   {
     "num": 52,
-    "numCategoria": 18,
-    "equipo": "Dos bestias y media",
-    "box": "Black bull",
-    "categoria": "INTERMEDIOS HHM",
+    "numCategoria": 9,
+    "equipo": "Arnol Monroy Gomez",
+    "box": "Rotts",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Beatriz Aparicio Casimiro",
-        "talla": "XL",
-        "genero": "Mujer",
-        "email": "baparicio272@gmail.com",
-        "telefono": "7713382987"
-      },
-      {
-        "nombre": "Mario Villarreal Mares",
-        "talla": "L",
-        "genero": "Hombre",
-        "email": "arq.mvm89@gmail.com",
-        "telefono": "7712668560"
-      },
-      {
-        "nombre": "Joel Ramirez Ortega",
+        "nombre": "Arnol Monroy Gomez",
         "talla": "M",
         "genero": "Hombre",
-        "email": "joelrro@gmail.com",
-        "telefono": ""
+        "email": "amgcamts@gmail.com",
+        "telefono": "5529559413"
       }
     ]
   },
   {
     "num": 53,
-    "numCategoria": 19,
-    "equipo": "#NosFaltaJuan by Unbroken",
-    "box": "Army’s Garage",
-    "categoria": "INTERMEDIOS HHM",
-    "status": "Pendiente",
+    "numCategoria": 10,
+    "equipo": "Alain Gomez",
+    "box": "Wodfitness",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
     "atletas": [
       {
-        "nombre": "Areli Blancas Cruz",
+        "nombre": "Alain Gomez",
         "talla": "L",
-        "genero": "Mujer",
-        "email": "blancas.cruz12@gmail.com",
-        "telefono": "7721067876"
-      },
-      {
-        "nombre": "Oscar Silva Arteaga",
-        "talla": "M",
         "genero": "Hombre",
-        "email": "derosa114@gmail.com",
-        "telefono": "7721017254"
-      },
-      {
-        "nombre": "Jesús Enrique Acosta Fernandez",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "jesus_yugi007@hotmail.com",
-        "telefono": "7721019001"
+        "email": "alaingomez978@gmail.com",
+        "telefono": ""
       }
     ]
   },
   {
     "num": 54,
-    "numCategoria": 20,
-    "equipo": "Artilleria Pesada",
-    "box": "Armys Garage",
-    "categoria": "INTERMEDIOS HHM",
-    "status": "Pendiente",
+    "numCategoria": 11,
+    "equipo": "Eduardo Suarez",
+    "box": "Crosstraining exiliados",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
     "atletas": [
       {
-        "nombre": "Mizar Lael Mendoza Hernández",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "mizarmendoza15@gmail.com",
-        "telefono": "7721141380"
-      },
-      {
-        "nombre": "Ronald de Jesus Bautista Campos",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "ronaldcampost@icloud.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Susana Trejo Herrera",
+        "nombre": "Eduardo Suarez",
         "talla": "L",
-        "genero": "Mujer",
-        "email": "trejosusana334@gmail.com",
-        "telefono": "7717740632"
+        "genero": "Hombre",
+        "email": "eduardouaemlac@gmail.com",
+        "telefono": "5534674812"
       }
     ]
   },
   {
     "num": 55,
-    "numCategoria": 1,
-    "equipo": "2 de maíz x 1 de mole",
-    "box": "X7raining",
-    "categoria": "AVANZADOS HHM",
+    "numCategoria": 12,
+    "equipo": "Román Cuevas Delfín",
+    "box": "Big Panthers",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Oscar Aguilar gallardo",
-        "talla": "M",
+        "nombre": "Román Cuevas Delfín",
+        "talla": "XL",
         "genero": "Hombre",
-        "email": "ossruba7@gmail.com",
-        "telefono": "2431214100"
-      },
-      {
-        "nombre": "Jose Gabriel Cantero Valiente",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "ti.tovilla2010@hotmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "Ana Laura Soto Reyes",
-        "talla": "M",
-        "genero": "Mujer",
-        "email": "analaurasotoreyes34@gmail.com",
-        "telefono": "2431319521"
+        "email": "theacidroom@gmail.com",
+        "telefono": "7221483338"
       }
     ]
   },
   {
     "num": 56,
-    "numCategoria": 2,
-    "equipo": "Holy Buffalo",
-    "box": "Holysseum",
-    "categoria": "AVANZADOS HHM",
+    "numCategoria": 13,
+    "equipo": "Jesús Cruz",
+    "box": "Black pearl CrossTraining",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Alfredo Molina",
+        "nombre": "Jesús Cruz",
         "talla": "M",
         "genero": "Hombre",
-        "email": "alfredom99tr@gmail.com",
-        "telefono": ""
-      },
-      {
-        "nombre": "SERGIO FLORES",
-        "talla": "M",
-        "genero": "Hombre",
-        "email": "sergiochido19@gmail.com",
-        "telefono": "7717941820"
-      },
-      {
-        "nombre": "Xóchitl Yasmin Mendoza Espinoza",
-        "talla": "S",
-        "genero": "Mujer",
-        "email": "mendozayasmin374@gmail.com",
-        "telefono": "7731333552"
+        "email": "jesus.prodherin@gmail.com",
+        "telefono": "5632770271"
       }
     ]
   },
   {
     "num": 57,
-    "numCategoria": 1,
-    "equipo": "Raymundo Sánchez",
-    "box": "Gorilla 115",
-    "categoria": "ELITE VARONIL",
+    "numCategoria": 14,
+    "equipo": "Luis Baiza Hernández",
+    "box": "Hourus",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Raymundo Sánchez",
+        "nombre": "Luis Baiza Hernández",
         "talla": "XL",
         "genero": "Hombre",
-        "email": "raymundo.sanchez.morales1992@gmail.com",
-        "telefono": ""
+        "email": "baizahernandezluis@gmail.com",
+        "telefono": "5574109410"
       }
     ]
   },
   {
     "num": 58,
-    "numCategoria": 2,
-    "equipo": "Edwin Domínguez Martínez",
-    "box": "Ñam team",
-    "categoria": "ELITE VARONIL",
+    "numCategoria": 15,
+    "equipo": "Alejandro Ojeda",
+    "box": "CLF/HOLKAN",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Edwin Domínguez Martínez",
-        "talla": "XL",
+        "nombre": "Alejandro Ojeda",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "edwinel1897@gmail.com",
-        "telefono": ""
+        "email": "ojedaale119@gmail.com",
+        "telefono": "5525087480"
       }
     ]
   },
   {
     "num": 59,
-    "numCategoria": 3,
-    "equipo": "EDUARDO GUADARRAMA",
-    "box": "Iron crossfit",
-    "categoria": "ELITE VARONIL",
+    "numCategoria": 16,
+    "equipo": "Donovan Ramirez López",
+    "box": "Holkan CrossTraining",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "EDUARDO GUADARRAMA",
-        "talla": "M",
+        "nombre": "Donovan Ramirez López",
+        "talla": "L",
         "genero": "Hombre",
-        "email": "guadarramasanchezeduardo3iv2@gmail.com",
-        "telefono": ""
+        "email": "ramidonovan95@gmail.com",
+        "telefono": "5591854283"
       }
     ]
   },
   {
     "num": 60,
-    "numCategoria": 4,
-    "equipo": "Héctor Gregory Sánchez Gutiérrez",
-    "box": "Lycan cross",
-    "categoria": "ELITE VARONIL",
+    "numCategoria": 17,
+    "equipo": "Antonio Del Río Segovia",
+    "box": "Amarok SC",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Héctor Gregory Sánchez Gutiérrez",
+        "nombre": "Antonio Del Río Segovia",
         "talla": "L",
         "genero": "Hombre",
-        "email": "sg.hecgre30@gmail.com",
-        "telefono": ""
+        "email": "tonosegovia69@gmail.com",
+        "telefono": "5510772230"
       }
     ]
   },
   {
     "num": 61,
-    "numCategoria": 5,
-    "equipo": "Aswel Eduardo Morales Rodríguez",
-    "box": "X7RAINING",
-    "categoria": "ELITE VARONIL",
+    "numCategoria": 18,
+    "equipo": "Gustavo Rodríguez Morales",
+    "box": "Holkan CrossTraining",
+    "categoria": "INTERMEDIOS VARONIL",
     "status": "Activo",
     "atletas": [
       {
-        "nombre": "Aswel Eduardo Morales Rodríguez",
+        "nombre": "Gustavo Rodríguez Morales",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "gustavo.rodriguez.morales@gmail.com",
+        "telefono": "5548336058"
+      }
+    ]
+  },
+  {
+    "num": 62,
+    "numCategoria": 19,
+    "equipo": "Fernando Moreno",
+    "box": "The Bronx",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Fernando Moreno",
         "talla": "M",
         "genero": "Hombre",
-        "email": "masweleduardo@gmail.com",
+        "email": "fermorenogom@gmail.com",
+        "telefono": "5581009802"
+      }
+    ]
+  },
+  {
+    "num": 63,
+    "numCategoria": 20,
+    "equipo": "Yair Yonatan Calzada Cabral",
+    "box": "Exiliados",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Yair Yonatan Calzada Cabral",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "ycabralwedding@gmail.com",
+        "telefono": "5586655493"
+      }
+    ]
+  },
+  {
+    "num": 64,
+    "numCategoria": 21,
+    "equipo": "Jamil Rueda",
+    "box": "Elite Community",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Jamil Rueda",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "jamrueda23@gmail.com",
         "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 65,
+    "numCategoria": 22,
+    "equipo": "Miguel Mendoza",
+    "box": "Iron",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Miguel Mendoza",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "mangell_119@hotmail.com",
+        "telefono": "5518679750"
+      }
+    ]
+  },
+  {
+    "num": 66,
+    "numCategoria": 23,
+    "equipo": "Gerardo Arreola Montes de Oca",
+    "box": "",
+    "categoria": "INTERMEDIOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Gerardo Arreola Montes de Oca",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "gerardomitchellderecho@outlook.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 67,
+    "numCategoria": 1,
+    "equipo": "Jesus Sinaí Villegas Luna",
+    "box": "Exiliados",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Jesus Sinaí Villegas Luna",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "jsinai_060@hotmail.com",
+        "telefono": "5530579673"
+      }
+    ]
+  },
+  {
+    "num": 68,
+    "numCategoria": 2,
+    "equipo": "Delta Flores",
+    "box": "Ek Balam Pro",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Delta Flores",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "davidfroning3@gmail.com",
+        "telefono": "5630324548"
+      }
+    ]
+  },
+  {
+    "num": 69,
+    "numCategoria": 3,
+    "equipo": "Carlos Antonio Caudillo Martinez",
+    "box": "Dragons cave",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Carlos Antonio Caudillo Martinez",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "carlosacm1988@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 70,
+    "numCategoria": 4,
+    "equipo": "Manuel Monroy",
+    "box": "La Clica Training",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Manuel Monroy",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "manuel.h.m.9702@gmail.com",
+        "telefono": "7221160370"
+      }
+    ]
+  },
+  {
+    "num": 71,
+    "numCategoria": 5,
+    "equipo": "David Martinez Brionez",
+    "box": "",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "David Martinez Brionez",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "brionesxforce@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 72,
+    "numCategoria": 6,
+    "equipo": "Omar Perez Murillo",
+    "box": "",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Omar Perez Murillo",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "omarperezmurillo@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 73,
+    "numCategoria": 7,
+    "equipo": "Angel Navarrete",
+    "box": "California Cross Training",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Angel Navarrete",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "navarrete1026@hotmail.com",
+        "telefono": "5519196271"
+      }
+    ]
+  },
+  {
+    "num": 74,
+    "numCategoria": 8,
+    "equipo": "Emiliano Medina Rivera",
+    "box": "Crosstraining Exiliados",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Emiliano Medina Rivera",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "emilianomedinarivera42@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 75,
+    "numCategoria": 9,
+    "equipo": "Osvaldo",
+    "box": "FITFACTORY_FITNESS & LOSCHIKIS TEAM",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Osvaldo",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "omarrom.lego@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 76,
+    "numCategoria": 10,
+    "equipo": "Gil Mendez",
+    "box": "Elite community",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Gil Mendez",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "elite.programacion26@gmail.com",
+        "telefono": "5542293329"
+      }
+    ]
+  },
+  {
+    "num": 77,
+    "numCategoria": 11,
+    "equipo": "Norman Tiller Cervantes",
+    "box": "Alter Ego",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Norman Tiller Cervantes",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "Tillerjj23@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 78,
+    "numCategoria": 12,
+    "equipo": "Miguel Ángel Arista Rueda",
+    "box": "Oddisea Nutricional",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Miguel Ángel Arista Rueda",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "miguel.1212939@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 79,
+    "numCategoria": 13,
+    "equipo": "Iván Cabrera Torres",
+    "box": "California Cross",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Iván Cabrera Torres",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "ivan.cato2393@gmail.com",
+        "telefono": "5525635287"
+      }
+    ]
+  },
+  {
+    "num": 80,
+    "numCategoria": 14,
+    "equipo": "Saúl Pescador",
+    "box": "Mercenarios",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Saúl Pescador",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "Au_3141@gmail.com",
+        "telefono": "5554793954"
+      }
+    ]
+  },
+  {
+    "num": 81,
+    "numCategoria": 15,
+    "equipo": "Daniel Vargas",
+    "box": "Bronx",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Daniel Vargas",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "daniel.vargas.velarde@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 82,
+    "numCategoria": 16,
+    "equipo": "Abraham Castañeda martinez",
+    "box": "CrossTraining Exiliados",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Abraham Castañeda martinez",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "castañeda_vulcanisadora08@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 83,
+    "numCategoria": 17,
+    "equipo": "Ricardo Castro Luna",
+    "box": "Odin Soldiers",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Ricardo Castro Luna",
+        "talla": "M",
+        "genero": "Hombre",
+        "email": "ricardocastroluna80@gmail.com",
+        "telefono": "5518327071"
+      }
+    ]
+  },
+  {
+    "num": 84,
+    "numCategoria": 18,
+    "equipo": "Pepe Cervantes",
+    "box": "Bronx",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Pepe Cervantes",
+        "talla": "XL",
+        "genero": "Hombre",
+        "email": "josecervaits@gmail.con",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 85,
+    "numCategoria": 19,
+    "equipo": "Francisco Herrera",
+    "box": "MERCENARIOS",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Francisco Herrera",
+        "talla": "L",
+        "genero": "Hombre",
+        "email": "iam.fcoxhm@gmail.com",
+        "telefono": "4341555945"
+      }
+    ]
+  },
+  {
+    "num": 86,
+    "numCategoria": 20,
+    "equipo": "Roman Andre Del Aguila Guzman",
+    "box": "Luther",
+    "categoria": "AVANZADOS VARONIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Roman Andre Del Aguila Guzman",
+        "talla": "S",
+        "genero": "Hombre",
+        "email": "romandelaguila67@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 87,
+    "numCategoria": 1,
+    "equipo": "Fabiola De Jesús Patricio",
+    "box": "CrossTraining Exiliados",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Fabiola De Jesús Patricio",
+        "talla": "XL",
+        "genero": "Mujer",
+        "email": "dejesuspatricio08faby@gmail.com",
+        "telefono": "5575259127"
+      }
+    ]
+  },
+  {
+    "num": 88,
+    "numCategoria": 2,
+    "equipo": "Fernanda Del Águila Guzmán",
+    "box": "Horus",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Fernanda Del Águila Guzmán",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "f3rsita.guzmann@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 89,
+    "numCategoria": 3,
+    "equipo": "Xochitl Munguia Cruz",
+    "box": "",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Xochitl Munguia Cruz",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "xochirtcruzsoto@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 90,
+    "numCategoria": 4,
+    "equipo": "Aislinn Ceron",
+    "box": "",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Aislinn Ceron",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "aislinn.96@hotmail.com",
+        "telefono": "5579213340"
+      }
+    ]
+  },
+  {
+    "num": 91,
+    "numCategoria": 5,
+    "equipo": "Mariana Acosta Camacho",
+    "box": "Toreo",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Mariana Acosta Camacho",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "hitomikansaki.mx@gmail.com",
+        "telefono": "5554763881"
+      }
+    ]
+  },
+  {
+    "num": 92,
+    "numCategoria": 6,
+    "equipo": "Sarahi Galán Lopez",
+    "box": "Rebelión Cross Training",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sarahi Galán Lopez",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "galansarahi0@gmail.com",
+        "telefono": "5548525899"
+      }
+    ]
+  },
+  {
+    "num": 93,
+    "numCategoria": 7,
+    "equipo": "Tania Dalay Badillo García",
+    "box": "Malibu Crosstraining",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Tania Dalay Badillo García",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "badillotania644@gmail.com",
+        "telefono": "5541138228"
+      }
+    ]
+  },
+  {
+    "num": 94,
+    "numCategoria": 8,
+    "equipo": "Vane Olvera Luna",
+    "box": "",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Vane Olvera Luna",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "vane.luna.olvera12@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 95,
+    "numCategoria": 9,
+    "equipo": "Vanessa Melchor Espinosa",
+    "box": "Horus CrossFit",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Vanessa Melchor Espinosa",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "vanss890_uam@hotmail.com",
+        "telefono": "5512801203"
+      }
+    ]
+  },
+  {
+    "num": 96,
+    "numCategoria": 10,
+    "equipo": "Melany Soto",
+    "box": "CrossTraining Exiliados",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Melany Soto",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "sotomelany700@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 97,
+    "numCategoria": 11,
+    "equipo": "BERENICE HILARIO",
+    "box": "",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "BERENICE HILARIO",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "lc.berenice.hilario@gmail.com",
+        "telefono": "5554726910"
+      }
+    ]
+  },
+  {
+    "num": 98,
+    "numCategoria": 12,
+    "equipo": "Tania Sunikey González",
+    "box": "Spartan México NR",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Tania Sunikey González",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "sunikey461@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 99,
+    "numCategoria": 13,
+    "equipo": "Sandra Saavedra Alvarado",
+    "box": "Dragon’s Cave",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sandra Saavedra Alvarado",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "lic.sandra.saavedra@gmail.com",
+        "telefono": "5531477237"
+      }
+    ]
+  },
+  {
+    "num": 100,
+    "numCategoria": 14,
+    "equipo": "Karen Ramirez lopez",
+    "box": "Orion",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Karen Ramirez lopez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "karenramirez8854@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 101,
+    "numCategoria": 15,
+    "equipo": "Ingrid valeria Garcia frías",
+    "box": "Orion CrossTraining",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Ingrid valeria Garcia frías",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "ingridvaleria216@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 102,
+    "numCategoria": 16,
+    "equipo": "Paulina Saldaña",
+    "box": "Malibu Cross Training",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Paulina Saldaña",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "yeah_nash@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 103,
+    "numCategoria": 17,
+    "equipo": "Sofía Merlo",
+    "box": "Orion Crosstraining",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sofía Merlo",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "ranya.merlo@gmail.com",
+        "telefono": "5587754954"
+      }
+    ]
+  },
+  {
+    "num": 104,
+    "numCategoria": 18,
+    "equipo": "Itzayana Berenice Barrón Gutiérrez",
+    "box": "Rocko fitness center",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Itzayana Berenice Barrón Gutiérrez",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "erikagr0509@gmail.com",
+        "telefono": "5610733608"
+      }
+    ]
+  },
+  {
+    "num": 105,
+    "numCategoria": 19,
+    "equipo": "Daniela Corolina Anaya Navarrete",
+    "box": "California",
+    "categoria": "NOVATOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Daniela Corolina Anaya Navarrete",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "carolinaanayanavarrete@gmail.com",
+        "telefono": "5512686935"
+      }
+    ]
+  },
+  {
+    "num": 106,
+    "numCategoria": 1,
+    "equipo": "Fernanda Chacon",
+    "box": "Mercenarios",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Fernanda Chacon",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "maferchavizueth@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 107,
+    "numCategoria": 2,
+    "equipo": "Claudia Rodriguez Mata",
+    "box": "The North",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Claudia Rodriguez Mata",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "claudemate@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 108,
+    "numCategoria": 3,
+    "equipo": "Karla Susana Sanchez Diaz",
+    "box": "CLF Crossfit",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Karla Susana Sanchez Diaz",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "susanasan1393@gmail.con",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 109,
+    "numCategoria": 4,
+    "equipo": "Andrea Marisol Carranza Landeros",
+    "box": "California",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Andrea Marisol Carranza Landeros",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "carrlanders@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 110,
+    "numCategoria": 5,
+    "equipo": "Daniela Guadalupe Nicanor Diaz",
+    "box": "Amarok",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Daniela Guadalupe Nicanor Diaz",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "honeyganjah@gmail.com",
+        "telefono": "5512618381"
+      }
+    ]
+  },
+  {
+    "num": 111,
+    "numCategoria": 6,
+    "equipo": "Estefania Torres Inclan",
+    "box": "Viktory CrossTraining",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Estefania Torres Inclan",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "fanny.torinc98@gmail.com",
+        "telefono": "5580956707"
+      }
+    ]
+  },
+  {
+    "num": 112,
+    "numCategoria": 7,
+    "equipo": "Lilian marlene Castañeda martinez",
+    "box": "Grizzly",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Lilian marlene Castañeda martinez",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "lilimar_lmc@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 113,
+    "numCategoria": 8,
+    "equipo": "Yessica Venegas Miranda",
+    "box": "Fit Mode",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Yessica Venegas Miranda",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "yexxxxxxxi@gmail.com",
+        "telefono": "7297567887"
+      }
+    ]
+  },
+  {
+    "num": 114,
+    "numCategoria": 9,
+    "equipo": "Susana Diaz Cervantes",
+    "box": "fitmode",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Susana Diaz Cervantes",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "susidiazcervantes90@gmail.com",
+        "telefono": "5518105035"
+      }
+    ]
+  },
+  {
+    "num": 115,
+    "numCategoria": 10,
+    "equipo": "Gabriela Astudillo",
+    "box": "elite community",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Gabriela Astudillo",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "Gabriela.astudillo.nateras@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 116,
+    "numCategoria": 11,
+    "equipo": "Andrea Ramirez",
+    "box": "",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Andrea Ramirez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "andrea_ramirez235@hotmail.com",
+        "telefono": "5528986825"
+      }
+    ]
+  },
+  {
+    "num": 117,
+    "numCategoria": 12,
+    "equipo": "Tania Bautista",
+    "box": "Crosstraining Exiliados",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Tania Bautista",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "taniarenee03@outlook.com",
+        "telefono": "5575204088"
+      }
+    ]
+  },
+  {
+    "num": 118,
+    "numCategoria": 13,
+    "equipo": "Araceli Hernández",
+    "box": "Crosstraining Exiliados",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Araceli Hernández",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "aracelihdz1983@outlook.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 119,
+    "numCategoria": 14,
+    "equipo": "Lourdes Rodriguez ibarra",
+    "box": "Spartan",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Lourdes Rodriguez ibarra",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "marialourdes.ibarra4547@gmail.com",
+        "telefono": "5577282055"
+      }
+    ]
+  },
+  {
+    "num": 120,
+    "numCategoria": 15,
+    "equipo": "Sandra Alicia Aguilar Castro",
+    "box": "FIT MODE",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sandra Alicia Aguilar Castro",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "sandraaliciaaguilar596@gmail.com",
+        "telefono": "5545459398"
+      }
+    ]
+  },
+  {
+    "num": 121,
+    "numCategoria": 16,
+    "equipo": "Natasha Ceron",
+    "box": "CrossTraining Exiliados",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Natasha Ceron",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "natashaceron82@gmail.com",
+        "telefono": "5514522617"
+      }
+    ]
+  },
+  {
+    "num": 122,
+    "numCategoria": 17,
+    "equipo": "Isabel Santiago Hernández",
+    "box": "Rebelion Crosstraining",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Isabel Santiago Hernández",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "Izabell111189@gmail.com",
+        "telefono": "5518258794"
+      }
+    ]
+  },
+  {
+    "num": 123,
+    "numCategoria": 18,
+    "equipo": "Mabel Montserrat Flores Maqueda",
+    "box": "Malibu CrossTraining",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Mabel Montserrat Flores Maqueda",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "mabelmfm@outlook.com",
+        "telefono": "5573940565"
+      }
+    ]
+  },
+  {
+    "num": 124,
+    "numCategoria": 19,
+    "equipo": "Jaqueline Ramírez Alba",
+    "box": "Fit mode",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Jaqueline Ramírez Alba",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "jaquelinrmz@yahoo.com",
+        "telefono": "5567858069"
+      }
+    ]
+  },
+  {
+    "num": 125,
+    "numCategoria": 20,
+    "equipo": "Marisol Martinez Alvarez",
+    "box": "",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Marisol Martinez Alvarez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "marisolmmtz26.1@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 126,
+    "numCategoria": 21,
+    "equipo": "Andrea Guadalupe Garduño Ortíz",
+    "box": "Spartan Programming",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Andrea Guadalupe Garduño Ortíz",
+        "talla": "L",
+        "genero": "Mujer",
+        "email": "andrea_ggo@hotmail.com",
+        "telefono": "7224697826"
+      }
+    ]
+  },
+  {
+    "num": 127,
+    "numCategoria": 22,
+    "equipo": "Monserrat Garduño",
+    "box": "Grizzly CrossTraining",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Monserrat Garduño",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "monsegarduno2010@hotmail.com",
+        "telefono": "5527089954"
+      }
+    ]
+  },
+  {
+    "num": 128,
+    "numCategoria": 23,
+    "equipo": "Nereida Medina Aviles",
+    "box": "",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Nereida Medina Aviles",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "medinabeba8@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 129,
+    "numCategoria": 24,
+    "equipo": "Valeria Yanin Mendoza Arrizon",
+    "box": "",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Valeria Yanin Mendoza Arrizon",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "valarrizon0205@gmail.com",
+        "telefono": "7226106686"
+      }
+    ]
+  },
+  {
+    "num": 130,
+    "numCategoria": 25,
+    "equipo": "Sandra Lucia Olvera Campos",
+    "box": "Big Panthers",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sandra Lucia Olvera Campos",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "diemsaolvera@gmail.com",
+        "telefono": "7222530668"
+      }
+    ]
+  },
+  {
+    "num": 131,
+    "numCategoria": 26,
+    "equipo": "Rebeca Sandra Sandoval Paz",
+    "box": "",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Rebeca Sandra Sandoval Paz",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "camila_flaca_23@hotmail.com",
+        "telefono": "5517324145"
+      }
+    ]
+  },
+  {
+    "num": 132,
+    "numCategoria": 27,
+    "equipo": "Adriana Torrijos Brambila",
+    "box": "Rebelions Cross Training",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Adriana Torrijos Brambila",
+        "talla": "XL",
+        "genero": "Mujer",
+        "email": "lictorrijos27@gmail.com",
+        "telefono": "5516852106"
+      }
+    ]
+  },
+  {
+    "num": 133,
+    "numCategoria": 28,
+    "equipo": "Citlalli “Lali” Maldonado",
+    "box": "Grizzly CrossTraining",
+    "categoria": "PRINCIPIANTES FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Citlalli “Lali” Maldonado",
+        "talla": "L",
+        "genero": "Mujer",
+        "email": "lalifm17@gmail.com",
+        "telefono": "5510583524"
+      }
+    ]
+  },
+  {
+    "num": 134,
+    "numCategoria": 1,
+    "equipo": "Blanca Vidal",
+    "box": "Dragon´s Cave CF",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Blanca Vidal",
+        "talla": "XL",
+        "genero": "Mujer",
+        "email": "bvidalgarcia@gmail.com",
+        "telefono": "5554344143"
+      }
+    ]
+  },
+  {
+    "num": 135,
+    "numCategoria": 2,
+    "equipo": "Ofelia Sanchez Uribe",
+    "box": "Big Panthers",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Ofelia Sanchez Uribe",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "ofesan1001@gmail.com",
+        "telefono": "7223507449"
+      }
+    ]
+  },
+  {
+    "num": 136,
+    "numCategoria": 3,
+    "equipo": "Teresa Mendoza",
+    "box": "Jaguars",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Teresa Mendoza",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "jaguars.crossfit@gmail.com",
+        "telefono": "5627087500"
+      }
+    ]
+  },
+  {
+    "num": 137,
+    "numCategoria": 4,
+    "equipo": "Jessica Mireya Clemente Jarquin",
+    "box": "Rebelión Cross Training",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Jessica Mireya Clemente Jarquin",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "mack_jessy@hotmail.com",
+        "telefono": "5518422602"
+      }
+    ]
+  },
+  {
+    "num": 138,
+    "numCategoria": 5,
+    "equipo": "Karina Gutierrez",
+    "box": "Deus Hybrid Center",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Karina Gutierrez",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "moka54@outlook.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 139,
+    "numCategoria": 6,
+    "equipo": "Cecilia Quezada",
+    "box": "Crosstraining Exiliados",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Cecilia Quezada",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "cecyquez@gmail.com",
+        "telefono": "5516864632"
+      }
+    ]
+  },
+  {
+    "num": 140,
+    "numCategoria": 7,
+    "equipo": "Susana Montes",
+    "box": "Crosstraining exiliados",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Susana Montes",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "susana.ml@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 141,
+    "numCategoria": 8,
+    "equipo": "Silvia Chavez",
+    "box": "Malibu Cross training",
+    "categoria": "MáSTER PRINCIPIANTE +42 FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Silvia Chavez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "Silvita227@hotmail.com",
+        "telefono": "5533925443"
+      }
+    ]
+  },
+  {
+    "num": 142,
+    "numCategoria": 1,
+    "equipo": "Andrea Victorica Vázquez",
+    "box": "",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Andrea Victorica Vázquez",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "andreavictoricav@gmail.com",
+        "telefono": "5591648908"
+      }
+    ]
+  },
+  {
+    "num": 143,
+    "numCategoria": 2,
+    "equipo": "Araceli Gabriela Mondragón Ortiz",
+    "box": "",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Araceli Gabriela Mondragón Ortiz",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "fitvida26@gmail.com",
+        "telefono": "5525080160"
+      }
+    ]
+  },
+  {
+    "num": 144,
+    "numCategoria": 3,
+    "equipo": "Karla Lomeli lemas",
+    "box": "Fitcorner",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Karla Lomeli lemas",
+        "talla": "L",
+        "genero": "Mujer",
+        "email": "karlita.lomelii@gmail.com",
+        "telefono": "5527509355"
+      }
+    ]
+  },
+  {
+    "num": 145,
+    "numCategoria": 4,
+    "equipo": "Romari Del Aguila Guzman",
+    "box": "",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Romari Del Aguila Guzman",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "delaguilaromari@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 146,
+    "numCategoria": 5,
+    "equipo": "AMAYA GODÍNEZ",
+    "box": "CrossTraining Exiliados by Chikis",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "AMAYA GODÍNEZ",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "amayaggo@gmail.com",
+        "telefono": "5585345454"
+      }
+    ]
+  },
+  {
+    "num": 147,
+    "numCategoria": 6,
+    "equipo": "Miriam Alicia Hernandez tovar",
+    "box": "Iron wolf",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Miriam Alicia Hernandez tovar",
+        "talla": "S",
+        "genero": "Mujer",
+        "email": "miniemaht93241117@gmail.com",
+        "telefono": "6441512774"
+      }
+    ]
+  },
+  {
+    "num": 148,
+    "numCategoria": 7,
+    "equipo": "Quetzalli Munguia Cruz",
+    "box": "Rebelión CrossTraining",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Quetzalli Munguia Cruz",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "munguiacruzq@gmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 149,
+    "numCategoria": 8,
+    "equipo": "Sara Vivian Martínez Velazquez",
+    "box": "",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Sara Vivian Martínez Velazquez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "smvelazquez48@gmail.com",
+        "telefono": "5536641712"
+      }
+    ]
+  },
+  {
+    "num": 150,
+    "numCategoria": 9,
+    "equipo": "Jacquelinne Diaz",
+    "box": "CrossTraining Exiliados",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Jacquelinne Diaz",
+        "talla": "L",
+        "genero": "Mujer",
+        "email": "yak_diaz@hotmail.com",
+        "telefono": ""
+      }
+    ]
+  },
+  {
+    "num": 151,
+    "numCategoria": 10,
+    "equipo": "Azu Vidal",
+    "box": "Team Peanuts",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Azu Vidal",
+        "talla": "XL",
+        "genero": "Mujer",
+        "email": "vidalgarciazucena@gmail.com",
+        "telefono": "5510999477"
+      }
+    ]
+  },
+  {
+    "num": 152,
+    "numCategoria": 11,
+    "equipo": "Ana Daniela Monroy Chávez",
+    "box": "",
+    "categoria": "INTERMEDIOS FEMENIL",
+    "status": "Activo",
+    "atletas": [
+      {
+        "nombre": "Ana Daniela Monroy Chávez",
+        "talla": "M",
+        "genero": "Mujer",
+        "email": "danielamonroy991@gmail.com",
+        "telefono": "5562291989"
       }
     ]
   }

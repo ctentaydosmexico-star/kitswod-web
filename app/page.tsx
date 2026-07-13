@@ -3,7 +3,9 @@
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { CSSProperties } from "react";
+
 import { PARTICIPANTES as participantesRaw } from "./data/participantes";
+import { EVENTO } from "./config/evento";
 
 type AtletaEquipo = {
   nombre: string;
@@ -13,7 +15,7 @@ type AtletaEquipo = {
   telefono?: string;
 };
 
-type EquipoParticipante = {
+type Participante = {
   num: number | string;
   numCategoria: number | string;
   equipo: string;
@@ -24,24 +26,18 @@ type EquipoParticipante = {
 };
 
 const theme = {
-  bg: "#020711",
-  navy: "#061426",
-  navy2: "#0A1A30",
-  surface: "#071527",
-  surfaceAlt: "#102138",
-  cream: "#EDE6C9",
-  creamSoft: "#CFC5A3",
-  creamMuted: "#AFA789",
-  border: "rgba(237, 230, 201, 0.62)",
-  borderSoft: "rgba(237, 230, 201, 0.28)",
-  text: "#F8F3DE",
-  muted: "#CFC7A8",
-  darkText: "#061426",
-  danger: "#EDE6C9",
+  background: "#000000",
+  surface: "#111111",
+  surfaceAlt: "#1A1A1A",
+  red: "#E10600",
+  redDark: "#A80000",
+  white: "#FFFFFF",
+  muted: "#BDBDBD",
+  border: "#333333",
 };
 
-const normalizeText = (v: string) =>
-  (v || "")
+const normalizeText = (value: string) =>
+  (value || "")
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -49,186 +45,276 @@ const normalizeText = (v: string) =>
 
 function InnerPage() {
   const [query, setQuery] = useState("");
-  const participantes = participantesRaw as EquipoParticipante[];
-
   const searchParams = useSearchParams();
+
+  const participantes = participantesRaw as Participante[];
   const kitFromUrl = searchParams.get("kit");
 
   const results = useMemo(() => {
     if (kitFromUrl) {
       return participantes.filter(
-        (p) => String(p?.num ?? "").trim() === kitFromUrl
+        (participante) =>
+          String(participante.num ?? "").trim() === kitFromUrl.trim()
       );
     }
 
-    const q = normalizeText(query);
-    if (q.length < 4) return [];
+    const normalizedQuery = normalizeText(query);
 
-    return participantes.filter((p) => {
-      const equipo = normalizeText(p?.equipo || "");
-      const categoria = normalizeText(p?.categoria || "");
+    if (normalizedQuery.length < EVENTO.minimoBusqueda) {
+      return [];
+    }
 
-      return equipo.includes(q) || categoria.includes(q);
+    return participantes.filter((participante) => {
+      const atleta = participante.atletas?.[0];
+
+      const searchableText = normalizeText(
+        [
+          participante.num,
+          participante.numCategoria,
+          participante.equipo,
+          participante.box,
+          participante.categoria,
+          atleta?.nombre,
+          atleta?.genero,
+          atleta?.talla,
+        ]
+          .filter(Boolean)
+          .join(" ")
+      );
+
+      return searchableText.includes(normalizedQuery);
     });
   }, [query, participantes, kitFromUrl]);
 
-  const showMinMessage =
-    query.trim().length > 0 && normalizeText(query).length < 4 && !kitFromUrl;
+  const normalizedQuery = normalizeText(query);
+
+  const showMinimumMessage =
+    normalizedQuery.length > 0 &&
+    normalizedQuery.length < EVENTO.minimoBusqueda &&
+    !kitFromUrl;
 
   const showEmptyMessage =
-    normalizeText(query).length >= 4 && results.length === 0 && !kitFromUrl;
+    normalizedQuery.length >= EVENTO.minimoBusqueda &&
+    results.length === 0 &&
+    !kitFromUrl;
 
   return (
     <main style={styles.page}>
       <header style={styles.header}>
-        <div style={styles.headerLogoSlot}>
+        <div style={styles.eventLogoWrap}>
           <img
-            src="/logo-evento.png"
-            alt="The Last WOD"
-            style={styles.logoEvento}
+            src={EVENTO.logo}
+            alt={EVENTO.nombre}
+            style={styles.eventLogo}
           />
         </div>
 
-        <div style={styles.headerText}>
-          <h1 style={styles.title}>THE LAST WOD</h1>
-          <div style={styles.subtitle}>Entrega de kits por equipo</div>
+        <div style={styles.headerContent}>
+          <div style={styles.eventTag}>ENTREGA DE KITS</div>
+
+          <h1 style={styles.title}>{EVENTO.nombre}</h1>
+
+          <div style={styles.subtitle}>
+            Consulta individual de atletas
+          </div>
         </div>
 
-        <img src="/wod-logo.png" alt="WOD" style={styles.logoWodHeader} />
+        <img
+          src="/wod-logo.png"
+          alt="WOD"
+          style={styles.wodLogo}
+        />
       </header>
 
-      <section style={styles.searchWrap}>
+      <section style={styles.searchSection}>
+        <label style={styles.searchLabel} htmlFor="athlete-search">
+          BUSCAR ATLETA
+        </label>
+
         <input
+          id="athlete-search"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Nombre de equipo o categoría"
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Nombre, número, box o categoría"
           style={styles.input}
+          autoComplete="off"
         />
 
-        <div style={styles.hint}>
-          Busca por nombre de equipo o categoría. Escribe al menos 4 letras.
+        <div style={styles.searchHint}>
+          Escribe al menos {EVENTO.minimoBusqueda} letras.
         </div>
       </section>
 
-      {showMinMessage && (
-        <section style={styles.emptySection}>
-          <div style={styles.emptyCard}>
-            <div style={styles.emptyTitle}>Escribe al menos 4 letras</div>
-            <div style={styles.emptyText}>
-              Así evitamos mostrar demasiados resultados.
+      {showMinimumMessage && (
+        <section style={styles.messageSection}>
+          <div style={styles.messageCard}>
+            <div style={styles.messageTitle}>
+              Escribe al menos {EVENTO.minimoBusqueda} letras
+            </div>
+
+            <div style={styles.messageText}>
+              Puedes buscar por nombre, número, box o categoría.
             </div>
           </div>
         </section>
       )}
 
       {showEmptyMessage && (
-        <section style={styles.emptySection}>
-          <div style={styles.emptyCard}>
-            <div style={styles.emptyTitle}>No encontramos resultados</div>
-            <div style={styles.emptyText}>
-              Revisa la ortografía o intenta con otra categoría.
+        <section style={styles.messageSection}>
+          <div style={styles.messageCard}>
+            <div style={styles.messageTitle}>
+              No encontramos resultados
+            </div>
+
+            <div style={styles.messageText}>
+              Revisa la ortografía o intenta con otro dato.
             </div>
           </div>
         </section>
       )}
 
       <section style={styles.results}>
-        {results.map((item) => (
-          <article key={String(item.num)} style={styles.card}>
-            <div style={styles.cardTop}>
-              <div style={styles.kitWrap}>
-                <div style={styles.kitLabel}>KIT</div>
-                <div style={styles.kit}>{item.num}</div>
-              </div>
+        {results.map((participante) => {
+          const atleta = participante.atletas?.[0];
 
-              <div style={styles.cardInfo}>
-                <h2 style={styles.teamName}>{item.equipo || "Equipo"}</h2>
-
-                <div style={styles.categoryPill}>
-                  {item.categoria || "Sin categoría"}
-                </div>
-
-                {item.box ? (
-                  <div style={styles.box}>⌖ {item.box}</div>
-                ) : null}
-              </div>
-
-              <div style={styles.chevron}>⌄</div>
-            </div>
-
-            <div style={styles.divider} />
-
-            <div style={styles.members}>
-              {item.atletas.map((atleta, i) => (
-                <div key={i} style={styles.memberBlock}>
-                  <div style={styles.memberLabel}>ATLETA {i + 1}</div>
-                  <div style={styles.memberName}>{atleta.nombre || "—"}</div>
-                  <div style={styles.memberSub}>
-                    {atleta.genero || "—"} · Talla {atleta.talla || "—"}
+          return (
+            <article
+              key={String(participante.num)}
+              style={styles.card}
+            >
+              <div style={styles.cardTop}>
+                <div style={styles.numberBlock}>
+                  <div style={styles.numberLabel}>KIT</div>
+                  <div style={styles.number}>
+                    {participante.num}
                   </div>
                 </div>
-              ))}
-            </div>
 
-            <div style={styles.kitTotal}>
-              <span style={styles.kitIcon}>□</span>
-              Entregar {item.atletas.length} kits
-            </div>
-          </article>
-        ))}
+                <div style={styles.cardMain}>
+                  <h2 style={styles.athleteName}>
+                    {atleta?.nombre || participante.equipo || "Atleta"}
+                  </h2>
+
+                  <div style={styles.category}>
+                    {participante.categoria || "Sin categoría"}
+                  </div>
+
+                  {participante.box ? (
+                    <div style={styles.box}>
+                      {participante.box}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+
+              <div style={styles.divider} />
+
+              <div style={styles.detailsGrid}>
+                <div style={styles.detailCard}>
+                  <div style={styles.detailLabel}>GÉNERO</div>
+                  <div style={styles.detailValue}>
+                    {atleta?.genero || "—"}
+                  </div>
+                </div>
+
+                <div style={styles.detailCard}>
+                  <div style={styles.detailLabel}>TALLA</div>
+                  <div style={styles.sizeValue}>
+                    {atleta?.talla || "—"}
+                  </div>
+                </div>
+
+                <div style={styles.detailCard}>
+                  <div style={styles.detailLabel}>
+                    NÚMERO DE CATEGORÍA
+                  </div>
+                  <div style={styles.detailValue}>
+                    {participante.numCategoria || "—"}
+                  </div>
+                </div>
+              </div>
+
+              <div style={styles.deliveryNotice}>
+                <div style={styles.deliveryTitle}>
+                  REVISA TU INFORMACIÓN
+                </div>
+
+                <div style={styles.deliveryText}>
+                  Confirma nombre, categoría, género y talla antes de recibir
+                  tu kit.
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </section>
 
       <section style={styles.responsivaSection}>
         <div style={styles.responsivaCard}>
-          <div style={styles.responsivaIcon}>▤</div>
+          <div style={styles.responsivaIcon}>!</div>
 
-          <div style={styles.responsivaBody}>
-            <div style={styles.responsivaTitle}>Carta responsiva</div>
-
-            <div style={styles.responsivaText}>
-              Para la entrega de kit es obligatorio presentar la responsiva
-              impresa y firmada.
+          <div style={styles.responsivaContent}>
+            <div style={styles.responsivaTitle}>
+              Responsiva obligatoria
             </div>
 
-            <div style={styles.responsivaHint}>
-              Descárgala, imprímela, fírmala y llévala el día de la entrega.
+            <div style={styles.responsivaText}>
+              Descarga, revisa y presenta la responsiva correspondiente.
             </div>
           </div>
 
           <a
-            href="/RESPONSIVA-THE-LAST-WOD.pdf"
+            href={EVENTO.responsiva}
             target="_blank"
             rel="noopener noreferrer"
             style={styles.responsivaButton}
           >
-            Descargar responsiva
+            DESCARGAR
           </a>
         </div>
       </section>
 
       <section style={styles.instagramSection}>
         <div style={styles.instagramCard}>
-          <div style={styles.instagramTitle}>Síguenos en Instagram</div>
+          <div>
+            <div style={styles.instagramTitle}>
+              ORGANIZACIÓN DE KITS
+            </div>
+
+            <div style={styles.instagramText}>
+              Síguenos para conocer avisos y actualizaciones.
+            </div>
+          </div>
 
           <a
-            href="https://www.instagram.com/thewod_go"
+            href={EVENTO.instagram}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             style={styles.instagramButton}
           >
-            @thewod_go
+            {EVENTO.instagramTexto}
           </a>
-
-          <div style={styles.instagramHint}>Always Ready to Lift®</div>
         </div>
       </section>
+
+      <footer style={styles.footer}>
+        <img
+          src="/wod-logo.png"
+          alt="WOD"
+          style={styles.footerLogo}
+        />
+
+        <div style={styles.footerText}>
+          SISTEMA DE ENTREGA DE KITS WOD
+        </div>
+      </footer>
     </main>
   );
 }
 
 export default function Page() {
   return (
-    <Suspense fallback={<div style={{ padding: 16 }}>Cargando…</div>}>
+    <Suspense fallback={<div style={styles.loading}>Cargando...</div>}>
       <InnerPage />
     </Suspense>
   );
@@ -236,373 +322,423 @@ export default function Page() {
 
 const styles: Record<string, CSSProperties> = {
   page: {
-    background: `radial-gradient(circle at top, ${theme.navy2} 0%, ${theme.bg} 44%, #000000 100%)`,
-    color: theme.text,
     minHeight: "100vh",
-    padding: 14,
-    maxWidth: 760,
-    margin: "0 auto",
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+    background: theme.background,
+    color: theme.white,
+    padding: "18px",
+    fontFamily:
+      "Arial, Helvetica, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
   },
 
   header: {
+    width: "100%",
+    maxWidth: 980,
+    margin: "0 auto 18px",
     display: "grid",
-    gridTemplateColumns: "90px 1fr 86px",
+    gridTemplateColumns: "90px 1fr 80px",
     alignItems: "center",
-    gap: 12,
+    gap: 16,
+    padding: 18,
+    background: theme.surface,
     border: `1px solid ${theme.border}`,
-    borderRadius: 18,
-    padding: 16,
-    marginBottom: 18,
-    background: `linear-gradient(180deg, rgba(7,21,39,0.98), rgba(2,7,17,0.98))`,
-    boxShadow: "0 18px 38px rgba(0,0,0,0.28)",
+    borderTop: `5px solid ${theme.red}`,
+    borderRadius: 16,
+    boxSizing: "border-box",
   },
 
-  headerLogoSlot: {
+  eventLogoWrap: {
+    width: 82,
+    height: 82,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    minWidth: 0,
+    background: theme.white,
+    borderRadius: 12,
+    overflow: "hidden",
+    padding: 6,
+    boxSizing: "border-box",
   },
 
-  logoEvento: {
-    width: 74,
-    maxWidth: "100%",
-    height: "auto",
+  eventLogo: {
+    width: "100%",
+    height: "100%",
     objectFit: "contain",
-    display: "block",
   },
 
-  headerText: {
-    textAlign: "center",
+  headerContent: {
     minWidth: 0,
+  },
+
+  eventTag: {
+    color: theme.red,
+    fontWeight: 900,
+    fontSize: 12,
+    letterSpacing: "0.16em",
+    marginBottom: 6,
   },
 
   title: {
-    fontSize: 30,
-    fontWeight: 950,
     margin: 0,
-    color: theme.cream,
+    color: theme.white,
+    fontSize: "clamp(24px, 5vw, 42px)",
     lineHeight: 1,
-    letterSpacing: "0.04em",
+    fontWeight: 950,
     textTransform: "uppercase",
   },
 
   subtitle: {
-    fontSize: 13,
-    color: theme.cream,
     marginTop: 8,
-    fontWeight: 850,
-    textTransform: "uppercase",
-    letterSpacing: "0.04em",
+    color: theme.muted,
+    fontSize: 14,
+    fontWeight: 700,
   },
 
-  logoWodHeader: {
-    width: 76,
-    height: "auto",
+  wodLogo: {
+    width: 72,
+    maxHeight: 72,
     objectFit: "contain",
-    display: "block",
     justifySelf: "end",
   },
 
-  searchWrap: {
-    marginBottom: 14,
+  searchSection: {
+    width: "100%",
+    maxWidth: 980,
+    margin: "0 auto",
+    padding: 18,
+    background: theme.surface,
+    border: `1px solid ${theme.border}`,
+    borderRadius: 16,
+    boxSizing: "border-box",
+  },
+
+  searchLabel: {
+    display: "block",
+    marginBottom: 8,
+    color: theme.red,
+    fontWeight: 950,
+    fontSize: 13,
+    letterSpacing: "0.1em",
   },
 
   input: {
     width: "100%",
-    padding: "18px 18px",
-    borderRadius: 16,
-    background: `linear-gradient(180deg, rgba(7,21,39,0.96), rgba(6,20,38,0.96))`,
-    border: `1px solid ${theme.borderSoft}`,
-    color: theme.text,
+    minHeight: 56,
+    padding: "0 16px",
+    borderRadius: 12,
+    border: `2px solid ${theme.border}`,
+    background: theme.background,
+    color: theme.white,
     fontSize: 17,
     outline: "none",
     boxSizing: "border-box",
   },
 
-  hint: {
-    marginTop: 12,
+  searchHint: {
+    marginTop: 9,
+    color: theme.muted,
+    fontSize: 13,
+  },
+
+  messageSection: {
+    width: "100%",
+    maxWidth: 980,
+    margin: "16px auto 0",
+  },
+
+  messageCard: {
+    padding: 20,
+    background: theme.surface,
+    border: `1px solid ${theme.border}`,
+    borderLeft: `5px solid ${theme.red}`,
+    borderRadius: 14,
+  },
+
+  messageTitle: {
+    color: theme.white,
+    fontSize: 18,
+    fontWeight: 950,
+    textTransform: "uppercase",
+  },
+
+  messageText: {
+    marginTop: 6,
+    color: theme.muted,
     fontSize: 14,
-    color: theme.cream,
-    lineHeight: 1.35,
   },
 
   results: {
+    width: "100%",
+    maxWidth: 980,
+    margin: "16px auto 0",
     display: "grid",
     gap: 16,
   },
 
   card: {
-    border: `1px solid ${theme.borderSoft}`,
+    background: theme.surface,
+    border: `1px solid ${theme.border}`,
     borderRadius: 18,
-    padding: 16,
-    background: `linear-gradient(180deg, rgba(7,21,39,0.98), rgba(3,12,24,0.98))`,
-    boxShadow: "0 18px 38px rgba(0,0,0,0.28)",
+    overflow: "hidden",
   },
 
   cardTop: {
     display: "grid",
-    gridTemplateColumns: "92px 1fr 28px",
-    alignItems: "start",
-    gap: 14,
+    gridTemplateColumns: "110px 1fr",
+    gap: 18,
+    padding: 18,
+    alignItems: "center",
   },
 
-  kitWrap: {
-    minWidth: 0,
+  numberBlock: {
+    minHeight: 105,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    background: theme.red,
+    borderRadius: 14,
   },
 
-  kitLabel: {
-    fontSize: 13,
+  numberLabel: {
+    color: theme.white,
+    fontSize: 12,
     fontWeight: 950,
-    color: theme.cream,
-    marginBottom: 3,
-    textTransform: "uppercase",
-    letterSpacing: "0.08em",
+    letterSpacing: "0.12em",
   },
 
-  kit: {
-    fontSize: 62,
-    fontWeight: 950,
-    color: theme.cream,
-    lineHeight: 0.9,
-    letterSpacing: "-0.05em",
-  },
-
-  cardInfo: {
-    minWidth: 0,
-  },
-
-  teamName: {
-    fontSize: 24,
-    fontWeight: 950,
-    color: theme.cream,
-    margin: "0 0 8px 0",
-    textTransform: "uppercase",
-    lineHeight: 1.05,
-    wordBreak: "break-word",
-    letterSpacing: "0.03em",
-  },
-
-  categoryPill: {
-    display: "inline-block",
-    border: `1px solid ${theme.cream}`,
-    color: theme.cream,
-    borderRadius: 10,
-    padding: "4px 10px",
-    fontSize: 13,
-    fontWeight: 900,
+  number: {
+    color: theme.white,
+    fontSize: 44,
     lineHeight: 1,
+    fontWeight: 950,
+    marginTop: 4,
+  },
+
+  cardMain: {
+    minWidth: 0,
+  },
+
+  athleteName: {
+    margin: 0,
+    color: theme.white,
+    fontSize: "clamp(22px, 5vw, 34px)",
+    lineHeight: 1.05,
+    fontWeight: 950,
     textTransform: "uppercase",
-    marginBottom: 8,
+    overflowWrap: "anywhere",
+  },
+
+  category: {
+    display: "inline-flex",
+    marginTop: 12,
+    padding: "7px 10px",
+    background: theme.white,
+    color: theme.background,
+    borderRadius: 8,
+    fontSize: 12,
+    fontWeight: 950,
+    textTransform: "uppercase",
   },
 
   box: {
+    marginTop: 10,
+    color: theme.muted,
     fontSize: 14,
-    color: theme.cream,
     fontWeight: 700,
-    lineHeight: 1.3,
-  },
-
-  chevron: {
-    color: theme.cream,
-    fontSize: 34,
-    lineHeight: 1,
-    fontWeight: 900,
-    textAlign: "right",
+    textTransform: "uppercase",
   },
 
   divider: {
     height: 1,
-    background: theme.borderSoft,
-    margin: "14px 0",
+    background: theme.border,
   },
 
-  members: {
+  detailsGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
     gap: 10,
-  },
-
-  memberBlock: {
-    minWidth: 0,
-    padding: "0 8px",
-    borderRight: `1px solid ${theme.borderSoft}`,
-    textAlign: "center",
-  },
-
-  memberLabel: {
-    fontSize: 12,
-    color: theme.cream,
-    fontWeight: 950,
-    textTransform: "uppercase",
-    letterSpacing: "0.04em",
-    marginBottom: 6,
-  },
-
-  memberName: {
-    fontSize: 16,
-    fontWeight: 850,
-    color: theme.text,
-    lineHeight: 1.18,
-    wordBreak: "break-word",
-  },
-
-  memberSub: {
-    fontSize: 13,
-    color: theme.cream,
-    marginTop: 5,
-    fontWeight: 650,
-    lineHeight: 1.2,
-  },
-
-  kitTotal: {
-    marginTop: 16,
-    padding: "12px 14px",
-    borderRadius: 12,
-    background: "rgba(255,255,255,0.10)",
-    border: `1px solid ${theme.borderSoft}`,
-    color: theme.cream,
-    fontWeight: 900,
-    textAlign: "center",
-    fontSize: 17,
-  },
-
-  kitIcon: {
-    display: "inline-block",
-    marginRight: 8,
-    fontWeight: 950,
-  },
-
-  emptySection: {
-    marginTop: 8,
-    marginBottom: 14,
-  },
-
-  emptyCard: {
     padding: 18,
-    borderRadius: 18,
-    background: theme.surface,
-    border: `1px solid ${theme.borderSoft}`,
-    textAlign: "center",
   },
 
-  emptyTitle: {
-    fontSize: 16,
-    fontWeight: 950,
-    color: theme.cream,
-    marginBottom: 4,
+  detailCard: {
+    padding: 14,
+    background: theme.surfaceAlt,
+    border: `1px solid ${theme.border}`,
+    borderRadius: 12,
   },
 
-  emptyText: {
-    fontSize: 13,
+  detailLabel: {
     color: theme.muted,
+    fontSize: 11,
+    fontWeight: 950,
+    letterSpacing: "0.08em",
+    marginBottom: 5,
+  },
+
+  detailValue: {
+    color: theme.white,
+    fontSize: 18,
+    fontWeight: 900,
+  },
+
+  sizeValue: {
+    color: theme.red,
+    fontSize: 30,
+    lineHeight: 1,
+    fontWeight: 950,
+  },
+
+  deliveryNotice: {
+    padding: 16,
+    background: theme.background,
+    borderTop: `1px solid ${theme.border}`,
+  },
+
+  deliveryTitle: {
+    color: theme.red,
+    fontSize: 13,
+    fontWeight: 950,
+    letterSpacing: "0.08em",
+  },
+
+  deliveryText: {
+    marginTop: 5,
+    color: theme.muted,
+    fontSize: 13,
+    lineHeight: 1.4,
   },
 
   responsivaSection: {
-    marginTop: 18,
-    marginBottom: 14,
+    width: "100%",
+    maxWidth: 980,
+    margin: "16px auto 0",
   },
 
   responsivaCard: {
     display: "grid",
-    gridTemplateColumns: "52px 1fr 190px",
+    gridTemplateColumns: "64px 1fr auto",
     alignItems: "center",
-    gap: 14,
-    border: `1px solid ${theme.borderSoft}`,
-    borderRadius: 18,
-    padding: 16,
-    background: `linear-gradient(180deg, rgba(7,21,39,0.98), rgba(3,12,24,0.98))`,
+    gap: 16,
+    padding: 18,
+    background: theme.surface,
+    border: `1px solid ${theme.border}`,
+    borderRadius: 16,
   },
 
   responsivaIcon: {
-    fontSize: 44,
-    color: theme.cream,
-    lineHeight: 1,
-    textAlign: "center",
+    width: 54,
+    height: 54,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: theme.red,
+    color: theme.white,
+    borderRadius: "50%",
+    fontSize: 28,
+    fontWeight: 950,
   },
 
-  responsivaBody: {
+  responsivaContent: {
     minWidth: 0,
   },
 
   responsivaTitle: {
-    fontSize: 22,
+    color: theme.white,
+    fontSize: 19,
     fontWeight: 950,
-    marginBottom: 6,
-    color: theme.cream,
     textTransform: "uppercase",
-    letterSpacing: "0.03em",
   },
 
   responsivaText: {
-    fontSize: 14,
-    marginBottom: 8,
-    color: theme.text,
-    lineHeight: 1.35,
-  },
-
-  responsivaHint: {
+    marginTop: 5,
+    color: theme.muted,
     fontSize: 13,
-    color: theme.cream,
-    lineHeight: 1.35,
+    lineHeight: 1.4,
   },
 
   responsivaButton: {
+    minHeight: 48,
     display: "inline-flex",
     alignItems: "center",
     justifyContent: "center",
-    minHeight: 62,
-    padding: "12px 16px",
-    borderRadius: 14,
-    border: `1px solid ${theme.cream}`,
-    background: `linear-gradient(180deg, ${theme.cream}, ${theme.creamSoft})`,
-    color: theme.darkText,
+    padding: "0 18px",
+    background: theme.red,
+    color: theme.white,
+    borderRadius: 10,
+    fontSize: 13,
     fontWeight: 950,
     textDecoration: "none",
-    fontSize: 15,
-    textAlign: "center",
-    textTransform: "uppercase",
-    boxSizing: "border-box",
   },
 
   instagramSection: {
-    marginTop: 16,
-    paddingBottom: 18,
+    width: "100%",
+    maxWidth: 980,
+    margin: "16px auto 0",
   },
 
   instagramCard: {
-    display: "grid",
-    gridTemplateColumns: "1fr auto 1fr",
+    display: "flex",
+    justifyContent: "space-between",
     alignItems: "center",
-    gap: 12,
-    padding: 14,
-    borderRadius: 14,
-    background: `linear-gradient(180deg, rgba(7,21,39,0.98), rgba(3,12,24,0.98))`,
-    border: `1px solid ${theme.borderSoft}`,
+    gap: 16,
+    padding: 18,
+    background: theme.surface,
+    border: `1px solid ${theme.border}`,
+    borderRadius: 16,
   },
 
   instagramTitle: {
-    fontSize: 13,
+    color: theme.white,
+    fontSize: 14,
     fontWeight: 950,
-    color: theme.cream,
-    textTransform: "uppercase",
+  },
+
+  instagramText: {
+    marginTop: 4,
+    color: theme.muted,
+    fontSize: 13,
   },
 
   instagramButton: {
-    color: theme.cream,
-    fontWeight: 850,
+    color: theme.red,
+    fontWeight: 950,
     textDecoration: "none",
-    fontSize: 14,
-    borderLeft: `1px solid ${theme.borderSoft}`,
-    borderRight: `1px solid ${theme.borderSoft}`,
-    padding: "0 16px",
+    whiteSpace: "nowrap",
   },
 
-  instagramHint: {
-    fontSize: 13,
-    color: theme.cream,
-    fontWeight: 700,
-    textAlign: "right",
+  footer: {
+    width: "100%",
+    maxWidth: 980,
+    margin: "18px auto 0",
+    padding: 18,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 12,
+    borderTop: `1px solid ${theme.border}`,
+  },
+
+  footerLogo: {
+    width: 46,
+    height: 46,
+    objectFit: "contain",
+  },
+
+  footerText: {
+    color: theme.muted,
+    fontSize: 11,
+    fontWeight: 900,
+    letterSpacing: "0.08em",
+  },
+
+  loading: {
+    minHeight: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: theme.background,
+    color: theme.white,
+    fontSize: 18,
+    fontWeight: 900,
   },
 };
