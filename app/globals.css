@@ -24,3 +24,107 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.coming-soon-hero {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 18px;
+  padding: clamp(20px, 4vw, 36px);
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 4vw, 48px);
+  background: #111;
+  border: 1px solid #333;
+  border-top: 5px solid #e10600;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.coming-soon-logo-panel {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.coming-soon-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.coming-soon-content {
+  min-width: 0;
+}
+
+.coming-soon-title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 950;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+.coming-soon-event {
+  margin: 16px 0 0;
+  color: #e10600;
+  font-size: clamp(18px, 2.5vw, 30px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+}
+
+@media (max-width: 640px) {
+  .coming-soon-hero {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .coming-soon-logo-panel {
+    max-width: 190px;
+  }
+
+  .event-header {
+    grid-template-columns: 1fr auto !important;
+  }
+
+  .event-header-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .event-header-wod {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .event-header-content {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .event-header-title {
+    font-size: clamp(24px, 7vw, 34px) !important;
+    line-height: 1.1 !important;
+    overflow-wrap: anywhere;
+  }
+
+  .responsiva-card {
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+  }
+
+  .responsiva-button {
+    grid-column: 1 / -1;
+  }
+
+  .instagram-card {
+    flex-wrap: wrap;
+  }
+}

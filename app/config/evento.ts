@@ -1,5 +1,5 @@
 export const EVENTO = {
-  nombre: "PUERTO ESCONDIDO FITNESS CHALLENGE 2026",
+  nombre: "COLISEUM ARENA 2026",
   logo: "/logo-evento.png",
   responsiva: "/RESPONSIVA-PUERTO2026-V2.pdf",
   tipo: "individual",

@@ -2,6 +2,7 @@
 
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 
 import { PARTICIPANTES as participantesRaw } from "./data/participantes";
@@ -100,19 +101,41 @@ function InnerPage() {
 
   return (
     <main style={styles.page}>
-      <header style={styles.header}>
-        <div style={styles.eventLogoWrap}>
-          <img
-            src={EVENTO.logo}
+      <section className="coming-soon-hero" aria-labelledby="coming-soon-title">
+        <div className="coming-soon-logo-panel">
+          <Image
+            src="/logo-evento.png"
+            alt="Logo de Coliseum Arena"
+            width={1024}
+            height={1024}
+            priority
+            className="coming-soon-logo"
+          />
+        </div>
+        <div className="coming-soon-content">
+          <h1 id="coming-soon-title" className="coming-soon-title">
+            PRÓXIMAMENTE
+          </h1>
+          <p className="coming-soon-event">COLISEUM ARENA 2026</p>
+        </div>
+      </section>
+
+      <header className="event-header" style={styles.header}>
+        <div className="coming-soon-logo-panel event-header-logo" style={styles.eventLogoWrap}>
+          <Image
+            src="/logo-evento.png"
             alt={EVENTO.nombre}
-            style={styles.eventLogo}
+            width={1024}
+            height={1024}
+            priority
+            className="coming-soon-logo"
           />
         </div>
 
-        <div style={styles.headerContent}>
+        <div className="event-header-content" style={styles.headerContent}>
           <div style={styles.eventTag}>ENTREGA DE KITS</div>
 
-          <h1 style={styles.title}>{EVENTO.nombre}</h1>
+          <h2 className="event-header-title" style={styles.title}>{EVENTO.nombre}</h2>
 
           <div style={styles.subtitle}>
             Consulta individual de atletas
@@ -122,6 +145,7 @@ function InnerPage() {
         <img
           src="/wod-logo.png"
           alt="WOD"
+          className="event-header-wod"
           style={styles.wodLogo}
         />
       </header>
@@ -250,7 +274,7 @@ function InnerPage() {
       </section>
 
       <section style={styles.responsivaSection}>
-        <div style={styles.responsivaCard}>
+        <div className="responsiva-card" style={styles.responsivaCard}>
           <div style={styles.responsivaIcon}>!</div>
 
           <div style={styles.responsivaContent}>
@@ -267,6 +291,7 @@ function InnerPage() {
             href={EVENTO.responsiva}
             target="_blank"
             rel="noopener noreferrer"
+            className="responsiva-button"
             style={styles.responsivaButton}
           >
             DESCARGAR
@@ -275,7 +300,7 @@ function InnerPage() {
       </section>
 
       <section style={styles.instagramSection}>
-        <div style={styles.instagramCard}>
+        <div className="instagram-card" style={styles.instagramCard}>
           <div>
             <div style={styles.instagramTitle}>
               ORGANIZACIÓN DE KITS
@@ -352,7 +377,6 @@ const styles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    background: theme.white,
     borderRadius: 12,
     overflow: "hidden",
     padding: 6,
