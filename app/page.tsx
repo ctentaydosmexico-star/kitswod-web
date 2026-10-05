@@ -30,8 +30,8 @@ const theme = {
   background: "#000000",
   surface: "#111111",
   surfaceAlt: "#1A1A1A",
-  red: "#E10600",
-  redDark: "#A80000",
+  red: "#28A8E8",
+  redDark: "#1375A8",
   white: "#FFFFFF",
   muted: "#BDBDBD",
   border: "#333333",
@@ -104,29 +104,29 @@ function InnerPage() {
       <section className="coming-soon-hero" aria-labelledby="coming-soon-title">
         <div className="coming-soon-logo-panel">
           <Image
-            src="/logo-evento.png"
-            alt="Logo de Coliseum Arena"
-            width={1024}
-            height={1024}
+            src={EVENTO.logo}
+            alt="Arte oficial de Black Experience 2026"
+            width={2923}
+            height={4865}
             priority
             className="coming-soon-logo"
           />
         </div>
         <div className="coming-soon-content">
           <h1 id="coming-soon-title" className="coming-soon-title">
-            PRÓXIMAMENTE
+            BLACK EXPERIENCE 2026
           </h1>
-          <p className="coming-soon-event">COLISEUM ARENA 2026</p>
+          <p className="coming-soon-event">CONSULTA TU KIT</p>
         </div>
       </section>
 
       <header className="event-header" style={styles.header}>
         <div className="coming-soon-logo-panel event-header-logo" style={styles.eventLogoWrap}>
           <Image
-            src="/logo-evento.png"
+            src={EVENTO.logo}
             alt={EVENTO.nombre}
-            width={1024}
-            height={1024}
+            width={2923}
+            height={4865}
             priority
             className="coming-soon-logo"
           />
@@ -283,19 +283,23 @@ function InnerPage() {
             </div>
 
             <div style={styles.responsivaText}>
-              Descarga, revisa y presenta la responsiva correspondiente.
+              {EVENTO.responsiva
+                ? "Descarga, revisa y presenta la responsiva correspondiente."
+                : "La responsiva de Black Experience 2026 estará disponible próximamente."}
             </div>
           </div>
 
-          <a
-            href={EVENTO.responsiva}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="responsiva-button"
-            style={styles.responsivaButton}
-          >
-            DESCARGAR
-          </a>
+          {EVENTO.responsiva ? (
+            <a
+              href={EVENTO.responsiva}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="responsiva-button"
+              style={styles.responsivaButton}
+            >
+              DESCARGAR
+            </a>
+          ) : null}
         </div>
       </section>
 

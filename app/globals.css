@@ -36,14 +36,14 @@ body {
   gap: clamp(20px, 4vw, 48px);
   background: #111;
   border: 1px solid #333;
-  border-top: 5px solid #e10600;
+  border-top: 5px solid #28a8e8;
   border-radius: 16px;
   box-sizing: border-box;
 }
 
 .coming-soon-logo-panel {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ body {
 
 .coming-soon-event {
   margin: 16px 0 0;
-  color: #e10600;
+  color: #28a8e8;
   font-size: clamp(18px, 2.5vw, 30px);
   font-weight: 900;
   letter-spacing: 0.08em;

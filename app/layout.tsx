@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "KITS WOD",
-  description: "Consulta tu número de Kit Oficial · Always Ready to Lift®",
+  title: "Black Experience 2026 | KITS WOD",
+  description: "Consulta tu número de kit para Black Experience 2026.",
   openGraph: {
-    title: "KITS WOD",
-    description: "Consulta tu número de Kit Oficial · Always Ready to Lift®",
+    title: "Black Experience 2026 | KITS WOD",
+    description: "Consulta tu número de kit para Black Experience 2026.",
     url: "https://kitswod.mx",
     siteName: "KITS WOD",
     images: [
