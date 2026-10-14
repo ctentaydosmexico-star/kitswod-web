@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sql } from "@/app/lib/db";
+import { getSql } from "@/app/lib/db";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
@@ -9,6 +9,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "kitTeam requerido" }, { status: 400 });
   }
 
+  const sql = getSql();
   const rows = await sql`
     SELECT * FROM deliveries WHERE kit_team = ${Number(kitTeam)}
   `;
@@ -28,6 +29,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Datos incompletos" }, { status: 400 });
   }
 
+  const sql = getSql();
   await sql`
     INSERT INTO deliveries (kit_team, team_id, status, received_by, received_at)
     VALUES (${kitTeam}, ${teamId}, 'ENTREGADO', ${receivedBy}, NOW())
