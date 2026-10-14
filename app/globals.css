@@ -31,19 +31,19 @@ body {
   margin: 0 auto 18px;
   padding: clamp(20px, 4vw, 36px);
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
   align-items: center;
   gap: clamp(20px, 4vw, 48px);
   background: #111;
   border: 1px solid #333;
-  border-top: 5px solid #28a8e8;
+  border-top: 5px solid #d9f96e;
   border-radius: 16px;
   box-sizing: border-box;
 }
 
 .coming-soon-logo-panel {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ body {
 
 .coming-soon-event {
   margin: 16px 0 0;
-  color: #28a8e8;
+  color: #d9f96e;
   font-size: clamp(18px, 2.5vw, 30px);
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -88,7 +88,7 @@ body {
   }
 
   .coming-soon-logo-panel {
-    max-width: 190px;
+    max-width: 280px;
   }
 
   .event-header {

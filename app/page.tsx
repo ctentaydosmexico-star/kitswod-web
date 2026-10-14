@@ -18,9 +18,7 @@ type AtletaEquipo = {
 
 type Participante = {
   num: number | string;
-  numCategoria: number | string;
   equipo: string;
-  box: string;
   categoria: string;
   status?: string;
   atletas: AtletaEquipo[];
@@ -30,8 +28,8 @@ const theme = {
   background: "#000000",
   surface: "#111111",
   surfaceAlt: "#1A1A1A",
-  red: "#28A8E8",
-  redDark: "#1375A8",
+  red: "#D9F96E",
+  redDark: "#B9D74F",
   white: "#FFFFFF",
   muted: "#BDBDBD",
   border: "#333333",
@@ -61,8 +59,13 @@ function InnerPage() {
 
     const normalizedQuery = normalizeText(query);
 
-    if (normalizedQuery.length < EVENTO.minimoBusqueda) {
+    const isKitNumber = /^\d+$/.test(normalizedQuery);
+    if (!isKitNumber && normalizedQuery.length < EVENTO.minimoBusqueda) {
       return [];
+    }
+
+    if (isKitNumber) {
+      return participantes.filter((participante) => String(participante.num) === normalizedQuery);
     }
 
     return participantes.filter((participante) => {
@@ -71,9 +74,7 @@ function InnerPage() {
       const searchableText = normalizeText(
         [
           participante.num,
-          participante.numCategoria,
           participante.equipo,
-          participante.box,
           participante.categoria,
           atleta?.nombre,
           atleta?.genero,
@@ -92,10 +93,11 @@ function InnerPage() {
   const showMinimumMessage =
     normalizedQuery.length > 0 &&
     normalizedQuery.length < EVENTO.minimoBusqueda &&
+    !/^\d+$/.test(normalizedQuery) &&
     !kitFromUrl;
 
   const showEmptyMessage =
-    normalizedQuery.length >= EVENTO.minimoBusqueda &&
+    (normalizedQuery.length >= EVENTO.minimoBusqueda || /^\d+$/.test(normalizedQuery)) &&
     results.length === 0 &&
     !kitFromUrl;
 
@@ -105,16 +107,16 @@ function InnerPage() {
         <div className="coming-soon-logo-panel">
           <Image
             src={EVENTO.logo}
-            alt="Arte oficial de Black Experience 2026"
-            width={2923}
-            height={4865}
+            alt="Logo oficial de Functional Fitness Challenge Oaxaca 2026"
+            width={4330}
+            height={2133}
             priority
             className="coming-soon-logo"
           />
         </div>
         <div className="coming-soon-content">
           <h1 id="coming-soon-title" className="coming-soon-title">
-            BLACK EXPERIENCE 2026
+            FUNCTIONAL FITNESS CHALLENGE OAXACA 2026
           </h1>
           <p className="coming-soon-event">CONSULTA TU KIT</p>
         </div>
@@ -125,8 +127,8 @@ function InnerPage() {
           <Image
             src={EVENTO.logo}
             alt={EVENTO.nombre}
-            width={2923}
-            height={4865}
+            width={4330}
+            height={2133}
             priority
             className="coming-soon-logo"
           />
@@ -159,13 +161,13 @@ function InnerPage() {
           id="athlete-search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Nombre, número, box o categoría"
+          placeholder="Nombre, número de kit o categoría"
           style={styles.input}
           autoComplete="off"
         />
 
         <div style={styles.searchHint}>
-          Escribe al menos {EVENTO.minimoBusqueda} letras.
+          Escribe al menos {EVENTO.minimoBusqueda} letras o tu número de kit.
         </div>
       </section>
 
@@ -177,7 +179,7 @@ function InnerPage() {
             </div>
 
             <div style={styles.messageText}>
-              Puedes buscar por nombre, número, box o categoría.
+              Puedes buscar por nombre, número de kit o categoría.
             </div>
           </div>
         </section>
@@ -222,38 +224,23 @@ function InnerPage() {
                   <div style={styles.category}>
                     {participante.categoria || "Sin categoría"}
                   </div>
-
-                  {participante.box ? (
-                    <div style={styles.box}>
-                      {participante.box}
-                    </div>
-                  ) : null}
                 </div>
               </div>
 
               <div style={styles.divider} />
 
               <div style={styles.detailsGrid}>
-                <div style={styles.detailCard}>
-                  <div style={styles.detailLabel}>GÉNERO</div>
-                  <div style={styles.detailValue}>
-                    {atleta?.genero || "—"}
+                {atleta?.genero ? (
+                  <div style={styles.detailCard}>
+                    <div style={styles.detailLabel}>GÉNERO</div>
+                    <div style={styles.detailValue}>{atleta.genero}</div>
                   </div>
-                </div>
+                ) : null}
 
                 <div style={styles.detailCard}>
                   <div style={styles.detailLabel}>TALLA</div>
                   <div style={styles.sizeValue}>
                     {atleta?.talla || "—"}
-                  </div>
-                </div>
-
-                <div style={styles.detailCard}>
-                  <div style={styles.detailLabel}>
-                    NÚMERO DE CATEGORÍA
-                  </div>
-                  <div style={styles.detailValue}>
-                    {participante.numCategoria || "—"}
                   </div>
                 </div>
               </div>
@@ -264,8 +251,7 @@ function InnerPage() {
                 </div>
 
                 <div style={styles.deliveryText}>
-                  Confirma nombre, categoría, género y talla antes de recibir
-                  tu kit.
+                  Confirma nombre, categoría y talla antes de recibir tu kit.
                 </div>
               </div>
             </article>
@@ -285,7 +271,7 @@ function InnerPage() {
             <div style={styles.responsivaText}>
               {EVENTO.responsiva
                 ? "Descarga, revisa y presenta la responsiva correspondiente."
-                : "La responsiva de Black Experience 2026 estará disponible próximamente."}
+                : "La responsiva estará disponible próximamente."}
             </div>
           </div>
 
@@ -528,14 +514,14 @@ const styles: Record<string, CSSProperties> = {
   },
 
   numberLabel: {
-    color: theme.white,
+    color: theme.background,
     fontSize: 12,
     fontWeight: 950,
     letterSpacing: "0.12em",
   },
 
   number: {
-    color: theme.white,
+    color: theme.background,
     fontSize: 44,
     lineHeight: 1,
     fontWeight: 950,
@@ -660,7 +646,7 @@ const styles: Record<string, CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     background: theme.red,
-    color: theme.white,
+    color: theme.background,
     borderRadius: "50%",
     fontSize: 28,
     fontWeight: 950,
@@ -691,7 +677,7 @@ const styles: Record<string, CSSProperties> = {
     justifyContent: "center",
     padding: "0 18px",
     background: theme.red,
-    color: theme.white,
+    color: theme.background,
     borderRadius: 10,
     fontSize: 13,
     fontWeight: 950,
