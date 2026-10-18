@@ -28,8 +28,8 @@ const theme = {
   background: "#000000",
   surface: "#111111",
   surfaceAlt: "#1A1A1A",
-  red: "#D9F96E",
-  redDark: "#B9D74F",
+  red: "#F4DF00",
+  redDark: "#D6C100",
   white: "#FFFFFF",
   muted: "#BDBDBD",
   border: "#333333",
@@ -69,16 +69,16 @@ function InnerPage() {
     }
 
     return participantes.filter((participante) => {
-      const atleta = participante.atletas?.[0];
-
       const searchableText = normalizeText(
         [
           participante.num,
           participante.equipo,
           participante.categoria,
-          atleta?.nombre,
-          atleta?.genero,
-          atleta?.talla,
+          ...participante.atletas.flatMap((atleta) => [
+            atleta.nombre,
+            atleta.genero,
+            atleta.talla,
+          ]),
         ]
           .filter(Boolean)
           .join(" ")
@@ -107,16 +107,16 @@ function InnerPage() {
         <div className="coming-soon-logo-panel">
           <Image
             src={EVENTO.logo}
-            alt="Logo oficial de Functional Fitness Challenge Oaxaca 2026"
-            width={4330}
-            height={2133}
+            alt="Logo de COLISSEUM ARENA 2026"
+            width={1024}
+            height={1024}
             priority
             className="coming-soon-logo"
           />
         </div>
         <div className="coming-soon-content">
           <h1 id="coming-soon-title" className="coming-soon-title">
-            FUNCTIONAL FITNESS CHALLENGE OAXACA 2026
+            {EVENTO.nombre}
           </h1>
           <p className="coming-soon-event">CONSULTA TU KIT</p>
         </div>
@@ -127,8 +127,8 @@ function InnerPage() {
           <Image
             src={EVENTO.logo}
             alt={EVENTO.nombre}
-            width={4330}
-            height={2133}
+            width={1024}
+            height={1024}
             priority
             className="coming-soon-logo"
           />
@@ -140,7 +140,7 @@ function InnerPage() {
           <h2 className="event-header-title" style={styles.title}>{EVENTO.nombre}</h2>
 
           <div style={styles.subtitle}>
-            Consulta individual de atletas
+            Consulta de equipos y atletas
           </div>
         </div>
 
@@ -154,14 +154,14 @@ function InnerPage() {
 
       <section style={styles.searchSection}>
         <label style={styles.searchLabel} htmlFor="athlete-search">
-          BUSCAR ATLETA
+          BUSCAR EQUIPO O ATLETA
         </label>
 
         <input
           id="athlete-search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Nombre, número de kit o categoría"
+          placeholder="Atleta, equipo, número de kit o categoría"
           style={styles.input}
           autoComplete="off"
         />
@@ -179,7 +179,7 @@ function InnerPage() {
             </div>
 
             <div style={styles.messageText}>
-              Puedes buscar por nombre, número de kit o categoría.
+              Puedes buscar por atleta, equipo, número de kit o categoría.
             </div>
           </div>
         </section>
@@ -201,7 +201,7 @@ function InnerPage() {
 
       <section style={styles.results}>
         {results.map((participante) => {
-          const atleta = participante.atletas?.[0];
+          const esEquipo = participante.atletas.length > 1;
 
           return (
             <article
@@ -218,7 +218,7 @@ function InnerPage() {
 
                 <div style={styles.cardMain}>
                   <h2 style={styles.athleteName}>
-                    {atleta?.nombre || participante.equipo || "Atleta"}
+                    {esEquipo ? participante.equipo : participante.atletas[0]?.nombre || participante.equipo}
                   </h2>
 
                   <div style={styles.category}>
@@ -229,20 +229,19 @@ function InnerPage() {
 
               <div style={styles.divider} />
 
-              <div style={styles.detailsGrid}>
-                {atleta?.genero ? (
-                  <div style={styles.detailCard}>
-                    <div style={styles.detailLabel}>GÉNERO</div>
-                    <div style={styles.detailValue}>{atleta.genero}</div>
+              <div className="athlete-details-grid" style={styles.detailsGrid}>
+                {participante.atletas.map((atleta, index) => (
+                  <div key={`${participante.num}-${index}`} style={styles.detailCard}>
+                    <div style={styles.detailLabel}>
+                      {esEquipo ? `ATLETA ${index + 1}` : "ATLETA"}
+                    </div>
+                    <div style={styles.detailValue}>{atleta.nombre}</div>
+                    <div style={styles.athleteMeta}>
+                      <span>{atleta.genero}</span>
+                      <span style={styles.sizeValue}>TALLA {atleta.talla}</span>
+                    </div>
                   </div>
-                ) : null}
-
-                <div style={styles.detailCard}>
-                  <div style={styles.detailLabel}>TALLA</div>
-                  <div style={styles.sizeValue}>
-                    {atleta?.talla || "—"}
-                  </div>
-                </div>
+                ))}
               </div>
 
               <div style={styles.deliveryNotice}>
@@ -595,9 +594,20 @@ const styles: Record<string, CSSProperties> = {
     fontWeight: 900,
   },
 
+  athleteMeta: {
+    display: "flex",
+    alignItems: "baseline",
+    justifyContent: "space-between",
+    gap: 12,
+    marginTop: 12,
+    color: theme.muted,
+    fontSize: 13,
+    fontWeight: 700,
+  },
+
   sizeValue: {
     color: theme.red,
-    fontSize: 30,
+    fontSize: 20,
     lineHeight: 1,
     fontWeight: 950,
   },

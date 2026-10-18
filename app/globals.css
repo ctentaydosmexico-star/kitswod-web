@@ -36,14 +36,14 @@ body {
   gap: clamp(20px, 4vw, 48px);
   background: #111;
   border: 1px solid #333;
-  border-top: 5px solid #d9f96e;
+  border-top: 5px solid #f4df00;
   border-radius: 16px;
   box-sizing: border-box;
 }
 
 .coming-soon-logo-panel {
   width: 100%;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ body {
 
 .coming-soon-event {
   margin: 16px 0 0;
-  color: #d9f96e;
+  color: #f4df00;
   font-size: clamp(18px, 2.5vw, 30px);
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -81,6 +81,10 @@ body {
 }
 
 @media (max-width: 640px) {
+  .athlete-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+
   .coming-soon-hero {
     grid-template-columns: 1fr;
     justify-items: center;

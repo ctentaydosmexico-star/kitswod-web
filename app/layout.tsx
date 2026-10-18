@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
-  title: "Functional Fitness Challenge Oaxaca 2026 | KITS WOD",
-  description: "Consulta tu número de kit para Functional Fitness Challenge Oaxaca 2026.",
+  title: "COLISSEUM ARENA 2026 | KITS WOD",
+  description: "Consulta tu equipo, atletas y número de kit para COLISSEUM ARENA 2026.",
   openGraph: {
-    title: "Functional Fitness Challenge Oaxaca 2026 | KITS WOD",
-    description: "Consulta tu número de kit para Functional Fitness Challenge Oaxaca 2026.",
+    title: "COLISSEUM ARENA 2026 | KITS WOD",
+    description: "Consulta tu equipo, atletas y número de kit para COLISSEUM ARENA 2026.",
     url: "https://kitswod.mx",
     siteName: "KITS WOD",
     images: [

@@ -1,8 +1,8 @@
 export const EVENTO = {
-  nombre: "FUNCTIONAL FITNESS CHALLENGE OAXACA 2026",
-  logo: "/ffc-oaxaca-2026-logo.png",
-  responsiva: "/RESPONSIVA-FUNCTIONAL-FITNESS-2026.pdf" as string | null,
-  tipo: "individual",
+  nombre: "COLISSEUM ARENA 2026",
+  logo: "/colisseum-logo-3d.png",
+  responsiva: null as string | null,
+  tipo: "equipos e individuales",
   minimoBusqueda: 4,
   instagram: "https://www.instagram.com/thewod_go",
   instagramTexto: "@thewod_go",

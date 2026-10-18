@@ -1,5 +1,5 @@
-// Fuente: PLAYERAS COMPETENCIA FFC OAX.xlsx, hoja PLAYERAS FFC.
-// NUMT es el número de kit. El género de TEENS MIXTO no está especificado en la fuente.
+// Fuente: Coliseum2026_20261018125212.xlsx, hoja TODOS (corte 18/10/2026).
+// NUMT identifica el kit; las parejas tienen dos atletas y Masters uno.
 export type AtletaEquipo = {
   nombre: string;
   talla: string;
@@ -16,709 +16,1389 @@ export type EquipoParticipante = {
 export const PARTICIPANTES: EquipoParticipante[] = [
   {
     "num": 1,
-    "equipo": "ROMINA SARMIENTO",
-    "categoria": "TEENS 12-15 MIXTO",
+    "equipo": "TITAN STRIKE",
+    "categoria": "PARTNER NOVATO VARONIL",
     "atletas": [
       {
-        "nombre": "ROMINA SARMIENTO",
+        "nombre": "Daniel Tetepa Ramirez",
         "talla": "M",
-        "genero": ""
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Alan Zepeda Casas",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 2,
-    "equipo": "Santiago Garrido Cervantes",
-    "categoria": "TEENS 12-15 MIXTO",
+    "equipo": "LAS BICOLOR ??????????",
+    "categoria": "PARTNER NOVATO VARONIL",
     "atletas": [
       {
-        "nombre": "Santiago Garrido Cervantes",
-        "talla": "M",
-        "genero": ""
+        "nombre": "Rodrigo Del angel",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Eduardo Blas Blanco",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 3,
-    "equipo": "Alan David Trujillo Vargas",
-    "categoria": "TEENS 12-15 MIXTO",
+    "equipo": "Rocko boys",
+    "categoria": "PARTNER NOVATO VARONIL",
     "atletas": [
       {
-        "nombre": "Alan David Trujillo Vargas",
-        "talla": "L",
-        "genero": ""
+        "nombre": "Ángel Cruz",
+        "talla": "S",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Rafael Vilchis",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 4,
-    "equipo": "Ruben Jaasiel Vasquez Rivera",
-    "categoria": "TEENS 12-15 MIXTO",
+    "equipo": "Mateatletas",
+    "categoria": "PARTNER NOVATO VARONIL",
     "atletas": [
       {
-        "nombre": "Ruben Jaasiel Vasquez Rivera",
-        "talla": "M",
-        "genero": ""
+        "nombre": "Hector Guzman Rojas",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Eduardo Alexis Valencia Dorantes",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 5,
-    "equipo": "Aranza Bolan",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "TlaloKittys",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Aranza Bolan",
-        "talla": "L",
-        "genero": "MUJER"
+        "nombre": "Jimena López Munguia",
+        "talla": "XL",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Karen Verónica Castro Santillán",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 6,
-    "equipo": "Carmen Ramires",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Charon y su jefa",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Carmen Ramires",
+        "nombre": "Sharon Alexia Murillo Islas",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Elizabeth Islas Ruiz",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 7,
-    "equipo": "Salma Diaz",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las Sin Recreo",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Salma Diaz",
-        "talla": "L",
-        "genero": "MUJER"
+        "nombre": "María de Jesús Ortiz Ramírez",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Ivette del Angel Luna",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 8,
-    "equipo": "Dulce Maritzel Luis Sanchez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Bombón & Bellota",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Dulce Maritzel Luis Sanchez",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "Mercedes Mejía Serrano",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Itzel Irais Hernandez Gomez Gil",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 9,
-    "equipo": "Maricarmen Villa Ortiz",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "She-WODs",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Maricarmen Villa Ortiz",
+        "nombre": "Melissa Ramos",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Paulina Cerón Juárez",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 10,
-    "equipo": "SAIDA ENEIDA PEREZ",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las \"Y si sí\"",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "SAIDA ENEIDA PEREZ",
-        "talla": "M",
-        "genero": "MUJER"
+        "nombre": "Norma Angelica Guerrero Soliman",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Esmeralda Moran Corona",
+        "talla": "XL",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 11,
-    "equipo": "Quetzalin Yadel",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Lobas tóxicas",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Quetzalin Yadel",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "Irais Adriana Medina Sánchez",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Tania Rodríguez villaseñor",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 12,
-    "equipo": "Lirio Martínez Pineda",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "The Chosen",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Lirio Martínez Pineda",
-        "talla": "L",
-        "genero": "MUJER"
+        "nombre": "Martha Medina Villanueva",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Beatriz Villanueva",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 13,
-    "equipo": "May lee Aquino cano",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las Mamásonicas",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "May lee Aquino cano",
-        "talla": "XL",
-        "genero": "MUJER"
+        "nombre": "Lau Bello Ubario",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Miriam De anda",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 14,
-    "equipo": "Maritza Díaz López",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "BH Stars",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Maritza Díaz López",
+        "nombre": "Jessica Téllez Ramírez",
         "talla": "S",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Rebeca Ramírez Blas",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 15,
-    "equipo": "Andrea Donaji Cruz Guzman",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las Catrinas de Concepto",
+    "categoria": "PARTNER NOVATO FEMENIL",
     "atletas": [
       {
-        "nombre": "Andrea Donaji Cruz Guzman",
+        "nombre": "Ana Karen Velazquez Cuevas",
+        "talla": "XL",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Alexia Jalpa Flores",
         "talla": "L",
-        "genero": "MUJER"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 16,
-    "equipo": "Sagrario Rivera Martínez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "LUKA",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Sagrario Rivera Martínez",
+        "nombre": "Luz María Méndez Marcos",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Karla Alejandra Pérez Rodríguez",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 17,
-    "equipo": "Camila Ramírez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Umbral Athletics",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Camila Ramírez",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "EVELYN NUÑEZ LIMAS",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Citlalli Yoltzin Franco Maldonado",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 18,
-    "equipo": "yanet Cervantes López",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las dramáticas de dragons",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "yanet Cervantes López",
+        "nombre": "Erika Acevedo",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Miriam Cruz Palacios",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 19,
-    "equipo": "Mariana Miranda Avila",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "DaVi Power",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Mariana Miranda Avila",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "Victoria Morales Ocampo",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Daniela Rosas",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 20,
-    "equipo": "Marintia García",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Wolfs Girls",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Marintia García",
-        "talla": "M",
-        "genero": "MUJER"
+        "nombre": "Sheila Morán Corona",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Elizabeth Vera Sánchez",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 21,
-    "equipo": "Issel Gómez Angoa",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Rocko girls",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Issel Gómez Angoa",
+        "nombre": "Sofia Guadalupe Delgado Pimentel",
         "talla": "S",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Elisabeth De Jesús de Jesús",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 22,
-    "equipo": "Janet Lucero Jiménez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Burpee Babes",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Janet Lucero Jiménez",
+        "nombre": "Andrea Valencia",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Karen Yozelin Villalva Garcia",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 23,
-    "equipo": "Vanesa Alcazar Ramírez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Amonos reSio",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Vanesa Alcazar Ramírez",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "Angelica Roman Garcia",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Paola Chavez",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 24,
-    "equipo": "Alexha Vargas Palacios",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Pink Queens",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Alexha Vargas Palacios",
-        "talla": "M",
-        "genero": "MUJER"
+        "nombre": "Katia Martinez",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Alejandra Monserrat Martínez Aguilar",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 25,
-    "equipo": "Yaretzi Velasco Ramírez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Double Trouble",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Yaretzi Velasco Ramírez",
-        "talla": "XS",
-        "genero": "MUJER"
+        "nombre": "Ana Elisa Montiel Jarillo",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Marcela Bastida Uribe",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 26,
-    "equipo": "Dulce Isela Osorio Gómez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Las umbralitas del Iron",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Dulce Isela Osorio Gómez",
+        "nombre": "Samanta Valle Hernandez",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Bibiana Elizabet García Paz",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 27,
-    "equipo": "Joselin Velázquez Martínez",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "40 y 20",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Joselin Velázquez Martínez",
+        "nombre": "Evelyn Danelia Hernández llamas",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Danelia Alejandra Obregón Hernández",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 28,
-    "equipo": "Rosario Siadani García Valencia",
-    "categoria": "PRINCIPIANTES FEMENIL",
+    "equipo": "Valkirias",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Rosario Siadani García Valencia",
+        "nombre": "Vanessa Monserrat González Jiménez",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Lidia Leticia Osornio Manzano",
+        "talla": "L",
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 29,
+    "equipo": "Casi atletas",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Brenda Lizbeth Rivera Zavala",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Geraldine Alexey Mercado Hernández",
+        "talla": "L",
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 30,
+    "equipo": "Woderpuff",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Ana Karen Sánchez Utrilla",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Valeria Eleana Pichardo Vargas",
+        "talla": "L",
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 31,
+    "equipo": "Crossfiteras del Barrio",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Susana Hermenegildo Cano",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Maria Fernanda Aguilar  Mayoral",
+        "talla": "M",
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 32,
+    "equipo": "Gordolobas",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Minerva Gurría Orduña",
+        "talla": "XL",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Maria del Rosario Ramos Millán",
         "talla": "S",
-        "genero": "MUJER"
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 33,
+    "equipo": "Latin Power",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Alexandra Jimenez Moncada",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Erika Isabella García Mendoza",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 34,
-    "equipo": "Alberto Sierra",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "Las Inestables",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Alberto Sierra",
-        "talla": "XL",
-        "genero": "HOMBRE"
+        "nombre": "Nimsi Campos Xolalpa",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Anayeli Alejandre",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 35,
-    "equipo": "Abimael Santiago Soriano",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "Apocalipticas",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Abimael Santiago Soriano",
+        "nombre": "Alejandra Parra Pasohondo",
         "talla": "L",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Diana González S",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 36,
-    "equipo": "Fernando Santiago Soriano",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "Barbell Besties",
+    "categoria": "PARTNERS PRINCIPIANTES FEMENIL",
     "atletas": [
       {
-        "nombre": "Fernando Santiago Soriano",
+        "nombre": "Sandra Saavedra Alvarado",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Paulina Viramontes Hernández",
         "talla": "L",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 37,
-    "equipo": "Gregorio González Flores",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "LIONHEART",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Gregorio González Flores",
+        "nombre": "José Ángel Chávez Sánchez",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Jhonatan Carlos Ramos",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 38,
-    "equipo": "Iván Caballero",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "The brothes Mali",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Iván Caballero",
+        "nombre": "Luis Eduardo González Nogueron",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Erik Marco Nogueron Fragoso",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 39,
-    "equipo": "Fredy Alexander Figueroa Martínez",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "????Q2",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Fredy Alexander Figueroa Martínez",
+        "nombre": "Andrés Antonio Hernández Alderete",
         "talla": "S",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Marlon Gerardo Mercado Hernandez",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 40,
-    "equipo": "Luis Angel Pérez Herrera",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "Kame Black",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Luis Angel Pérez Herrera",
-        "talla": "XL",
-        "genero": "HOMBRE"
+        "nombre": "Giovanni Rocha",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Edwar Gomez Jimenez",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 41,
-    "equipo": "Neftali Ramos Aleman",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "Luis por Luis",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Neftali Ramos Aleman",
+        "nombre": "Luis Gerardo Fosado Baños",
         "talla": "L",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Luis felipe Ruiz hernandez",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 42,
-    "equipo": "Jafet Lopez",
-    "categoria": "PRINCIPIANTES VARONIL",
+    "equipo": "The Punisher’s",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Jafet Lopez",
-        "talla": "M",
-        "genero": "HOMBRE"
+        "nombre": "Luis Guevara",
+        "talla": "XL",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "omar cesar sandoval pardave",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 43,
-    "equipo": "Yaravid Velázquez Ramírez",
-    "categoria": "INTERMEDIOS FEMENIL",
+    "equipo": "Balamcitos",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "Yaravid Velázquez Ramírez",
-        "talla": "M",
-        "genero": "MUJER"
+        "nombre": "José Eduardo Diaz Cristóbal",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Juan Castillo contreras",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 44,
-    "equipo": "SONIA POSADAS REYES",
-    "categoria": "INTERMEDIOS FEMENIL",
+    "equipo": "Los sin prisa pero sin pausa",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
     "atletas": [
       {
-        "nombre": "SONIA POSADAS REYES",
+        "nombre": "Victor Mejia",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "David Campos",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 45,
+    "equipo": "Los rucainols bh",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
+    "atletas": [
+      {
+        "nombre": "CESAR israel Valle GARCIA",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Ivan Moreno",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 46,
+    "equipo": "Los sin aire",
+    "categoria": "PARTNERS PRINCIPIANTES VARONIL",
+    "atletas": [
+      {
+        "nombre": "Abraham Isaí Rodriguez Lozano",
+        "talla": "S",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Isaac E",
+        "talla": "S",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 47,
+    "equipo": "Papois",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Carolina Ré Pillado",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Nailea Tapia",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 48,
-    "equipo": "emmanuel díaz garcía",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "The wod Warriors",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
     "atletas": [
       {
-        "nombre": "emmanuel díaz garcía",
+        "nombre": "Elizabeth Altamirano flores",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Fabiola Salinas Ramírez",
         "talla": "L",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 49,
-    "equipo": "Alexis Antonio Rodríguez Galindo",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "LIFT HAPPENS",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
     "atletas": [
       {
-        "nombre": "Alexis Antonio Rodríguez Galindo",
-        "talla": "M",
-        "genero": "HOMBRE"
+        "nombre": "Andrea Victorica Vázquez",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "KARLA LOMELI",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 50,
-    "equipo": "MISAEL BOHORQUEZ OJEDA",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Paws to Bar",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
     "atletas": [
       {
-        "nombre": "MISAEL BOHORQUEZ OJEDA",
-        "talla": "S",
-        "genero": "HOMBRE"
+        "nombre": "Emmanuelle Stevenin",
+        "talla": "M",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Coral Paz Lemus",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 51,
-    "equipo": "José Antonio Toledo Villalobos",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Las chinas de Cam",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
     "atletas": [
       {
-        "nombre": "José Antonio Toledo Villalobos",
+        "nombre": "Claudia Belem Alfaro Fragoso",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Miriam Alicia Hernandez tovar",
+        "talla": "S",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 52,
-    "equipo": "Darwing García Andrede",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Blazing Dragons",
+    "categoria": "PARTNERS INTERMEDIOS FEMENIL",
     "atletas": [
       {
-        "nombre": "Darwing García Andrede",
+        "nombre": "Ariana Aguilera Mendoza",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Nancy Martínez Jiménez",
+        "talla": "M",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 53,
-    "equipo": "Darwing García Andrade",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Catcerberus",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Darwing García Andrade",
-        "talla": "M",
-        "genero": "HOMBRE"
+        "nombre": "Gildardo Rodriguez",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Rodolfo Artuto Campos Monroy",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 54,
-    "equipo": "José Daniel García Santos",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "CrossBonitos",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "José Daniel García Santos",
-        "talla": "XS",
-        "genero": "HOMBRE"
+        "nombre": "Axel Varela",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Luis Gabriel Torres Meza",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 55,
-    "equipo": "Freddy Guzmán santiago",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "HELLFISH",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Freddy Guzmán santiago",
+        "nombre": "Pedro Ortiz R",
         "talla": "L",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Sergio Sánchez Landeros",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 56,
-    "equipo": "Hugo Orlando García González",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "De Norte a Sur",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Hugo Orlando García González",
-        "talla": "M",
-        "genero": "HOMBRE"
+        "nombre": "Agustin Merli",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Jorge Luis Ayala Hernández",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 57,
-    "equipo": "Juan Montesinos Ibáñez",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Kame House",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Juan Montesinos Ibáñez",
+        "nombre": "William Lorenzo Genchi",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Rafael Gonzalez",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 58,
-    "equipo": "Andrés ESCOBAR JIMENEZ",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "The barbell club",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Andrés ESCOBAR JIMENEZ",
-        "talla": "S",
-        "genero": "HOMBRE"
+        "nombre": "Oscar Millan Guevara",
+        "talla": "M",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Christian Martinez",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 59,
-    "equipo": "Luis Alberto Ortiz",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Bellbits",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Luis Alberto Ortiz",
-        "talla": "S",
-        "genero": "HOMBRE"
+        "nombre": "Tony Pierre Gérard Louis Mathey",
+        "talla": "XL",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Jorge Xavier Morales Arévalo",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 60,
-    "equipo": "Herman enrique Balanzar Guzmán",
-    "categoria": "INTERMEDIOS VARONIL",
+    "equipo": "Toes 2 boys",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Herman enrique Balanzar Guzmán",
+        "nombre": "Diego Alan Hernández Coronado",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Raúl Trinidad Barreto",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 61,
+    "equipo": "Los Miche y Lada",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Ulises Perea Garita",
         "talla": "XL",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Sebastian Ponce Hernandez",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 62,
+    "equipo": "Los titanes del Twins",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Damian García Ramírez",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "David Crespo Jiménez",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 63,
+    "equipo": "Los Trinidad",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "EMMANUEL TRINIDAD GALLEGOS",
+        "talla": "M",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "IAN AXEL TRINIDAD GALLEGOS",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 64,
+    "equipo": "Rehechos en Holkan",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Alejandro Ojeda",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Donovan Ramirez Lopez",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 65,
-    "equipo": "Ivany Culebro De Lucio",
-    "categoria": "AVANZADOS FEMENIL",
+    "equipo": "Nacho y Esqueleto",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Ivany Culebro De Lucio",
-        "talla": "S",
-        "genero": "MUJER"
+        "nombre": "Armando Cruz",
+        "talla": "XL",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Santiago Martinez",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 66,
-    "equipo": "Ayumi Lopez",
-    "categoria": "AVANZADOS FEMENIL",
+    "equipo": "UNBROKEN BAG",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Ayumi Lopez",
+        "nombre": "Johan Adrian Aleman Novoa",
+        "talla": "S",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Ricardo Kal-El Sayid Rosales Olvera",
         "talla": "M",
-        "genero": "MUJER"
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 67,
-    "equipo": "Herman Isaac Balanzar Guzman",
-    "categoria": "AVANZADOS VARONIL",
+    "equipo": "Incredigrizz",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Herman Isaac Balanzar Guzman",
-        "talla": "XL",
-        "genero": "HOMBRE"
+        "nombre": "Aldo Corona Bacelis",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Alexis Resendiz",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 68,
-    "equipo": "Darien Sanchez Vasconcelos",
-    "categoria": "AVANZADOS VARONIL",
+    "equipo": "Los Exiliados del Escuadron",
+    "categoria": "PARTNERS INTERMEDIOS VARONIL",
     "atletas": [
       {
-        "nombre": "Darien Sanchez Vasconcelos",
+        "nombre": "Shoko Luchador",
+        "talla": "S",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Abraham Fuentes",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 69,
-    "equipo": "Valentín Elorza",
-    "categoria": "AVANZADOS VARONIL",
+    "equipo": "Valkirias de Dragons.",
+    "categoria": "PARTNERS AVANZADOS FEMENIL",
     "atletas": [
       {
-        "nombre": "Valentín Elorza",
-        "talla": "M",
-        "genero": "HOMBRE"
+        "nombre": "Adriana Castañeda Serna",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Diana Elizabeth Cano Cisneros",
+        "talla": "L",
+        "genero": "Mujer"
       }
     ]
   },
   {
     "num": 70,
-    "equipo": "Ricardo Castillejos Hernández",
-    "categoria": "AVANZADOS VARONIL",
+    "equipo": "Las Hermanas de black",
+    "categoria": "PARTNERS AVANZADOS FEMENIL",
     "atletas": [
       {
-        "nombre": "Ricardo Castillejos Hernández",
+        "nombre": "Michelle Jimenez Carmona",
+        "talla": "S",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Maya Nicole Jiménez Carmona",
+        "talla": "S",
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 71,
+    "equipo": "Umbral x Elite",
+    "categoria": "PARTNERS AVANZADOS FEMENIL",
+    "atletas": [
+      {
+        "nombre": "Karina Calderón",
+        "talla": "L",
+        "genero": "Mujer"
+      },
+      {
+        "nombre": "Zara Madai Madai Gonzalez",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Mujer"
+      }
+    ]
+  },
+  {
+    "num": 72,
+    "equipo": "Las mojarras",
+    "categoria": "PARTNERS AVANZADOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Manuel Alejandro Cruz Hernández",
+        "talla": "M",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Esteban Delgado Castruita",
+        "talla": "L",
+        "genero": "Hombre"
       }
     ]
   },
   {
     "num": 73,
-    "equipo": "Pedro Barrita pacheco",
-    "categoria": "AVANZADOS VARONIL",
+    "equipo": "Los Ponchiquis",
+    "categoria": "PARTNERS AVANZADOS VARONIL",
     "atletas": [
       {
-        "nombre": "Pedro Barrita pacheco",
+        "nombre": "Alfonso Castro Flores",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Melquicedec Aguilar Gonzalez",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 74,
+    "equipo": "MERO Rwrds",
+    "categoria": "PARTNERS AVANZADOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Juan Pablo Mejía Romo",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Jesus Mondragon",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 75,
+    "equipo": "Black Bros",
+    "categoria": "PARTNERS AVANZADOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Hugo Hernández Hernández",
         "talla": "M",
-        "genero": "HOMBRE"
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "Angel Emiliano Malagon Garcia",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 76,
+    "equipo": "One and a half men",
+    "categoria": "PARTNERS AVANZADOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Luis Jesús Aguilar",
+        "talla": "L",
+        "genero": "Hombre"
+      },
+      {
+        "nombre": "David Alexander Peña Franco",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 77,
+    "equipo": "Jose Alberto Guerrero Arreola",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Jose Alberto Guerrero Arreola",
+        "talla": "M",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 78,
+    "equipo": "Christian Yaid Galicia",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Christian Yaid Galicia",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 79,
+    "equipo": "Luis Amaya Ibarra",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Luis Amaya Ibarra",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 80,
+    "equipo": "Raúl Álvarez Aguileta",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Raúl Álvarez Aguileta",
+        "talla": "S",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 81,
+    "equipo": "Marco Antonio Garcia Cortes",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Marco Antonio Garcia Cortes",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 82,
+    "equipo": "Elías Gonzales",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Elías Gonzales",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 83,
+    "equipo": "Gil Bermúdez",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Gil Bermúdez",
+        "talla": "L",
+        "genero": "Hombre"
+      }
+    ]
+  },
+  {
+    "num": 84,
+    "equipo": "Oliver Mancera Gonzalez",
+    "categoria": "MASTERS INTERMEDIOS VARONIL",
+    "atletas": [
+      {
+        "nombre": "Oliver Mancera Gonzalez",
+        "talla": "M",
+        "genero": "Hombre"
       }
     ]
   }
